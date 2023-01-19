@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
-import sklearn
 from sklearn.ensemble import RandomForestClassifier
 from unittest import TestCase
 
 import ordinal_quantification
-from ordinal_quantification.classify_and_count import (AC, CC)
+from ordinal_quantification import factory
 from ordinal_quantification.metrics.ordinal import emd
 
 RNG = np.random.RandomState(876) # make tests reproducible
@@ -17,15 +16,12 @@ def _read_data(name):
   y = df.iloc[:, -1].values.astype(np.int64)
   return X, y
 
-def _two_clones(classifier):
-  """Clone the classifier two times, for UsingClassifiers instances"""
-  classifier = sklearn.base.clone(classifier)
-  return classifier, classifier
+def _classifier(seed):
+  return RandomForestClassifier(5, random_state=seed)
 
 class TestAC(TestCase):
   def testAC(self):
     seed = RNG.randint(np.iinfo(np.int32).max)
-    clf = RandomForestClassifier(5, random_state=seed)
     X, y = _read_data("ESL")
     if len(y) > 1000:
       i = RNG.permutation(len(y))
@@ -34,9 +30,11 @@ class TestAC(TestCase):
     p_true = np.unique(y, return_counts=True)[1] / len(y)
     print(f"p_true = {p_true}")
     methods = [
-      ("CC", CC(sklearn.base.clone(clf), verbose=1)),
-      ("AC", AC(*_two_clones(clf), verbose=1)),
-      ("AC_HD", AC(*_two_clones(clf), distance="HD", verbose=1)),
+      ("CC", factory.create_CC(_classifier(seed), verbose=1)),
+      ("AC_L2", factory.create_AC(_classifier(seed), verbose=1)),
+      ("AC_L2 (FH tree)", factory.create_AC(_classifier(seed), decomposer=factory.Decomposer.fh_tree, verbose=1)),
+      ("AC_HD", factory.create_AC(_classifier(seed), distance="HD", verbose=1)),
+      ("PAC_L2", factory.create_PAC(_classifier(seed), verbose=1)),
     ]
     for (name, method) in methods:
       method.fit(X, y)

@@ -32,6 +32,7 @@ setup(
     install_requires=[
         "cvxpy",
         "Cython",
+        "imbalanced-learn",
         "numpy",
         "quadprog",
         "scikit-learn",
@@ -43,7 +44,7 @@ setup(
     zip_safe=False,
     test_suite="nose.collector",
     extras_require = {
-        "experiments" : ["imbalanced-learn", "matplotlib", "pandas"],
+        "experiments" : ["matplotlib", "pandas"],
         "tests" : ["nose", "pandas"]
     }
 )
