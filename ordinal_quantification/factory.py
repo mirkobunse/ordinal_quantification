@@ -2,6 +2,7 @@
 
 from enum import Enum
 from imblearn.metrics import geometric_mean_score
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import make_scorer
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from . import (classify_and_count, estimators)
@@ -48,16 +49,25 @@ def _create_decomposer(estimator, decomposer = Decomposer.monotone):
     else:
         raise ValueError('Unknown decomposer {decomposer}')
 
-def _best_estimator(estimator, X, y, param_grid, random_state=None):
+def create_estimator(X, y, estimator=None, param_grid=None, random_state=None):
     """Take out the grid search of the original experiments."""
+    if estimator is None:
+        estimator = RandomForestClassifier(
+            n_estimators = 100,
+            class_weight = "balanced",
+            random_state = random_state,
+        )
+    if param_grid is None:
+        param_grid = { # learning theory doesn't want us to tune n_estimators
+            "max_depth": [1, 5, 10, 15, 20, 25, 30],
+            "min_samples_leaf": [1, 2, 5, 10, 20],
+        }
     gs_tst = GridSearchCV(
         estimator,
         param_grid = param_grid,
-        verbose = False,
-        cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=random_state),
         scoring = make_scorer(geometric_mean_score),
+        cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=random_state),
         n_jobs = -1,
-        iid = False,
     )
     gs_tst.fit(X, y)
     return gs_tst.best_estimator_
