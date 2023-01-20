@@ -30,17 +30,17 @@ class TestAC(TestCase):
     p_true = np.unique(y, return_counts=True)[1] / len(y)
     print(f"p_true = {p_true}")
 
-    tuned = factory.create_estimator(X, y, random_state=seed)
+    tuned = factory.estimator(X, y, random_state=seed)
     print("Tuned the default estimator")
 
     methods = [
-      ("CC", factory.create_CC(_classifier(seed), verbose=1)),
-      ("CC (tuned)", factory.create_CC(tuned, verbose=1)),
-      ("AC_L2", factory.create_AC(_classifier(seed), verbose=1)),
-      ("AC_L2 (tuned)", factory.create_AC(tuned, verbose=1)),
-      ("AC_L2 (FH tree)", factory.create_AC(_classifier(seed), decomposer=factory.Decomposer.fh_tree, verbose=1)),
-      ("AC_HD", factory.create_AC(_classifier(seed), distance="HD", verbose=1)),
-      ("PAC_L2", factory.create_PAC(_classifier(seed), verbose=1)),
+      ("CC", factory.CC(_classifier(seed), verbose=1)),
+      ("CC (tuned)", factory.CC(tuned, verbose=1)),
+      ("AC_L2", factory.AC(_classifier(seed), verbose=1)),
+      ("AC_L2 (tuned)", factory.AC(tuned, verbose=1)),
+      ("AC_L2 (FH tree)", factory.AC(_classifier(seed), decomposer=factory.Decomposer.fh_tree, verbose=1)),
+      ("AC_HD", factory.AC(_classifier(seed), distance="HD", verbose=1)),
+      ("PAC_L2", factory.PAC(_classifier(seed), verbose=1)),
     ]
     for (name, method) in methods:
       method.fit(X, y)

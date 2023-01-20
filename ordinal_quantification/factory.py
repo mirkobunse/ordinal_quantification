@@ -5,6 +5,7 @@ from imblearn.metrics import geometric_mean_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import make_scorer
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
+
 from . import (classify_and_count, estimators)
 
 Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv"])
@@ -49,7 +50,7 @@ def _create_decomposer(estimator, decomposer = Decomposer.monotone):
     else:
         raise ValueError('Unknown decomposer {decomposer}')
 
-def create_estimator(X, y, estimator=None, param_grid=None, random_state=None):
+def estimator(X, y, estimator=None, param_grid=None, random_state=None):
     """Take out the grid search of the original experiments."""
     if estimator is None:
         estimator = RandomForestClassifier(
@@ -72,33 +73,33 @@ def create_estimator(X, y, estimator=None, param_grid=None, random_state=None):
     gs_tst.fit(X, y)
     return gs_tst.best_estimator_
 
-def create_CC(estimator, *, verbose=0, **kwargs):
+def CC(estimator, *, verbose=0, **kwargs):
     return classify_and_count.CC(
         _create_estimators(estimator, **kwargs)[1],
         verbose = verbose
     )
 
-def create_PCC(estimator, *, verbose=0, **kwargs):
+def PCC(estimator, *, verbose=0, **kwargs):
     return classify_and_count.PCC(
         _create_estimators(estimator, **kwargs)[1],
         verbose = verbose
     )
 
-def create_AC(estimator, *, distance="L2", verbose=0, **kwargs):
+def AC(estimator, *, distance="L2", verbose=0, **kwargs):
     return classify_and_count.AC(
         *_create_estimators(estimator, **kwargs),
         distance = distance,
         verbose = verbose
     )
 
-def create_PAC(estimator, *, distance="L2", verbose=0, **kwargs):
+def PAC(estimator, *, distance="L2", verbose=0, **kwargs):
     return classify_and_count.PAC(
         *_create_estimators(estimator, **kwargs),
         distance = distance,
         verbose = verbose
     )
 
-def create_DeBias(estimator, *, verbose=0, **kwargs):
+def DeBias(estimator, *, verbose=0, **kwargs):
     print("WARNING: DeBias is not used in bertocast/ordinal_quantification")
     return classify_and_count.DeBias(
         *_create_estimators(estimator, **kwargs),

@@ -18,10 +18,10 @@ from ordinal_quantification import factory
 # X_tst, y_tst = your_testing_data()
 
 # tune the hyper-parameters of the original classifier from the paper
-clf = factory.create_estimator(X_trn, y_trn) # other classifiers can also be used
+classifier = factory.estimator(X_trn, y_trn)
 
 # fit an instance of the adjusted classify & count method
-method = factory.create_AC(clf)
+method = factory.AC(classifier) # other classifiers could also be used
 method.fit(X_trn, y_trn) # all quantifiers implement fit(X, y) and predict(X)
 
 # estimate the prevalences of classes in X_tst
