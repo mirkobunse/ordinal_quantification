@@ -18,7 +18,7 @@ def _create_estimators(
         n_folds = 20,
         random_state = None
         ):
-    """TODO"""
+    """Wrap two instances of the given estimator with a given order of CV and decomposer."""
     skf_trn = StratifiedKFold(
         n_splits = n_folds,
         shuffle = True,
@@ -51,7 +51,21 @@ def _create_decomposer(estimator, decomposer = Decomposer.monotone):
         raise ValueError('Unknown decomposer {decomposer}')
 
 def estimator(X, y, estimator=None, param_grid=None, random_state=None):
-    """Take out the grid search of the original experiments."""
+    """
+    Take out the grid search of the original experiments.
+
+    This grid search is looking for the hyper-parameters that optimize the geometric mean of class-wise accuracies in a stratified 3-fold cross validation.
+
+    Args:
+        X: The feature matrix for which the estimator will be optimized.
+        y: The labels for which the estimator will be optimized.
+        estimator (optional): The scikit-learn classifier to optimize. Defaults to a RandomForestClassifier.
+        param_grid (optional): The parameter grid to optimize over. Defaults to the parameter grid that is used in the paper.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        An estimator to be used in any of the quantification methods, optimized for (X, y).
+    """
     if estimator is None:
         estimator = RandomForestClassifier(
             n_estimators = 100,
@@ -74,18 +88,61 @@ def estimator(X, y, estimator=None, param_grid=None, random_state=None):
     return gs_tst.best_estimator_
 
 def CC(estimator, *, verbose=0, **kwargs):
+    """
+    Create an instance of the Classify-and-Count method.
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type CC.
+    """
     return classify_and_count.CC(
         _create_estimators(estimator, **kwargs)[1],
         verbose = verbose
     )
 
 def PCC(estimator, *, verbose=0, **kwargs):
+    """
+    Create an instance of the Probabilistic Classify-and-Count method.
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type PCC.
+    """
     return classify_and_count.PCC(
         _create_estimators(estimator, **kwargs)[1],
         verbose = verbose
     )
 
 def AC(estimator, *, distance="L2", verbose=0, **kwargs):
+    """
+    Create an instance of the Adjusted Classify-and-Count method.
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        distance (optional): The distance metric to optimize. Defaults to "L2".
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type AC.
+    """
     return classify_and_count.AC(
         *_create_estimators(estimator, **kwargs),
         distance = distance,
@@ -93,6 +150,21 @@ def AC(estimator, *, distance="L2", verbose=0, **kwargs):
     )
 
 def PAC(estimator, *, distance="L2", verbose=0, **kwargs):
+    """
+    Create an instance of the Probabilistic Adjusted Classify-and-Count method.
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        distance (optional): The distance metric to optimize. Defaults to "L2".
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type PAC.
+    """
     return classify_and_count.PAC(
         *_create_estimators(estimator, **kwargs),
         distance = distance,

@@ -1,3 +1,7 @@
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://mirkobunse.github.io/ordinal_quantification)
+[![CI](https://github.com/mirkobunse/ordinal_quantification/actions/workflows/ci.yml/badge.svg)](https://github.com/mirkobunse/ordinal_quantification/actions/workflows/ci.yml)
+
+
 # bertocast/ordinal_quantification
 
 This fork of https://github.com/bertocast/ordinal_quantification allows you to install the upstream code via pip
@@ -9,7 +13,9 @@ pip install https://github.com/mirkobunse/ordinal_quantification
 
 ## Usage
 
-You can use the methods as follows:
+For detailed information, visit [the documentation](https://mirkobunse.github.io/ordinal_quantification).
+
+Basically, you can use the methods as follows:
 
 ```python
 from ordinal_quantification import factory
@@ -41,15 +47,4 @@ This repository implements the experiments of
   year    = {2022},
   doi     = {10.1109/tnnls.2022.3179355},
 }
-```
-
-
-## Development / unit testing
-
-Run tests locally with the `unittest` package.
-
-```
-python -m venv venv
-venv/bin/pip install .[tests]
-venv/bin/python -m unittest
 ```

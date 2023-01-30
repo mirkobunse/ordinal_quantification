@@ -18,11 +18,12 @@ jobs:
         pre-build-command: |
           python -m pip install myst-parser sphinx-rtd-theme
           python -m pip install -e .
+          sphinx-apidoc --force --output-dir docs/source ordinal_quantification
         docs-folder: "docs/"
     - name: publish documentation
       run: |
         git clone ${{ github.server_url }}/${{ github.repository }}.git --branch gh-pages --single-branch __gh-pages/
-        cp -r docs/_build/html/* __gh-pages/
+        cp -r docs/build/html/* __gh-pages/
         cd __gh-pages/
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
