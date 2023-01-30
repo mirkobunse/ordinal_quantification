@@ -2,17 +2,6 @@
 
 Instantiate quantification methods through the [`ordinal_quantification.factory`](#ordinal_quantificationfactory) module.
 
-```{eval-rst}
-.. py:function:: lumache.get_random_ingredients(kind=None)
-
-   Return a list of random ingredients as strings.
-
-   :param kind: Optional "kind" of ingredients.
-   :type kind: list[str] or None
-   :return: The ingredients list.
-   :rtype: list[str]
-```
-
 ## ordinal_quantification.factory
 
 ```{eval-rst}
@@ -30,6 +19,16 @@ However, you can also go with any other classifier.
 ```
 
 ### Quantifiers
+
+All quantifiers require a decomposition of the ordinal task into multiple binary classification tasks. For this purpose, you can specify the `decomposer` of the quantifier to be any value of the `Decomposer` enum:
+
+```{eval-rst}
+.. py:data:: ordinal_quantification.factory.Decomposer
+    :type: Enum
+    :value: ["monotone", "fh_tree", "dag", "dag_lv"]
+```
+
+The quantifiers are created through the following `factory` functions:
 
 ```{eval-rst}
 .. autofunction:: ordinal_quantification.factory.AC

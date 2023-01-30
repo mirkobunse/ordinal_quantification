@@ -41,13 +41,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Quickstart</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#lumache.get_random_ingredients"><code class="docutils literal notranslate"><span class="pre">lumache.get_random_ingredients()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ordinal_quantification.factory">ordinal_quantification.factory</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#estimators">Estimators</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.estimator"><code class="docutils literal notranslate"><span class="pre">estimator()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#quantifiers">Quantifiers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.ordinal_quantification.factory.Decomposer"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory.Decomposer</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.AC"><code class="docutils literal notranslate"><span class="pre">AC()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.CC"><code class="docutils literal notranslate"><span class="pre">CC()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.PAC"><code class="docutils literal notranslate"><span class="pre">PAC()</span></code></a></li>
@@ -88,23 +88,6 @@
   <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h1>
 <p>Instantiate quantification methods through the <a class="reference internal" href="#ordinal-quantification-factory"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code></span></a> module.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="lumache.get_random_ingredients">
-<span class="sig-prename descclassname"><span class="pre">lumache.</span></span><span class="sig-name descname"><span class="pre">get_random_ingredients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lumache.get_random_ingredients" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of random ingredients as strings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kind</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – Optional “kind” of ingredients.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The ingredients list.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
 <div class="section" id="module-ordinal_quantification.factory">
 <span id="ordinal-quantification-factory"></span><h2>ordinal_quantification.factory<a class="headerlink" href="#module-ordinal_quantification.factory" title="Permalink to this heading"></a></h2>
 <p>This module creates instances of quantification methods for the outside world.</p>
@@ -116,20 +99,59 @@
 <dt class="sig sig-object py" id="ordinal_quantification.factory.estimator">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>Take out the grid search of the original experiments.</p>
+<p>This grid search is looking for the hyper-parameters that optimize the geometric mean of class-wise accuracies in a stratified 3-fold cross validation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – The feature matrix for which the estimator will be optimized.</p></li>
+<li><p><strong>y</strong> – The labels for which the estimator will be optimized.</p></li>
+<li><p><strong>estimator</strong> (<em>optional</em>) – The scikit-learn classifier to optimize. Defaults to a RandomForestClassifier.</p></li>
+<li><p><strong>param_grid</strong> (<em>optional</em>) – The parameter grid to optimize over. Defaults to the parameter grid that is used in the paper.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An estimator to be used in any of the quantification methods, optimized for (X, y).</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 <div class="section" id="quantifiers">
 <h3>Quantifiers<a class="headerlink" href="#quantifiers" title="Permalink to this heading"></a></h3>
+<p>All quantifiers require a decomposition of the ordinal task into multiple binary classification tasks. For this purpose, you can specify the <code class="docutils literal notranslate"><span class="pre">decomposer</span></code> of the quantifier to be any value of the <code class="docutils literal notranslate"><span class="pre">Decomposer</span></code> enum:</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="ordinal_quantification.factory.ordinal_quantification.factory.Decomposer">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">Decomposer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Enum</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&quot;monotone&quot;,</span> <span class="pre">&quot;fh_tree&quot;,</span> <span class="pre">&quot;dag&quot;,</span> <span class="pre">&quot;dag_lv&quot;]</span></em><a class="headerlink" href="#ordinal_quantification.factory.ordinal_quantification.factory.Decomposer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.AC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.AC" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create an instance of the Adjusted Classify-and-Count method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
+<li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
+<li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
+<li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
+<li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
+<li><p><strong>n_folds</strong> (<em>optional</em>) – The number of folds for fitting the quantifier. Defaults to 20.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A configured instance of type AC.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.CC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">CC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.CC" title="Permalink to this definition"></a></dt>
-<dd><p>Classify-and-Count.</p>
+<dd><p>Create an instance of the Classify-and-Count method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -150,12 +172,45 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.PAC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PAC" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create an instance of the Probabilistic Adjusted Classify-and-Count method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
+<li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
+<li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
+<li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
+<li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
+<li><p><strong>n_folds</strong> (<em>optional</em>) – The number of folds for fitting the quantifier. Defaults to 20.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A configured instance of type PAC.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.PCC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PCC" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create an instance of the Probabilistic Classify-and-Count method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
+<li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
+<li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
+<li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
+<li><p><strong>n_folds</strong> (<em>optional</em>) – The number of folds for fitting the quantifier. Defaults to 20.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A configured instance of type PCC.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>
