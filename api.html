@@ -41,19 +41,21 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Quickstart</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-ordinal_quantification.factory">ordinal_quantification.factory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#estimators">Estimators</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.estimator"><code class="docutils literal notranslate"><span class="pre">estimator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-estimators">Creating estimators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.estimator"><code class="docutils literal notranslate"><span class="pre">estimator()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#quantifiers">Quantifiers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.ordinal_quantification.factory.Decomposer"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory.Decomposer</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.AC"><code class="docutils literal notranslate"><span class="pre">AC()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.CC"><code class="docutils literal notranslate"><span class="pre">CC()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.PAC"><code class="docutils literal notranslate"><span class="pre">PAC()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.PCC"><code class="docutils literal notranslate"><span class="pre">PCC()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-quantifiers">Creating quantifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.Decomposer"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory.Decomposer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.AC"><code class="docutils literal notranslate"><span class="pre">AC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.CC"><code class="docutils literal notranslate"><span class="pre">CC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.PAC"><code class="docutils literal notranslate"><span class="pre">PAC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal_quantification.factory.PCC"><code class="docutils literal notranslate"><span class="pre">PCC()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#using-quantifiers">Using quantifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fit"><code class="docutils literal notranslate"><span class="pre">fit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict"><code class="docutils literal notranslate"><span class="pre">predict()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -87,12 +89,9 @@
              
   <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h1>
-<p>Instantiate quantification methods through the <a class="reference internal" href="#ordinal-quantification-factory"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code></span></a> module.</p>
-<div class="section" id="module-ordinal_quantification.factory">
-<span id="ordinal-quantification-factory"></span><h2>ordinal_quantification.factory<a class="headerlink" href="#module-ordinal_quantification.factory" title="Permalink to this heading"></a></h2>
-<p>This module creates instances of quantification methods for the outside world.</p>
-<div class="section" id="estimators">
-<h3>Estimators<a class="headerlink" href="#estimators" title="Permalink to this heading"></a></h3>
+<p>Instantiate quantification methods through the <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code></span> module. Then, use their <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
+<div class="section" id="creating-estimators">
+<h2>Creating estimators<a class="headerlink" href="#creating-estimators" title="Permalink to this heading"></a></h2>
 <p>Each quantification method requires an estimator, usually a classifier. For this purpose, the <code class="docutils literal notranslate"><span class="pre">estimator</span></code> function of the <code class="docutils literal notranslate"><span class="pre">factory</span></code> module takes out the hyper-parameter optimization of the experiments in <a class="reference external" href="https://github.com/bertocast/ordinal_quantification">https://github.com/bertocast/ordinal_quantification</a>.</p>
 <p>However, you can also go with any other classifier.</p>
 <dl class="py function">
@@ -117,12 +116,12 @@
 </dd></dl>
 
 </div>
-<div class="section" id="quantifiers">
-<h3>Quantifiers<a class="headerlink" href="#quantifiers" title="Permalink to this heading"></a></h3>
+<div class="section" id="creating-quantifiers">
+<h2>Creating quantifiers<a class="headerlink" href="#creating-quantifiers" title="Permalink to this heading"></a></h2>
 <p>All quantifiers require a decomposition of the ordinal task into multiple binary classification tasks. For this purpose, you can specify the <code class="docutils literal notranslate"><span class="pre">decomposer</span></code> of the quantifier to be any value of the <code class="docutils literal notranslate"><span class="pre">Decomposer</span></code> enum:</p>
 <dl class="py data">
-<dt class="sig sig-object py" id="ordinal_quantification.factory.ordinal_quantification.factory.Decomposer">
-<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">Decomposer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Enum</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&quot;monotone&quot;,</span> <span class="pre">&quot;fh_tree&quot;,</span> <span class="pre">&quot;dag&quot;,</span> <span class="pre">&quot;dag_lv&quot;]</span></em><a class="headerlink" href="#ordinal_quantification.factory.ordinal_quantification.factory.Decomposer" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="ordinal_quantification.factory.Decomposer">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">Decomposer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Enum</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&quot;monotone&quot;,</span> <span class="pre">&quot;fh_tree&quot;,</span> <span class="pre">&quot;dag&quot;,</span> <span class="pre">&quot;dag_lv&quot;]</span></em><a class="headerlink" href="#ordinal_quantification.factory.Decomposer" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions:</p>
@@ -213,6 +212,40 @@
 </dd></dl>
 
 </div>
+<div class="section" id="using-quantifiers">
+<h2>Using quantifiers<a class="headerlink" href="#using-quantifiers" title="Permalink to this heading"></a></h2>
+<p>The instantiated quantifiers share the following methods:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the quantifier to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – The feature matrix to which the quantifier will be fitted.</p></li>
+<li><p><strong>y</strong> – The labels to which the quantifier will be fitted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The fitted quantifier itself.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class prevalences in a data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – The feature matrix for which the quantifier will predict.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A numpy array of class prevalences.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
