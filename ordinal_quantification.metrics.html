@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ordinal_quantification.metrics package &mdash; ordinal_quantification v0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ordinal_quantification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ordinal_quantification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ordinal_quantification.metrics package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ordinal_quantification.metrics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ordinal-quantification-metrics-package">
+<h1>ordinal_quantification.metrics package<a class="headerlink" href="#ordinal-quantification-metrics-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-ordinal_quantification.metrics.binary">
+<span id="ordinal-quantification-metrics-binary-module"></span><h2>ordinal_quantification.metrics.binary module<a class="headerlink" href="#module-ordinal_quantification.metrics.binary" title="Permalink to this heading"></a></h2>
+<p>Score functions and loss functions for binary quantification problems</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>Binary version of the absolute error</p>
+<p>Absolute difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(ae = | \hat{p} - p |\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>absolute error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.bias">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">bias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.bias" title="Permalink to this definition"></a></dt>
+<dd><p>Bias of a binary quantifier</p>
+<p>It is just the difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(bias = \hat{p} - p\)</span></p>
+</div></blockquote>
+<p>It measures whether the binary quantifier tends to overestimate or underestimate the proportion of positives</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>bias</strong> – It is equal to <span class="math notranslate nohighlight">\(\hat{p} - p\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.binary_kld">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">binary_kld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.binary_kld" title="Permalink to this definition"></a></dt>
+<dd><p>A binary version of the Kullback - Leiber divergence (KLD)</p>
+<blockquote>
+<div><p>:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>kld = p cdot log(p/hat{p}) + (1-p) cdot log((1-p)/(1-hat{p}))</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences.</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(p \cdot \log(p/\hat{p}) + (1-p) \cdot \log((1-p)/(1-\hat{p}))\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.normalized_absolute_score">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">normalized_absolute_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.normalized_absolute_score" title="Permalink to this definition"></a></dt>
+<dd><p>A score version of the normalized binary absolute error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(nas = 1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>NAS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.normalized_squared_score">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">normalized_squared_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.normalized_squared_score" title="Permalink to this definition"></a></dt>
+<dd><p>A score version of the normalized binary squared error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(nss = 1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>NSS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.relative_absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">relative_absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.relative_absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>A binary relative version of the absolute error</p>
+<p>It is the relation between the absolute error and the true prevalence.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(rae = | \hat{p} - p | / p\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>relative_absolute_error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / p\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.squared_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.squared_error" title="Permalink to this definition"></a></dt>
+<dd><p>Binary version of the squared errro. Only the prevalence of the positive class is used</p>
+<p>It is the quadratic difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and
+the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(se = (\hat{p} - p)^2\)</span></p>
+</div></blockquote>
+<p>It penalizes larger errors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>squared_error</strong> – It is equal to <span class="math notranslate nohighlight">\((\hat{p} - p)^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary.symmetric_absolute_percentage_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.binary.</span></span><span class="sig-name descname"><span class="pre">symmetric_absolute_percentage_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary.symmetric_absolute_percentage_error" title="Permalink to this definition"></a></dt>
+<dd><p>A symmetric binary version of RAE</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(sape = | \hat{p} - p | / (\hat{p} + p)\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>SAPE</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / (\hat{p} + p)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.metrics.multiclass">
+<span id="ordinal-quantification-metrics-multiclass-module"></span><h2>ordinal_quantification.metrics.multiclass module<a class="headerlink" href="#module-ordinal_quantification.metrics.multiclass" title="Permalink to this heading"></a></h2>
+<p>Score functions and loss functions for multiclass quantification problems</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.bray_curtis">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">bray_curtis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.bray_curtis" title="Permalink to this definition"></a></dt>
+<dd><p>Bray-Curtis dissimilarity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – True prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – Predicted prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.check_prevalences">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">check_prevalences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.check_prevalences" title="Permalink to this definition"></a></dt>
+<dd><p>Check that p_true and p_pred are valid and consistent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array-like of shape = (n_classes, 1)</em>) – The converted and validated p_true array</p></li>
+<li><p><strong>p_pred</strong> (<em>array-like of shape = (n_classes, 1)</em>) – The converted and validated p_pred array</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.hd">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">hd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.hd" title="Permalink to this definition"></a></dt>
+<dd><p>Hellinger distance (HD)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(hd = \sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>HD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.kld">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">kld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.kld" title="Permalink to this definition"></a></dt>
+<dd><p>Kullback - Leiber divergence (KLD)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(kld = \sum_{j=1}^{j=l} p_j \cdot \log{p_j/\hat{p}_j}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes.</p>
+<p>Also known as discrimination information, relative entropy or normalized cross-entropy
+(see [Esuli and Sebastiani 2010; Forman 2008]).
+KLD is a special case of the family of f-divergences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>,</em>) – To prevent division by 0 and Inf/NaN results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} p_j \cdot \log{p_j / \hat{p}_j}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.l1">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.l1" title="Permalink to this definition"></a></dt>
+<dd><p>L1 loss function</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(l1 = \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>l1</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.l2">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">l2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.l2" title="Permalink to this definition"></a></dt>
+<dd><p>L2 loss function</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(l2 = \sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>l2</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.mean_absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">mean_absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.mean_absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>Mean absolute error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(mae = 1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MAE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.multiclass.mean_squared_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">mean_squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.mean_squared_error" title="Permalink to this definition"></a></dt>
+<dd><p>Mean squared error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(mse = 1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MSE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.metrics.ordinal">
+<span id="ordinal-quantification-metrics-ordinal-module"></span><h2>ordinal_quantification.metrics.ordinal module<a class="headerlink" href="#module-ordinal_quantification.metrics.ordinal" title="Permalink to this heading"></a></h2>
+<p>Score functions and loss functions for ordinal quantification problems</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.ordinal.emd">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd" title="Permalink to this definition"></a></dt>
+<dd><p>Return the EMD distances between two sets of prevalences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>1</em><em>)</em>) – </p></li>
+<li><p><strong>p_pred</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>1</em><em>)</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>emd</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float, the EMD distance between p_true and p_pred</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.ordinal.emd_distances">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd_distances" title="Permalink to this definition"></a></dt>
+<dd><p>Return the EMD distances between the rows of A and B</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples_1</em><em>, </em><em>n_features</em><em>)</em>) – </p></li>
+<li><p><strong>B</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples_2</em><em>, </em><em>n_features</em><em>)</em>) – </p></li>
+<li><p><strong>columns</strong> (<em>A and B should have the same number of</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distances</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array, shape (n_samples_1, n_samples_2)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.ordinal.emd_score">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd_score" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.metrics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.metrics" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>Binary version of the absolute error</p>
+<p>Absolute difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(ae = | \hat{p} - p |\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>absolute error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.bias">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">bias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.bias" title="Permalink to this definition"></a></dt>
+<dd><p>Bias of a binary quantifier</p>
+<p>It is just the difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(bias = \hat{p} - p\)</span></p>
+</div></blockquote>
+<p>It measures whether the binary quantifier tends to overestimate or underestimate the proportion of positives</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>bias</strong> – It is equal to <span class="math notranslate nohighlight">\(\hat{p} - p\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.binary_kld">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">binary_kld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.binary_kld" title="Permalink to this definition"></a></dt>
+<dd><p>A binary version of the Kullback - Leiber divergence (KLD)</p>
+<blockquote>
+<div><p>:math:<a href="#id3"><span class="problematic" id="id4">`</span></a>kld = p cdot log(p/hat{p}) + (1-p) cdot log((1-p)/(1-hat{p}))</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences.</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(p \cdot \log(p/\hat{p}) + (1-p) \cdot \log((1-p)/(1-\hat{p}))\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.bray_curtis">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">bray_curtis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.bray_curtis" title="Permalink to this definition"></a></dt>
+<dd><p>Bray-Curtis dissimilarity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – True prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – Predicted prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.hd">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">hd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.hd" title="Permalink to this definition"></a></dt>
+<dd><p>Hellinger distance (HD)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(hd = \sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>HD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.kld">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">kld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.kld" title="Permalink to this definition"></a></dt>
+<dd><p>Kullback - Leiber divergence (KLD)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(kld = \sum_{j=1}^{j=l} p_j \cdot \log{p_j/\hat{p}_j}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes.</p>
+<p>Also known as discrimination information, relative entropy or normalized cross-entropy
+(see [Esuli and Sebastiani 2010; Forman 2008]).
+KLD is a special case of the family of f-divergences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>,</em>) – To prevent division by 0 and Inf/NaN results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} p_j \cdot \log{p_j / \hat{p}_j}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.l1">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.l1" title="Permalink to this definition"></a></dt>
+<dd><p>L1 loss function</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(l1 = \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>l1</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.l2">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">l2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.l2" title="Permalink to this definition"></a></dt>
+<dd><p>L2 loss function</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(l2 = \sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>l2</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.mean_absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">mean_absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.mean_absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>Mean absolute error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(mae = 1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MAE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.mean_squared_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">mean_squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.mean_squared_error" title="Permalink to this definition"></a></dt>
+<dd><p>Mean squared error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(mse = 1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
+</div></blockquote>
+<p>being l the number of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
+<li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MSE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.normalized_absolute_score">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">normalized_absolute_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.normalized_absolute_score" title="Permalink to this definition"></a></dt>
+<dd><p>A score version of the normalized binary absolute error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(nas = 1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>NAS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.normalized_squared_score">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">normalized_squared_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.normalized_squared_score" title="Permalink to this definition"></a></dt>
+<dd><p>A score version of the normalized binary squared error</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(nss = 1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>NSS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.relative_absolute_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">relative_absolute_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.relative_absolute_error" title="Permalink to this definition"></a></dt>
+<dd><p>A binary relative version of the absolute error</p>
+<p>It is the relation between the absolute error and the true prevalence.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(rae = | \hat{p} - p | / p\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>relative_absolute_error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / p\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.squared_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.squared_error" title="Permalink to this definition"></a></dt>
+<dd><p>Binary version of the squared errro. Only the prevalence of the positive class is used</p>
+<p>It is the quadratic difference between the predicted prevalence (<span class="math notranslate nohighlight">\(\hat{p}\)</span>) and
+the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(se = (\hat{p} - p)^2\)</span></p>
+</div></blockquote>
+<p>It penalizes larger errors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>squared_error</strong> – It is equal to <span class="math notranslate nohighlight">\((\hat{p} - p)^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.metrics.symmetric_absolute_percentage_error">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">symmetric_absolute_percentage_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.symmetric_absolute_percentage_error" title="Permalink to this definition"></a></dt>
+<dd><p>A symmetric binary version of RAE</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(sape = | \hat{p} - p | / (\hat{p} + p)\)</span></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
+<li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>SAPE</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / (\hat{p} + p)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

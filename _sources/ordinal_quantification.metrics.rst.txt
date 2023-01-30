@@ -1,0 +1,37 @@
+ordinal\_quantification.metrics package
+=======================================
+
+Submodules
+----------
+
+ordinal\_quantification.metrics.binary module
+---------------------------------------------
+
+.. automodule:: ordinal_quantification.metrics.binary
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.metrics.multiclass module
+-------------------------------------------------
+
+.. automodule:: ordinal_quantification.metrics.multiclass
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.metrics.ordinal module
+----------------------------------------------
+
+.. automodule:: ordinal_quantification.metrics.ordinal
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification.metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:

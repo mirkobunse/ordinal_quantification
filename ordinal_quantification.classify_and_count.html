@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ordinal_quantification.classify_and_count package &mdash; ordinal_quantification v0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ordinal_quantification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ordinal_quantification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ordinal_quantification.classify_and_count package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ordinal_quantification.classify_and_count.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ordinal-quantification-classify-and-count-package">
+<h1>ordinal_quantification.classify_and_count package<a class="headerlink" href="#ordinal-quantification-classify-and-count-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-ordinal_quantification.classify_and_count.ac">
+<span id="ordinal-quantification-classify-and-count-ac-module"></span><h2>ordinal_quantification.classify_and_count.ac module<a class="headerlink" href="#module-ordinal_quantification.classify_and_count.ac" title="Permalink to this heading"></a></h2>
+<p>Multiclass versions of AC and PAC quantifiers</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.ac.</span></span><span class="sig-name descname"><span class="pre">AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Adjusted Count method</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify the examples of the training set and the testing set in order to
+compute the confusion matrix of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the <cite>fit</cite>/<a href="#id1"><span class="problematic" id="id2">`</span></a>predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC). In the first case, estimators are only trained once and can be shared
+for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the training
+set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the testing
+set and to obtain their predictions</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution. Only used in multiclass problems.
+Distances supported: ‘HD’, ‘L2’ and ‘L1’</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because AC quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id49"><span class="problematic" id="id50">predictions_test_</span></a> contains crisp predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id51"><span class="problematic" id="id52">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id53"><span class="problematic" id="id54">y_ext_</span></a> == y.
+<a href="#id55"><span class="problematic" id="id56">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id57"><span class="problematic" id="id58">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.cm_">
+<span class="sig-name descname"><span class="pre">cm_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.cm_" title="Permalink to this definition"></a></dt>
+<dd><p>Confusion matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>George Forman. 2008. Quantifying counts and costs via classification. Data Mining Knowledge Discovery 17,
+2 (2008), 164–206.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id59"><span class="problematic" id="id60">predictions_train_</span></a> (crisp values) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+Finally the method computes the confusion matrix of the training set using <a href="#id61"><span class="problematic" id="id62">predictions_train_</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>) or </em><em>(</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set. If shape is (n_examples, n_classes) predictions are
+converted to crisp values by <a href="#id3"><span class="problematic" id="id4">`</span></a>super().fit()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.AC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.AC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id63"><span class="problematic" id="id64">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the prevalences are computed solving a system of linear scalar equations:</p>
+<blockquote>
+<div><p><a href="#id65"><span class="problematic" id="id66">cm_</span></a>.T * prevalences = CC(X)</p>
+</div></blockquote>
+<p>For binary problems the system is directly solved using the original AC algorithm proposed by Forman</p>
+<blockquote>
+<div><p>p = (p_0 - fpr ) / ( tpr - fpr)</p>
+</div></blockquote>
+<p>For multiclass problems, the system may not have a solution. Thus, instead we propose to solve an
+optimization problem of this kind:</p>
+<blockquote>
+<div><p>Min   distance ( <a href="#id67"><span class="problematic" id="id68">cm_</span></a>.T * prevalences, CC(X) )
+s.t.  sum(prevalences) = 1</p>
+<blockquote>
+<div><p>prevalecences_i &gt;= 0</p>
+</div></blockquote>
+</div></blockquote>
+<p>in which distance can be ‘HD’ (defect value), ‘L1’ or ‘L2’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <a href="#id5"><span class="problematic" id="id6">`</span></a>predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id69"><span class="problematic" id="id70">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.ac.</span></span><span class="sig-name descname"><span class="pre">DeBias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Binary quantifier based on De-Bias estimate proposed by Friedman</p>
+<p>prevalence (positives) = prior(positives)  + ( prevalence_PCC - prior(positives) ) / Vt</p>
+<p>where</p>
+<p>Vt =[ 1/<a href="#id29"><span class="problematic" id="id30">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - prior(positives) )^2 ] / (prior(positives) * prior(negatives))</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to obtain the confusion matrix of the testing set</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id71"><span class="problematic" id="id72">predictions_train_</span></a>/<a href="#id73"><span class="problematic" id="id74">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because DeBias quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.train_prevs_">
+<span class="sig-name descname"><span class="pre">train_prevs_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.train_prevs_" title="Permalink to this definition"></a></dt>
+<dd><p>Prevalence of each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.Vt_">
+<span class="sig-name descname"><span class="pre">Vt_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.Vt_" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>The value of equation</dt><dd><p>Vt =[ 1/<a href="#id31"><span class="problematic" id="id32">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - train_prevs_[1])^2 ] / (train_prevs_[1] * train_prevs_[0])</p>
+</dd>
+</dl>
+<p>applied over the training examples D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Jerome Friedman. Class counts in future unlabeled samples. Presentation at MIT CSAIL Big Data Event, 2014.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id75"><span class="problematic" id="id76">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <a href="#id7"><span class="problematic" id="id8">`</span></a>fit method of its superclass.</p>
+<p>Finally the method computes the value of Vt</p>
+<p>Vt =[ 1/<a href="#id33"><span class="problematic" id="id34">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - prior(positives) )^2 ] / (prior(positives) * prior(negatives))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p></li>
+<li><p><strong>AttributeError</strong> – When the number of classes &gt; 2</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.DeBias.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.DeBias.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for the positive class is</p>
+<p>prevalence (positives) = prior(positives)  + ( prevalence_PCC - prior(positives) ) / Vt</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id77"><span class="problematic" id="id78">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.ac.</span></span><span class="sig-name descname"><span class="pre">PAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Probabilistic Adjusted Count method</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify the examples of the training set and the testing set in order to
+compute the (probabilistic) confusion matrix of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the <cite>fit</cite>/<a href="#id9"><span class="problematic" id="id10">`</span></a>predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC). In the first case, estimators are only trained once and can be shared
+for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to obtain the confusion matrix of the testing set</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='L2'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution. Only used in multiclass problems.
+Distances supported: ‘HD’, ‘L2’ and ‘L1’</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because PAC quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id79"><span class="problematic" id="id80">predictions_test_</span></a> contains probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id81"><span class="problematic" id="id82">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id83"><span class="problematic" id="id84">y_ext_</span></a> == y.
+<a href="#id85"><span class="problematic" id="id86">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id87"><span class="problematic" id="id88">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="simple">
+<dt><a href="#id89"><span class="problematic" id="id90">cm_</span></a><span class="classifier">ndarray, shape (n_classes, n_classes)</span></dt><dd><p>Confusion matrix</p>
+</dd>
+<dt><a href="#id91"><span class="problematic" id="id92">G_</span></a>, <a href="#id93"><span class="problematic" id="id94">C_</span></a>, <a href="#id95"><span class="problematic" id="id96">b_</span></a>: variables of different kind for defining the optimization problem</dt><dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+</dd>
+<dt>verbose<span class="classifier">int</span></dt><dd><p>The verbosity level</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Antonio Bella, Cèsar Ferri, José Hernández-Orallo, and María José Ramírez-Quintana. 2010. Quantification
+via probability estimators. In Proceedings of the IEEE International Conference on Data Mining (ICDM’10).
+IEEE, 737–742.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id97"><span class="problematic" id="id98">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <a href="#id11"><span class="problematic" id="id12">`</span></a>fit method of its superclass.
+Finally the method computes the (probabilistic) confusion matrix using predictions_train</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.ac.PAC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.ac.PAC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id99"><span class="problematic" id="id100">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<a href="#id13"><span class="problematic" id="id14">`</span></a>super().predict() method.</p>
+<p>After that, the prevalences are computed solving a system of linear scalar equations:</p>
+<blockquote>
+<div><p><a href="#id101"><span class="problematic" id="id102">cm_</span></a>.T * prevalences = PCC(X)</p>
+</div></blockquote>
+<p>For binary problems the system is directly solved using the original PAC algorithm proposed by Bella et al.</p>
+<blockquote>
+<div><p>p = (p_0 - PA(negatives) ) / ( PA(positives) - PA(negatives) )</p>
+</div></blockquote>
+<p>in which PA stands for probability average.</p>
+<p>For multiclass problems, the system may not have a solution. Thus, instead we propose to solve an
+optimization problem of this kind:</p>
+<blockquote>
+<div><p>Min   distance ( <a href="#id103"><span class="problematic" id="id104">cm_</span></a>.T * prevalences, PCC(X) )
+s.t.  sum(prevalences) = 1</p>
+<blockquote>
+<div><p>prevalecences_i &gt;= 0</p>
+</div></blockquote>
+</div></blockquote>
+<p>in which distance can be ‘HD’, ‘L1’ or ‘L2’ (defect value)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id105"><span class="problematic" id="id106">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.classify_and_count.cc">
+<span id="ordinal-quantification-classify-and-count-cc-module"></span><h2>ordinal_quantification.classify_and_count.cc module<a class="headerlink" href="#module-ordinal_quantification.classify_and_count.cc" title="Permalink to this heading"></a></h2>
+<p>Multiclass versions for CC and PCC quantifiers</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.cc.</span></span><span class="sig-name descname"><span class="pre">CC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Classify And Count method</p>
+<p>prevalence (class_i) = (1/<a href="#id35"><span class="problematic" id="id36">|Test|</span></a>) *  sum_{x in Test} I ( h(x) == class_i)</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite> methods</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Crisp predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is False because CC quantifiers do not need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id107"><span class="problematic" id="id108">predictions_test_</span></a> contains crisp predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_test and predictions_test must be not None. If both are None a
+ValueError exception will be raised. If both are not None, predictions_test is used.</p>
+<p class="rubric">References</p>
+<p>George Forman. 2005. Counting positives accurately despite inaccurate classification. In Proceedings of
+the European Conference on Machine Learning (ECML’05). 564–575.</p>
+<p>George Forman. 2008. Quantifying counts and costs via classification. Data Mining Knowledge Discovery 17,
+2 (2008), 164–206.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the estimator for the testing bags when needed. The method checks whether the estimator is trained or
+not calling the predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>None</em><em>, </em><em>not used</em>) – Predictions of the examples in the training set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.CC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.CC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for each class is the proportion of examples predicted as belonging to that class</p>
+<p>prevalence (class_i) = (1/<a href="#id37"><span class="problematic" id="id38">|Test|</span></a>) *  sum_{x in Test} I ( h(x) == class_i)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>) or </em><em>(</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They can be crisp values or probabilities. In the latter case, they are converted to crisp values
+using <cite>probs2crisps</cite> function defined in utils</p>
+<p>If predictions_test is not None they are copied on <a href="#id109"><span class="problematic" id="id110">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.cc.</span></span><span class="sig-name descname"><span class="pre">PCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Probabilistic Classify And Count method.</p>
+<p>prevalence (class_i) = sum_{x in T} P( h(x) == class_i | x )</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite> methods. It is used to classify the testing examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Probabilistic predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is False because PCC quantifiers do not need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id111"><span class="problematic" id="id112">predictions_test_</span></a> contains probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_test and predictions_test must be not None. If both are None a
+ValueError exception will be raised. If both are not None, predictions_test is used.</p>
+<p class="rubric">References</p>
+<p>Antonio Bella, Cèsar Ferri, José Hernández-Orallo, and María José Ramírez-Quintana. 2010. Quantification
+via probability estimators. In Proceedings of the IEEE International Conference on Data Mining (ICDM’10).
+IEEE, 737–742.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the estimator for the testing bags when needed. The method checks whether the estimator is trained or
+not calling the predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>Not used</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.cc.PCC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.cc.PCC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for each class is the average probability for such class</p>
+<p>prevalence (class_i) = sum_{x in T} P( h(x) == class_i | x )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id113"><span class="problematic" id="id114">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.classify_and_count">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.classify_and_count" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.</span></span><span class="sig-name descname"><span class="pre">AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Adjusted Count method</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify the examples of the training set and the testing set in order to
+compute the confusion matrix of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the <cite>fit</cite>/<a href="#id15"><span class="problematic" id="id16">`</span></a>predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC). In the first case, estimators are only trained once and can be shared
+for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the training
+set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the testing
+set and to obtain their predictions</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution. Only used in multiclass problems.
+Distances supported: ‘HD’, ‘L2’ and ‘L1’</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because AC quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id115"><span class="problematic" id="id116">predictions_test_</span></a> contains crisp predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id117"><span class="problematic" id="id118">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id119"><span class="problematic" id="id120">y_ext_</span></a> == y.
+<a href="#id121"><span class="problematic" id="id122">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id123"><span class="problematic" id="id124">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.cm_">
+<span class="sig-name descname"><span class="pre">cm_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.cm_" title="Permalink to this definition"></a></dt>
+<dd><p>Confusion matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>George Forman. 2008. Quantifying counts and costs via classification. Data Mining Knowledge Discovery 17,
+2 (2008), 164–206.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id125"><span class="problematic" id="id126">predictions_train_</span></a> (crisp values) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+Finally the method computes the confusion matrix of the training set using <a href="#id127"><span class="problematic" id="id128">predictions_train_</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>) or </em><em>(</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set. If shape is (n_examples, n_classes) predictions are
+converted to crisp values by <a href="#id17"><span class="problematic" id="id18">`</span></a>super().fit()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.AC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.AC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id129"><span class="problematic" id="id130">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the prevalences are computed solving a system of linear scalar equations:</p>
+<blockquote>
+<div><p><a href="#id131"><span class="problematic" id="id132">cm_</span></a>.T * prevalences = CC(X)</p>
+</div></blockquote>
+<p>For binary problems the system is directly solved using the original AC algorithm proposed by Forman</p>
+<blockquote>
+<div><p>p = (p_0 - fpr ) / ( tpr - fpr)</p>
+</div></blockquote>
+<p>For multiclass problems, the system may not have a solution. Thus, instead we propose to solve an
+optimization problem of this kind:</p>
+<blockquote>
+<div><p>Min   distance ( <a href="#id133"><span class="problematic" id="id134">cm_</span></a>.T * prevalences, CC(X) )
+s.t.  sum(prevalences) = 1</p>
+<blockquote>
+<div><p>prevalecences_i &gt;= 0</p>
+</div></blockquote>
+</div></blockquote>
+<p>in which distance can be ‘HD’ (defect value), ‘L1’ or ‘L2’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <a href="#id19"><span class="problematic" id="id20">`</span></a>predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id135"><span class="problematic" id="id136">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.</span></span><span class="sig-name descname"><span class="pre">CC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Classify And Count method</p>
+<p>prevalence (class_i) = (1/<a href="#id39"><span class="problematic" id="id40">|Test|</span></a>) *  sum_{x in Test} I ( h(x) == class_i)</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite> methods</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Crisp predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is False because CC quantifiers do not need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id137"><span class="problematic" id="id138">predictions_test_</span></a> contains crisp predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_test and predictions_test must be not None. If both are None a
+ValueError exception will be raised. If both are not None, predictions_test is used.</p>
+<p class="rubric">References</p>
+<p>George Forman. 2005. Counting positives accurately despite inaccurate classification. In Proceedings of
+the European Conference on Machine Learning (ECML’05). 564–575.</p>
+<p>George Forman. 2008. Quantifying counts and costs via classification. Data Mining Knowledge Discovery 17,
+2 (2008), 164–206.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the estimator for the testing bags when needed. The method checks whether the estimator is trained or
+not calling the predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>None</em><em>, </em><em>not used</em>) – Predictions of the examples in the training set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.CC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.CC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for each class is the proportion of examples predicted as belonging to that class</p>
+<p>prevalence (class_i) = (1/<a href="#id41"><span class="problematic" id="id42">|Test|</span></a>) *  sum_{x in Test} I ( h(x) == class_i)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>) or </em><em>(</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They can be crisp values or probabilities. In the latter case, they are converted to crisp values
+using <cite>probs2crisps</cite> function defined in utils</p>
+<p>If predictions_test is not None they are copied on <a href="#id139"><span class="problematic" id="id140">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.</span></span><span class="sig-name descname"><span class="pre">DeBias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Binary quantifier based on De-Bias estimate proposed by Friedman</p>
+<p>prevalence (positives) = prior(positives)  + ( prevalence_PCC - prior(positives) ) / Vt</p>
+<p>where</p>
+<p>Vt =[ 1/<a href="#id43"><span class="problematic" id="id44">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - prior(positives) )^2 ] / (prior(positives) * prior(negatives))</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to obtain the confusion matrix of the testing set</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id141"><span class="problematic" id="id142">predictions_train_</span></a>/<a href="#id143"><span class="problematic" id="id144">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because DeBias quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.train_prevs_">
+<span class="sig-name descname"><span class="pre">train_prevs_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.train_prevs_" title="Permalink to this definition"></a></dt>
+<dd><p>Prevalence of each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.Vt_">
+<span class="sig-name descname"><span class="pre">Vt_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.Vt_" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>The value of equation</dt><dd><p>Vt =[ 1/<a href="#id45"><span class="problematic" id="id46">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - train_prevs_[1])^2 ] / (train_prevs_[1] * train_prevs_[0])</p>
+</dd>
+</dl>
+<p>applied over the training examples D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Jerome Friedman. Class counts in future unlabeled samples. Presentation at MIT CSAIL Big Data Event, 2014.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id145"><span class="problematic" id="id146">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <a href="#id21"><span class="problematic" id="id22">`</span></a>fit method of its superclass.</p>
+<p>Finally the method computes the value of Vt</p>
+<p>Vt =[ 1/<a href="#id47"><span class="problematic" id="id48">|T|</span></a> sum_{x in D} (P(h(x)==+1|x) - prior(positives) )^2 ] / (prior(positives) * prior(negatives))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p></li>
+<li><p><strong>AttributeError</strong> – When the number of classes &gt; 2</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.DeBias.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.DeBias.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for the positive class is</p>
+<p>prevalence (positives) = prior(positives)  + ( prevalence_PCC - prior(positives) ) / Vt</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id147"><span class="problematic" id="id148">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.</span></span><span class="sig-name descname"><span class="pre">PAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Probabilistic Adjusted Count method</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify the examples of the training set and the testing set in order to
+compute the (probabilistic) confusion matrix of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the <cite>fit</cite>/<a href="#id23"><span class="problematic" id="id24">`</span></a>predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC). In the first case, estimators are only trained once and can be shared
+for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the confusion matrix</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to obtain the confusion matrix of the testing set</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='L2'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution. Only used in multiclass problems.
+Distances supported: ‘HD’, ‘L2’ and ‘L1’</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimators could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic estimator)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because PAC quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id149"><span class="problematic" id="id150">predictions_test_</span></a> contains probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id151"><span class="problematic" id="id152">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id153"><span class="problematic" id="id154">y_ext_</span></a> == y.
+<a href="#id155"><span class="problematic" id="id156">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id157"><span class="problematic" id="id158">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="simple">
+<dt><a href="#id159"><span class="problematic" id="id160">cm_</span></a><span class="classifier">ndarray, shape (n_classes, n_classes)</span></dt><dd><p>Confusion matrix</p>
+</dd>
+<dt><a href="#id161"><span class="problematic" id="id162">G_</span></a>, <a href="#id163"><span class="problematic" id="id164">C_</span></a>, <a href="#id165"><span class="problematic" id="id166">b_</span></a>: variables of different kind for defining the optimization problem</dt><dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+</dd>
+<dt>verbose<span class="classifier">int</span></dt><dd><p>The verbosity level</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Antonio Bella, Cèsar Ferri, José Hernández-Orallo, and María José Ramírez-Quintana. 2010. Quantification
+via probability estimators. In Proceedings of the IEEE International Conference on Data Mining (ICDM’10).
+IEEE, 737–742.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id167"><span class="problematic" id="id168">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <a href="#id25"><span class="problematic" id="id26">`</span></a>fit method of its superclass.
+Finally the method computes the (probabilistic) confusion matrix using predictions_train</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PAC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PAC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id169"><span class="problematic" id="id170">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<a href="#id27"><span class="problematic" id="id28">`</span></a>super().predict() method.</p>
+<p>After that, the prevalences are computed solving a system of linear scalar equations:</p>
+<blockquote>
+<div><p><a href="#id171"><span class="problematic" id="id172">cm_</span></a>.T * prevalences = PCC(X)</p>
+</div></blockquote>
+<p>For binary problems the system is directly solved using the original PAC algorithm proposed by Bella et al.</p>
+<blockquote>
+<div><p>p = (p_0 - PA(negatives) ) / ( PA(positives) - PA(negatives) )</p>
+</div></blockquote>
+<p>in which PA stands for probability average.</p>
+<p>For multiclass problems, the system may not have a solution. Thus, instead we propose to solve an
+optimization problem of this kind:</p>
+<blockquote>
+<div><p>Min   distance ( <a href="#id173"><span class="problematic" id="id174">cm_</span></a>.T * prevalences, PCC(X) )
+s.t.  sum(prevalences) = 1</p>
+<blockquote>
+<div><p>prevalecences_i &gt;= 0</p>
+</div></blockquote>
+</div></blockquote>
+<p>in which distance can be ‘HD’, ‘L1’ or ‘L2’ (defect value)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id175"><span class="problematic" id="id176">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.classify_and_count.</span></span><span class="sig-name descname"><span class="pre">PCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass Probabilistic Classify And Count method.</p>
+<p>prevalence (class_i) = sum_{x in T} P( h(x) == class_i | x )</p>
+<p>This class works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>An estimator is used to classify the examples of the testing bag (the estimator can be already trained)</p></li>
+<li><p>You can directly provide the predictions for the examples in the predict method. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite> methods. It is used to classify the testing examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Probabilistic predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>None. (Not used)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is False because PCC quantifiers do not need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id177"><span class="problematic" id="id178">predictions_test_</span></a> contains probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>True labels of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_test and predictions_test must be not None. If both are None a
+ValueError exception will be raised. If both are not None, predictions_test is used.</p>
+<p class="rubric">References</p>
+<p>Antonio Bella, Cèsar Ferri, José Hernández-Orallo, and María José Ramírez-Quintana. 2010. Quantification
+via probability estimators. In Proceedings of the IEEE International Conference on Data Mining (ICDM’10).
+IEEE, 737–742.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the estimator for the testing bags when needed. The method checks whether the estimator is trained or
+not calling the predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>Not used</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.classify_and_count.PCC.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.classify_and_count.PCC.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>The prevalence for each class is the average probability for such class</p>
+<p>prevalence (class_i) = sum_{x in T} P( h(x) == class_i | x )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a predict_proba method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id179"><span class="problematic" id="id180">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An ndarray, shape(n_classes, ) with the prevalence for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

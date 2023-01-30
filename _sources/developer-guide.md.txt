@@ -18,7 +18,7 @@ Inspect your changes before pushing them to the `main` branch. After building th
 venv/bin/activate
 pip install sphinx myst-parser sphinxcontrib-napoleon sphinx-rtd-theme
 cd docs/
-sphinx-apidoc --force --output_dir source/ ../ordinal_quantification
+sphinx-apidoc --force --output-dir source/ ../ordinal_quantification
 make html
 ```
 

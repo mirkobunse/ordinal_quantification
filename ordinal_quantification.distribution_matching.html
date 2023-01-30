@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ordinal_quantification.distribution_matching package &mdash; ordinal_quantification v0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ordinal_quantification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ordinal_quantification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ordinal_quantification.distribution_matching package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ordinal_quantification.distribution_matching.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ordinal-quantification-distribution-matching-package">
+<h1>ordinal_quantification.distribution_matching package<a class="headerlink" href="#ordinal-quantification-distribution-matching-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-ordinal_quantification.distribution_matching.df">
+<span id="ordinal-quantification-distribution-matching-df-module"></span><h2>ordinal_quantification.distribution_matching.df module<a class="headerlink" href="#module-ordinal_quantification.distribution_matching.df" title="Permalink to this heading"></a></h2>
+<p>Multiclass versions for quantifiers based on representing the distributions using CDFs/PDFs</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.df.</span></span><span class="sig-name descname"><span class="pre">DFX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PDF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.WithoutClassifiers" title="ordinal_quantification.base.WithoutClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">WithoutClassifiers</span></code></a></p>
+<p>Generic Multiclass DFX method</p>
+<p>The idea is to represent the mixture of the training distribution and the testing distribution
+(using CDFs/PDFs) of the features of the input space (X). The difference between both are minimized using a
+distante/loss function. Originally, (González et al. 2013) propose the combination of PDF and
+Hellinger Distance, but also CDF and any other distance/loss function could be used, like L1 or L2.</p>
+<p>The class has two parameters to select:</p>
+<ul class="simple">
+<li><p>the method used to represent the distributions (CDFs or PDFs)</p></li>
+<li><p>the distance used.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution_function</strong> (<em>str</em><em>, </em><em>(</em><em>default='PDF'</em><em>)</em>) – Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p></li>
+<li><p><strong>n_bins</strong> (<em>int</em>) – Number of bins to compute the PDFs</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-05</em><em>)</em>) – The precision of the solution when search is used to compute the prevalence</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.distribution_function">
+<span class="sig-name descname"><span class="pre">distribution_function</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.distribution_function" title="Permalink to this definition"></a></dt>
+<dd><p>Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.n_bins" title="Permalink to this definition"></a></dt>
+<dd><p>The number of bins to compute the PDFs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int (default=8)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str or a distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.tol" title="Permalink to this definition"></a></dt>
+<dd><p>The precision of the solution when search is used to compute the solution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.att_ranges_">
+<span class="sig-name descname"><span class="pre">att_ranges_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.att_ranges_" title="Permalink to this definition"></a></dt>
+<dd><p>Min and Max for each feature of the input space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_features, 2)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The PDF for each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * n_features, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.test_distrib_">
+<span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.test_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The PDF for the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * n_features, 1) multiclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+<p>Aykut Firat. 2016. Unified Framework for Quantification. arXiv preprint arXiv:1606.00868 (2016).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method just computes the PDFs for all the classes in the training set. The values are stored in
+<a href="#id1"><span class="problematic" id="id2">train_dist_</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFX.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFX.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, the method computes the PDF for the testing bag.</p>
+<p>After that, the prevalences are computed using the corresponding function according to the value of
+distance attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.df.</span></span><span class="sig-name descname"><span class="pre">DFy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PDF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Generic Multiclass DFy method</p>
+<p>The idea is to represent the mixture of the training distribution and the testing distribution
+(using CDFs/PDFs) of the predictions given by a classifier (y). The difference between both is minimized
+using a distance/loss function. Originally, (González et al. 2013) propose the combination of PDF and
+Hellinger Distance, but also CDF and any other distance/loss function could be used, like L1 or L2. In fact,
+Forman (2005) propose to use CDF’s an a measure equivalent to L1.</p>
+<p>The class has two parameters to select:</p>
+<ul class="simple">
+<li><p>the method used to represent the distributions (CDFs or PDFs)</p></li>
+<li><p>the distance used.</p></li>
+</ul>
+<p>This class (as every other class based on distribution matching using classifiers) works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify training examples and testing examples in order to
+compute the distribution of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the fit/predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The goal in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC and AC/PAC). In the first case, estimators are only trained once and can
+be shared for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the distribution of each class individually</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to compute the distribution of the whole testing set</p></li>
+<li><p><strong>distribution_function</strong> (<em>str</em><em>, </em><em>(</em><em>default='PDF'</em><em>)</em>) – Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p></li>
+<li><p><strong>n_bins</strong> (<em>int</em><em>  (</em><em>default=8</em><em>)</em>) – Number of bins to compute the CDFs/PDFs</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-05</em><em>)</em>) – The precision of the solution when search is used to compute the prevalence</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimator_train and estimator_test could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because PDFy quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id3"><span class="problematic" id="id4">predictions_train_</span></a>/<a href="#id5"><span class="problematic" id="id6">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str or a distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.tol" title="Permalink to this definition"></a></dt>
+<dd><p>The precision of the solution when search is used to compute the solution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id7"><span class="problematic" id="id8">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id9"><span class="problematic" id="id10">y_ext_</span></a> == y.
+<a href="#id11"><span class="problematic" id="id12">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id13"><span class="problematic" id="id14">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.distribution_function">
+<span class="sig-name descname"><span class="pre">distribution_function</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.distribution_function" title="Permalink to this definition"></a></dt>
+<dd><p>Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.n_bins" title="Permalink to this definition"></a></dt>
+<dd><p>The number of bins to compute the CDFs/PDFs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The CDF/PDF for each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * 1, n_classes) binary or (n_bins * <a href="#id15"><span class="problematic" id="id16">n_classes_</span></a>, n_classes) multiclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.test_distrib_">
+<span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.test_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The CDF/PDF for the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * 1, 1) binary quantification or (n_bins * <a href="#id17"><span class="problematic" id="id18">n_classes_</span></a>, 1) multiclass q</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+<p>George Forman: Counting positives accurately despite inaccurate classification. In: Proceedings of the 16th
+European conference on machine learning (ECML’05), Porto, (2005) pp 564–575</p>
+<p>Aykut Firat. 2016. Unified Framework for Quantification. arXiv preprint arXiv:1606.00868 (2016).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id19"><span class="problematic" id="id20">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+After that, the method computes the pdfs for all the classes in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.DFy.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.DFy.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id21"><span class="problematic" id="id22">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the method computes the PDF for the testing bag.</p>
+<p>Finally, the prevalences are computed using the corresponding function according to the value of
+distance attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id23"><span class="problematic" id="id24">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.HDX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.df.</span></span><span class="sig-name descname"><span class="pre">HDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.HDX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ordinal_quantification.distribution_matching.df.DFX" title="ordinal_quantification.distribution_matching.df.DFX"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFX</span></code></a></p>
+<p>Multiclass HDX method</p>
+<p>This class is a wrapper. It just uses all the inherited methods of its superclass (DFX)</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based on
+the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.df.HDy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.df.</span></span><span class="sig-name descname"><span class="pre">HDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.df.HDy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ordinal_quantification.distribution_matching.df.DFy" title="ordinal_quantification.distribution_matching.df.DFy"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFy</span></code></a></p>
+<p>Multiclass HDy method</p>
+<p>This class is just a wrapper. It just uses all the inherited methods of its superclass (DFy)</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.distribution_matching.energy">
+<span id="ordinal-quantification-distribution-matching-energy-module"></span><h2>ordinal_quantification.distribution_matching.energy module<a class="headerlink" href="#module-ordinal_quantification.distribution_matching.energy" title="Permalink to this heading"></a></h2>
+<p>Multiclass versions for quantifiers based on the Energy Distance</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.energy.</span></span><span class="sig-name descname"><span class="pre">CvMy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance=&lt;function</span> <span class="pre">manhattan_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass CvMy method</p>
+<p>As described in (Castaño et al 2019), the predicted prevalences can be analytically calculated solving an
+optimization problem (with quadprog.solve_qp in this library). All ED-based methods share several functions
+in distribution_matching.utils. These functions are used to compute the elements of the optimization
+problem (<cite>compute_ed_param_train</cite>, <cite>compute_ed_param_test</cite>) and to solve the optimization problem (<cite>solve_ed</cite>)</p>
+<p>This class (as every other class based on distribution matching using classifiers) works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify training examples and testing examples in order to
+compute the distribution of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the fit/predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC and AC/PAC). In the first case, estimators are only trained once and can
+be shared for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the distribution of each class individually</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to compute the distribution of the whole testing set</p></li>
+<li><p><strong>distance</strong> (<em>distance function</em><em> (</em><em>default=manhattan_distances</em><em>)</em>) – It is the function used to compute the distance between every pair of examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimator_train and estimator_test could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because CvMy quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id25"><span class="problematic" id="id26">predictions_train_</span></a>/<a href="#id27"><span class="problematic" id="id28">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id29"><span class="problematic" id="id30">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id31"><span class="problematic" id="id32">y_ext_</span></a> == y.
+<a href="#id33"><span class="problematic" id="id34">y_ext_</span></a> i used in <cite>predict</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id35"><span class="problematic" id="id36">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Function used to compute the distance between every pair of examples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.train_n_cls_i_">
+<span class="sig-name descname"><span class="pre">train_n_cls_i_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.train_n_cls_i_" title="Permalink to this definition"></a></dt>
+<dd><p>Number of the examples of each class in the training set. Used to compute average distances</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>Each key has associated a ndarray with the predictions, shape (train_n_cls_i_[i], 1) (binary quantification
+problems) or (train_n_cls_i_[i], n_classes) (multiclass quantification problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dict, the keys are the labels of the classes (<a href="#id37"><span class="problematic" id="id38">classes_</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.test_distrib_">
+<span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.test_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The distribution of the test distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_examples, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.K_">
+<span class="sig-name descname"><span class="pre">K_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.K_" title="Permalink to this definition"></a></dt>
+<dd><p>Average distance between the examples in the training set of each pair of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_ed_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for definining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.a_">
+<span class="sig-name descname"><span class="pre">a_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.a_" title="Permalink to this definition"></a></dt>
+<dd><p>This one is computed in the <cite>predict</cite> method, just before solving the optimization problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>another variable of the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id39"><span class="problematic" id="id40">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+After that, the method stores the true classes in <a href="#id41"><span class="problematic" id="id42">y_train_</span></a> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probabilities</em><em>)</em>) – Predictions of the examples in the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.CvMy.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.CvMy.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id43"><span class="problematic" id="id44">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>Then, the method computes all the elements of the optimization problem after computing the combined
+ranking of the predictions for the training examples and the testing examples using <cite>rankdata</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id45"><span class="problematic" id="id46">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are at the same time None or not None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.energy.</span></span><span class="sig-name descname"><span class="pre">EDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.WithoutClassifiers" title="ordinal_quantification.base.WithoutClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">WithoutClassifiers</span></code></a></p>
+<p>Multiclass EDX method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance</strong> (<em>distance function</em><em> (</em><em>default=euclidean_distances</em><em>)</em>) – It is the function used to compute the distance between every pair of examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.distance_">
+<span class="sig-name descname"><span class="pre">distance_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.distance_" title="Permalink to this definition"></a></dt>
+<dd><p>The distance fuction used for computing the distance between every pair of examples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.train_n_cls_i_">
+<span class="sig-name descname"><span class="pre">train_n_cls_i_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.train_n_cls_i_" title="Permalink to this definition"></a></dt>
+<dd><p>Number of the examples of each class in the training set. Used to compute average distances</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>Each key has associated a ndarray with the predictions, shape (train_n_cls_i_[i], 1) (binary quantification
+problems) or (train_n_cls_i_[i], n_classes) (multiclass quantification problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dict, the keys are the labels of the classes (<a href="#id47"><span class="problematic" id="id48">classes_</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.K_">
+<span class="sig-name descname"><span class="pre">K_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.K_" title="Permalink to this definition"></a></dt>
+<dd><p>Average distance between the examples in the training set of each pair of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_ed_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for definining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.verbose_">
+<span class="sig-name descname"><span class="pre">verbose_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.verbose_" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Hideko Kawakubo, Marthinus Christoffel Du Plessis, and Masashi Sugiyama. 2016. Computationally efficient
+class-prior estimation under class balance change using energy distance. Transactions on Information
+and Systems 99, 1 (2016), 176–186.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method computes all the elements of the optimization that involve just the training data:
+<a href="#id49"><span class="problematic" id="id50">K_</span></a>, <a href="#id51"><span class="problematic" id="id52">G_</span></a>, <a href="#id53"><span class="problematic" id="id54">C_</span></a> and <a href="#id55"><span class="problematic" id="id56">b_</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDX.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDX.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>This method computes a, the only element of the optimization problem that needs the testing
+data. Then, it solves the optimization problem using <cite>quadprog.solve_qp</cite> in <cite>solve_ed</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.energy.</span></span><span class="sig-name descname"><span class="pre">EDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance=&lt;function</span> <span class="pre">manhattan_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass EDy method</p>
+<p>As described in (Castaño et al 2019), the predicted prevalences can be analytically calculated solving an
+optimization problem (with quadprog.solve_qp in this library). All ED-based methods share several functions
+in distribution_matching.utils. These functions are used to compute the elements of the optimization
+problem (<cite>compute_ed_param_train</cite>, <cite>compute_ed_param_test</cite>) and to solve the optimization problem (<cite>solve_ed</cite>)</p>
+<p>This class (as every other class based on distribution matching using classifiers) works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify training examples and testing examples in order to
+compute the distribution of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the fit/predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC and AC/PAC). In the first case, estimators are only trained once and can
+be shared for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the distribution of each class individually</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to compute the distribution of the whole testing set</p></li>
+<li><p><strong>distance</strong> (<em>distance function</em><em> (</em><em>default=manhattan_distances</em><em>)</em>) – It is the function used to compute the distance between every pair of examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimator_train and estimator_test could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because EDy quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id57"><span class="problematic" id="id58">predictions_train_</span></a>/<a href="#id59"><span class="problematic" id="id60">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id61"><span class="problematic" id="id62">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id63"><span class="problematic" id="id64">y_ext_</span></a> == y.
+<a href="#id65"><span class="problematic" id="id66">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id67"><span class="problematic" id="id68">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.train_n_cls_i_">
+<span class="sig-name descname"><span class="pre">train_n_cls_i_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.train_n_cls_i_" title="Permalink to this definition"></a></dt>
+<dd><p>Number of the examples of each class in the training set. Used to compute average distances</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>Each key has associated a ndarray with the predictions, shape (train_n_cls_i_[i], 1) (binary quantification
+problems) or (train_n_cls_i_[i], n_classes) (multiclass quantification problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dict, the keys are the labels of the classes (<a href="#id69"><span class="problematic" id="id70">classes_</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.K_">
+<span class="sig-name descname"><span class="pre">K_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.K_" title="Permalink to this definition"></a></dt>
+<dd><p>Average distance between the examples in the training set of each pair of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_ed_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for definining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.a_">
+<span class="sig-name descname"><span class="pre">a_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.a_" title="Permalink to this definition"></a></dt>
+<dd><p>This one is computed in the <cite>predict</cite> method, just before solving the optimization problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>another variable of the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id71"><span class="problematic" id="id72">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+After that, the method computes all the elements of the optimization problem that involve just the
+training data:
+<a href="#id73"><span class="problematic" id="id74">K_</span></a>, <a href="#id75"><span class="problematic" id="id76">G_</span></a>, <a href="#id77"><span class="problematic" id="id78">C_</span></a> and <a href="#id79"><span class="problematic" id="id80">b_</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probabilities</em><em>)</em>) – Predictions of the examples in the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.energy.EDy.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.energy.EDy.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id81"><span class="problematic" id="id82">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the method computes a, the only element of the optimization problem that needs the testing
+data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id83"><span class="problematic" id="id84">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are at the same time None or not None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.distribution_matching.utils">
+<span id="ordinal-quantification-distribution-matching-utils-module"></span><h2>ordinal_quantification.distribution_matching.utils module<a class="headerlink" href="#module-ordinal_quantification.distribution_matching.utils" title="Permalink to this heading"></a></h2>
+<p>Util functions for distribution matching methods</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.compute_ed_param_test">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">compute_ed_param_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cls_i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.compute_ed_param_test" title="Permalink to this definition"></a></dt>
+<dd><p>Computes params related to the test distribution for solving ED-problems using <cite>quadprog.solve_qp</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_func</strong> (<em>function</em>) – The function used to measure the distance between each pair of examples</p></li>
+<li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – Represents the distribution of each class in the training set</p></li>
+<li><p><strong>test_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>1</em><em>)</em>) – Represents the distribution of the testing set</p></li>
+<li><p><strong>K</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – Average distance between each pair of classes in the training set</p></li>
+<li><p><strong>classes</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – Class labels</p></li>
+<li><p><strong>n_cls_i</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – The number of examples of each class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>a</strong> (<em>array, shape (n_classes, )</em>) – Term a for solving optimization problems using <cite>quadprog.solve_qp</cite></p></li>
+<li><p><em>See references below for further details</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<p>Hideko Kawakubo, Marthinus Christoffel Du Plessis, and Masashi Sugiyama. 2016. Computationally efficient
+class-prior estimation under class balance change using energy distance. Transactions on Information
+and Systems 99, 1 (2016), 176–186.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.compute_ed_param_train">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">compute_ed_param_train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cls_i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.compute_ed_param_train" title="Permalink to this definition"></a></dt>
+<dd><p>Computes params related to the train distribution for solving ED-problems using <cite>quadprog.solve_qp</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_func</strong> (<em>function</em>) – The function used to measure the distance between each pair of examples</p></li>
+<li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – Represents the distribution of each class in the training set</p></li>
+<li><p><strong>classes</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – Class labels</p></li>
+<li><p><strong>n_cls_i</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – The number of examples of each class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>K</strong> (<em>array, shape (n_classes, n_classes)</em>) – Average distance between each pair of classes in the training set</p></li>
+<li><p><strong>G</strong> (<em>array, shape (n_classes - 1, n_classes - 1)</em>)</p></li>
+<li><p><strong>C</strong> (<em>array, shape (n_classes - 1, n_constraints)</em>) – n_constraints will be equal to the number of classes (n_classes)</p></li>
+<li><p><strong>b</strong> (<em>array, shape (n_constraints,)</em>)</p></li>
+<li><p><em>See references below for further details</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<p>Hideko Kawakubo, Marthinus Christoffel Du Plessis, and Masashi Sugiyama. 2016. Computationally efficient
+class-prior estimation under class balance change using energy distance. Transactions on Information
+and Systems 99, 1 (2016), 176–186.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.compute_quantiles">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">compute_quantiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prevalence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probabilities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quantiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.compute_quantiles" title="Permalink to this definition"></a></dt>
+<dd><p>Compute quantiles</p>
+<p>Used by quantiles-based classes. It computes the quantiles both for the testing distribution (in this case
+the value of the prevalence is ignored), and for the weighted mixture of positives and negatives (this depends
+on the value of the prevalence parameter)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prevalence</strong> (<em>float</em><em> or </em><em>None</em>) – The value of the prevalence of the positive class to compute the mixture of the positives and the negatives.
+To compute the quantiles of the testing set this parameter must be None</p></li>
+<li><p><strong>probabilities</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>nexamples</em><em>, </em><em>1</em><em>)</em>) – The ordered probabilities for all examples. Notice that in the case of computing the mixture of the
+positives and the negatives, this array contains the probability for all the examples of the training set</p></li>
+<li><p><strong>n_quantiles</strong> (<em>int</em>) – Number of quantiles. This parameter is used with Quantiles-based algorithms.</p></li>
+<li><p><strong>y</strong> (<em>array</em><em>, </em><em>labels</em>) – This parameter is used with Quantiles-based algorithms. They need the true label of each example</p></li>
+<li><p><strong>classes</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – Class labels. Used by Quantiles-based algorithms</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>quantiles</strong> – The value of the quantiles given the probabilities (and the value of the prevalence if we are computing the
+quantiles of the training mixture distribution)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array, shape(n_quantiles,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.golden_section_search">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">golden_section_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixture_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.golden_section_search" title="Permalink to this definition"></a></dt>
+<dd><p>Golden section search</p>
+<p>Used by PDF and quantiles classes. Only useful for binary quantification
+Given a function <cite>distance_func</cite> with a single local minumum in the interval [0,1], <cite>golden_section_search</cite>
+returns the prevalence that minimizes the differente between the mixture training distribution and
+the testing distribution according to <cite>distance_func</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_func</strong> (<em>function</em>) – This is the loss function minimized during the search</p></li>
+<li><p><strong>mixture_func</strong> (<em>function</em>) – The function used to generated the training mixture distribution given a value for the prevalence</p></li>
+<li><p><strong>test_distrib</strong> (<em>array</em>) – The distribution of the positive class. The exact shape depends on the representation (pdfs, quantiles…)</p></li>
+<li><p><strong>tol</strong> (<em>float</em>) – The precision of the solution</p></li>
+<li><p><strong>kwargs</strong> (<em>keyword arguments</em>) – Here we pass the set of arguments needed by mixture functions: mixture_two_pdfs (for pdf-based classes) and
+compute quantiles (for quantiles-based classes). See the help of this two functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – The predicted prevalence for the negative and the positive class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array, shape(2,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.is_V_shape">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">is_V_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixture_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.is_V_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the distance function is V-shaped</p>
+<p>Golden section search only works with V-shape distance (loss) functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_func</strong> (<em>function</em>) – This is the loss function minimized during the search</p></li>
+<li><p><strong>mixture_func</strong> (<em>function</em>) – The function used to generated the training mixture distribution given a value for the prevalence</p></li>
+<li><p><strong>test_distrib</strong> (<em>array</em>) – The distribution of the positive class. The exact shape depends on the representation (pdfs, quantiles…)</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – The step to perform the linear search in the interval [0,1]</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – True to print the distance for each prevalence and the best prevalence acording to the distance function</p></li>
+<li><p><strong>kwargs</strong> (<em>keyword arguments</em>) – Here we pass the set of arguments needed by mixture functions: mixture_two_pdfs (for pdf-based classes) and
+compute quantiles (for quantiles-based classes). See the help of this two functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>True if the the distance function is v-shaped and False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.mixture_two_pdfs">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">mixture_two_pdfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prevalence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_distrib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_distrib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.mixture_two_pdfs" title="Permalink to this definition"></a></dt>
+<dd><p>Mix two pdfs given a value por the prevalence of the positive class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prevalence</strong> (<em>float</em><em>,</em>) – The prevalence for the positive class</p></li>
+<li><p><strong>pos_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em>(</em><em>n_bins</em><em>,</em><em>)</em>) – The distribution of the positive class. The exact shape depends on the representation (pdfs, quantiles…)</p></li>
+<li><p><strong>neg_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em>(</em><em>n_bins</em><em>,</em><em>)</em>) – The distribution of the negative class. The exact shape depends on the representation (pdfs, quantiles…)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mixture</strong> – The pdf mixture of positives and negatives</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array, same shape of positives and negatives</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.utils.solve_ed">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.utils.</span></span><span class="sig-name descname"><span class="pre">solve_ed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.utils.solve_ed" title="Permalink to this definition"></a></dt>
+<dd><p>Solves the optimization problem for ED-based quantifiers</p>
+<p>It just calls <cite>quadprog.solve_qp</cite> with the appropriate parameters. These paremeters were computed
+before by calling <cite>compute_ed_param_train</cite> and <cite>compute_ed_param_test</cite>.
+In the derivation of the optimization problem, the last class is put in terms of the rest of classes. Thus,
+we have to add 1-prevalences.sum() which it is the prevalence of the last class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – </p></li>
+<li><p><strong>C</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>n_constraints</em><em>)</em>) – n_constraints will be n_classes + 1</p></li>
+<li><p><strong>b</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_constraints</em><em>,</em><em>)</em>) – </p></li>
+<li><p><strong>a</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – </p></li>
+<li><p><strong>G</strong> – </p></li>
+<li><p><strong>compute_ed_param_test</strong> (<em>C and b are computed by compute_ed_param_train and a by</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – Vector containing the predicted prevalence for each class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array, shape=(n_classes, )</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<p>Hideko Kawakubo, Marthinus Christoffel Du Plessis, and Masashi Sugiyama. 2016. Computationally efficient
+class-prior estimation under class balance change using energy distance. Transactions on Information
+and Systems 99, 1 (2016), 176–186.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ordinal_quantification.distribution_matching">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.distribution_matching" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">DFX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PDF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.WithoutClassifiers" title="ordinal_quantification.base.WithoutClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">WithoutClassifiers</span></code></a></p>
+<p>Generic Multiclass DFX method</p>
+<p>The idea is to represent the mixture of the training distribution and the testing distribution
+(using CDFs/PDFs) of the features of the input space (X). The difference between both are minimized using a
+distante/loss function. Originally, (González et al. 2013) propose the combination of PDF and
+Hellinger Distance, but also CDF and any other distance/loss function could be used, like L1 or L2.</p>
+<p>The class has two parameters to select:</p>
+<ul class="simple">
+<li><p>the method used to represent the distributions (CDFs or PDFs)</p></li>
+<li><p>the distance used.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution_function</strong> (<em>str</em><em>, </em><em>(</em><em>default='PDF'</em><em>)</em>) – Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p></li>
+<li><p><strong>n_bins</strong> (<em>int</em>) – Number of bins to compute the PDFs</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-05</em><em>)</em>) – The precision of the solution when search is used to compute the prevalence</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.distribution_function">
+<span class="sig-name descname"><span class="pre">distribution_function</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.distribution_function" title="Permalink to this definition"></a></dt>
+<dd><p>Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.n_bins" title="Permalink to this definition"></a></dt>
+<dd><p>The number of bins to compute the PDFs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int (default=8)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str or a distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.tol" title="Permalink to this definition"></a></dt>
+<dd><p>The precision of the solution when search is used to compute the solution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.att_ranges_">
+<span class="sig-name descname"><span class="pre">att_ranges_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.att_ranges_" title="Permalink to this definition"></a></dt>
+<dd><p>Min and Max for each feature of the input space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_features, 2)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The PDF for each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * n_features, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.test_distrib_">
+<span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.test_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The PDF for the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * n_features, 1) multiclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+<p>Aykut Firat. 2016. Unified Framework for Quantification. arXiv preprint arXiv:1606.00868 (2016).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method just computes the PDFs for all the classes in the training set. The values are stored in
+<a href="#id85"><span class="problematic" id="id86">train_dist_</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFX.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFX.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, the method computes the PDF for the testing bag.</p>
+<p>After that, the prevalences are computed using the corresponding function according to the value of
+distance attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">DFy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PDF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Generic Multiclass DFy method</p>
+<p>The idea is to represent the mixture of the training distribution and the testing distribution
+(using CDFs/PDFs) of the predictions given by a classifier (y). The difference between both is minimized
+using a distance/loss function. Originally, (González et al. 2013) propose the combination of PDF and
+Hellinger Distance, but also CDF and any other distance/loss function could be used, like L1 or L2. In fact,
+Forman (2005) propose to use CDF’s an a measure equivalent to L1.</p>
+<p>The class has two parameters to select:</p>
+<ul class="simple">
+<li><p>the method used to represent the distributions (CDFs or PDFs)</p></li>
+<li><p>the distance used.</p></li>
+</ul>
+<p>This class (as every other class based on distribution matching using classifiers) works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify training examples and testing examples in order to
+compute the distribution of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the fit/predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The goal in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC and AC/PAC). In the first case, estimators are only trained once and can
+be shared for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the distribution of each class individually</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to compute the distribution of the whole testing set</p></li>
+<li><p><strong>distribution_function</strong> (<em>str</em><em>, </em><em>(</em><em>default='PDF'</em><em>)</em>) – Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p></li>
+<li><p><strong>n_bins</strong> (<em>int</em><em>  (</em><em>default=8</em><em>)</em>) – Number of bins to compute the CDFs/PDFs</p></li>
+<li><p><strong>distance</strong> (<em>str</em><em>, </em><em>representing the distance function</em><em> (</em><em>default='HD'</em><em>)</em>) – It is the name of the distance used to compute the difference between the mixture of the training
+distribution and the testing distribution</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-05</em><em>)</em>) – The precision of the solution when search is used to compute the prevalence</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimator_train and estimator_test could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because PDFy quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id87"><span class="problematic" id="id88">predictions_train_</span></a>/<a href="#id89"><span class="problematic" id="id90">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.distance" title="Permalink to this definition"></a></dt>
+<dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str or a distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.tol" title="Permalink to this definition"></a></dt>
+<dd><p>The precision of the solution when search is used to compute the solution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id91"><span class="problematic" id="id92">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id93"><span class="problematic" id="id94">y_ext_</span></a> == y.
+<a href="#id95"><span class="problematic" id="id96">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id97"><span class="problematic" id="id98">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.distribution_function">
+<span class="sig-name descname"><span class="pre">distribution_function</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.distribution_function" title="Permalink to this definition"></a></dt>
+<dd><p>Type of distribution function used. Two types are supported ‘CDF’ and ‘PDF’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.n_bins" title="Permalink to this definition"></a></dt>
+<dd><p>The number of bins to compute the CDFs/PDFs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The CDF/PDF for each class in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * 1, n_classes) binary or (n_bins * <a href="#id99"><span class="problematic" id="id100">n_classes_</span></a>, n_classes) multiclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.test_distrib_">
+<span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.test_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>The CDF/PDF for the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_bins * 1, 1) binary quantification or (n_bins * <a href="#id101"><span class="problematic" id="id102">n_classes_</span></a>, 1) multiclass q</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+<p>George Forman: Counting positives accurately despite inaccurate classification. In: Proceedings of the 16th
+European conference on machine learning (ECML’05), Porto, (2005) pp 564–575</p>
+<p>Aykut Firat. 2016. Unified Framework for Quantification. arXiv preprint arXiv:1606.00868 (2016).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id103"><span class="problematic" id="id104">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+After that, the method computes the pdfs for all the classes in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.DFy.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.DFy.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id105"><span class="problematic" id="id106">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the method computes the PDF for the testing bag.</p>
+<p>Finally, the prevalences are computed using the corresponding function according to the value of
+distance attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id107"><span class="problematic" id="id108">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">EDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.WithoutClassifiers" title="ordinal_quantification.base.WithoutClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">WithoutClassifiers</span></code></a></p>
+<p>Multiclass EDX method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance</strong> (<em>distance function</em><em> (</em><em>default=euclidean_distances</em><em>)</em>) – It is the function used to compute the distance between every pair of examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.distance_">
+<span class="sig-name descname"><span class="pre">distance_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.distance_" title="Permalink to this definition"></a></dt>
+<dd><p>The distance fuction used for computing the distance between every pair of examples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>distance function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.train_n_cls_i_">
+<span class="sig-name descname"><span class="pre">train_n_cls_i_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.train_n_cls_i_" title="Permalink to this definition"></a></dt>
+<dd><p>Number of the examples of each class in the training set. Used to compute average distances</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>Each key has associated a ndarray with the predictions, shape (train_n_cls_i_[i], 1) (binary quantification
+problems) or (train_n_cls_i_[i], n_classes) (multiclass quantification problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dict, the keys are the labels of the classes (<a href="#id109"><span class="problematic" id="id110">classes_</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.K_">
+<span class="sig-name descname"><span class="pre">K_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.K_" title="Permalink to this definition"></a></dt>
+<dd><p>Average distance between the examples in the training set of each pair of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_ed_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for definining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.verbose_">
+<span class="sig-name descname"><span class="pre">verbose_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.verbose_" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Hideko Kawakubo, Marthinus Christoffel Du Plessis, and Masashi Sugiyama. 2016. Computationally efficient
+class-prior estimation under class balance change using energy distance. Transactions on Information
+and Systems 99, 1 (2016), 176–186.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method computes all the elements of the optimization that involve just the training data:
+<a href="#id111"><span class="problematic" id="id112">K_</span></a>, <a href="#id113"><span class="problematic" id="id114">G_</span></a>, <a href="#id115"><span class="problematic" id="id116">C_</span></a> and <a href="#id117"><span class="problematic" id="id118">b_</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDX.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDX.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>This method computes a, the only element of the optimization problem that needs the testing
+data. Then, it solves the optimization problem using <cite>quadprog.solve_qp</cite> in <cite>solve_ed</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">EDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance=&lt;function</span> <span class="pre">manhattan_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ordinal_quantification.html#ordinal_quantification.base.UsingClassifiers" title="ordinal_quantification.base.UsingClassifiers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsingClassifiers</span></code></a></p>
+<p>Multiclass EDy method</p>
+<p>As described in (Castaño et al 2019), the predicted prevalences can be analytically calculated solving an
+optimization problem (with quadprog.solve_qp in this library). All ED-based methods share several functions
+in distribution_matching.utils. These functions are used to compute the elements of the optimization
+problem (<cite>compute_ed_param_train</cite>, <cite>compute_ed_param_test</cite>) and to solve the optimization problem (<cite>solve_ed</cite>)</p>
+<p>This class (as every other class based on distribution matching using classifiers) works in two different ways:</p>
+<ol class="arabic simple">
+<li><p>Two estimators are used to classify training examples and testing examples in order to
+compute the distribution of both sets. Estimators can be already trained</p></li>
+<li><p>You can directly provide the predictions for the examples in the fit/predict methods. This is useful
+for synthetic/artificial experiments</p></li>
+</ol>
+<p>The idea in both cases is to guarantee that all methods based on distribution matching are using <strong>exactly</strong>
+the same predictions when you compare this kind of quantifiers (and others that also employ an underlying
+classifier, for instance, CC/PCC and AC/PAC). In the first case, estimators are only trained once and can
+be shared for several quantifiers of this kind</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+training set and to compute the distribution of each class individually</p></li>
+<li><p><strong>estimator_test</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
+testing set and to compute the distribution of the whole testing set</p></li>
+<li><p><strong>distance</strong> (<em>distance function</em><em> (</em><em>default=manhattan_distances</em><em>)</em>) – It is the function used to compute the distance between every pair of examples</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – The verbosity level. The default value, zero, means silent mode</p></li>
+<li><p><strong>same</strong> (<em>For some experiments both estimator_train and estimator_test could be the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.estimator_train">
+<span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.estimator_train" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.estimator_test">
+<span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.estimator_test" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator used to classify the examples of the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>estimator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.predictions_train_">
+<span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.predictions_train_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the training set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.predictions_test_">
+<span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.predictions_test_" title="Permalink to this definition"></a></dt>
+<dd><p>Predictions of the examples in the testing bag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.needs_predictions_train">
+<span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.needs_predictions_train" title="Permalink to this definition"></a></dt>
+<dd><p>It is True because EDy quantifiers need to estimate the training distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.probabilistic_predictions">
+<span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.probabilistic_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>This means that <a href="#id119"><span class="problematic" id="id120">predictions_train_</span></a>/<a href="#id121"><span class="problematic" id="id122">predictions_test_</span></a> contain probabilistic predictions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Class labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.y_ext_">
+<span class="sig-name descname"><span class="pre">y_ext_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.y_ext_" title="Permalink to this definition"></a></dt>
+<dd><p>Repmat of true labels of the training set. When CV_estimator is used with averaged_predictions=False,
+<a href="#id123"><span class="problematic" id="id124">predictions_train_</span></a> will have a larger dimension (factor=n_repetitions * n_folds of the underlying CV)
+than y. In other cases, <a href="#id125"><span class="problematic" id="id126">y_ext_</span></a> == y.
+<a href="#id127"><span class="problematic" id="id128">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(len(<a href="#id129"><span class="problematic" id="id130">predictions_train_</span></a>, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.train_n_cls_i_">
+<span class="sig-name descname"><span class="pre">train_n_cls_i_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.train_n_cls_i_" title="Permalink to this definition"></a></dt>
+<dd><p>Number of the examples of each class in the training set. Used to compute average distances</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape(n_classes, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.train_distrib_">
+<span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.train_distrib_" title="Permalink to this definition"></a></dt>
+<dd><p>Each key has associated a ndarray with the predictions, shape (train_n_cls_i_[i], 1) (binary quantification
+problems) or (train_n_cls_i_[i], n_classes) (multiclass quantification problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dict, the keys are the labels of the classes (<a href="#id131"><span class="problematic" id="id132">classes_</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.K_">
+<span class="sig-name descname"><span class="pre">K_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.K_" title="Permalink to this definition"></a></dt>
+<dd><p>Average distance between the examples in the training set of each pair of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">G_,</span> <span class="pre">C_,</span> <span class="pre">b_</span></span></dt>
+<dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
+using <cite>quadprog.solve_qp</cite>. See <cite>compute_ed_param_train</cite> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>variables of different kind for definining the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.a_">
+<span class="sig-name descname"><span class="pre">a_</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.a_" title="Permalink to this definition"></a></dt>
+<dd><p>This one is computed in the <cite>predict</cite> method, just before solving the optimization problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>another variable of the optimization problem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>The verbosity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Notice that at least one between estimator_train/predictions_train and estimator_test/predictions_test
+must be not None. If both are None a ValueError exception will be raised. If both are not None,
+predictions_train/predictions_test are used</p>
+<p class="rubric">References</p>
+<p>Alberto Castaño, Laura Morán-Fernández, Jaime Alonso, Verónica Bolón-Canedo, Amparo Alonso-Betanzos,
+Juan José del Coz: An analysis of quantification methods based on matching distributions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.fit" title="Permalink to this definition"></a></dt>
+<dd><p>This method performs the following operations: 1) fits the estimators for the training set and the
+testing set (if needed), and 2) computes <a href="#id133"><span class="problematic" id="id134">predictions_train_</span></a> (probabilities) if needed. Both operations are
+performed by the <cite>fit</cite> method of its superclass.
+After that, the method computes all the elements of the optimization problem that involve just the
+training data:
+<a href="#id135"><span class="problematic" id="id136">K_</span></a>, <a href="#id137"><span class="problematic" id="id138">G_</span></a>, <a href="#id139"><span class="problematic" id="id140">C_</span></a> and <a href="#id141"><span class="problematic" id="id142">b_</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
+<li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probabilities</em><em>)</em>) – Predictions of the examples in the training set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.EDy.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.EDy.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the class distribution of a testing bag</p>
+<p>First, <a href="#id143"><span class="problematic" id="id144">predictions_test_</span></a> are computed (if needed, when predictions_test parameter is None) by
+<cite>super().predict()</cite> method.</p>
+<p>After that, the method computes a, the only element of the optimization problem that needs the testing
+data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
+<li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
+<p>If predictions_test is not None they are copied on <a href="#id145"><span class="problematic" id="id146">predictions_test_</span></a> and used.
+If predictions_test is None, predictions for the testing examples are computed using the <cite>predict</cite>
+method of estimator_test (it must be an actual estimator)</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are at the same time None or not None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray, shape(n_classes, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.HDX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">HDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.HDX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ordinal_quantification.distribution_matching.df.DFX" title="ordinal_quantification.distribution_matching.df.DFX"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFX</span></code></a></p>
+<p>Multiclass HDX method</p>
+<p>This class is a wrapper. It just uses all the inherited methods of its superclass (DFX)</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based on
+the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.distribution_matching.HDy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.distribution_matching.</span></span><span class="sig-name descname"><span class="pre">HDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.distribution_matching.HDy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ordinal_quantification.distribution_matching.df.DFy" title="ordinal_quantification.distribution_matching.df.DFy"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFy</span></code></a></p>
+<p>Multiclass HDy method</p>
+<p>This class is just a wrapper. It just uses all the inherited methods of its superclass (DFy)</p>
+<p class="rubric">References</p>
+<p>Víctor González-Castro, Rocío Alaiz-Rodríguez, and Enrique Alegre: Class Distribution Estimation based
+on the Hellinger Distance. Information Sciences 218 (2013), 146–164.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

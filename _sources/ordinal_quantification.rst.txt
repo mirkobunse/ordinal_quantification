@@ -1,0 +1,51 @@
+ordinal\_quantification package
+===============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ordinal_quantification.classify_and_count
+   ordinal_quantification.decomposition
+   ordinal_quantification.distribution_matching
+   ordinal_quantification.estimators
+   ordinal_quantification.metrics
+   ordinal_quantification.ordinal
+   ordinal_quantification.tests
+
+Submodules
+----------
+
+ordinal\_quantification.base module
+-----------------------------------
+
+.. automodule:: ordinal_quantification.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.factory module
+--------------------------------------
+
+.. automodule:: ordinal_quantification.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.utils module
+------------------------------------
+
+.. automodule:: ordinal_quantification.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification
+   :members:
+   :undoc-members:
+   :show-inheritance:

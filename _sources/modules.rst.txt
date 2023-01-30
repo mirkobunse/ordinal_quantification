@@ -1,0 +1,7 @@
+ordinal_quantification
+======================
+
+.. toctree::
+   :maxdepth: 4
+
+   ordinal_quantification

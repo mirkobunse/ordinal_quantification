@@ -1,0 +1,37 @@
+ordinal\_quantification.decomposition package
+=============================================
+
+Submodules
+----------
+
+ordinal\_quantification.decomposition.multiclass module
+-------------------------------------------------------
+
+.. automodule:: ordinal_quantification.decomposition.multiclass
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.decomposition.ordinal module
+----------------------------------------------------
+
+.. automodule:: ordinal_quantification.decomposition.ordinal
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.decomposition.utils module
+--------------------------------------------------
+
+.. automodule:: ordinal_quantification.decomposition.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification.decomposition
+   :members:
+   :undoc-members:
+   :show-inheritance:

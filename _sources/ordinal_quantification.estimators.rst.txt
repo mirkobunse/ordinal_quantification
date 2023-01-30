@@ -1,0 +1,45 @@
+ordinal\_quantification.estimators package
+==========================================
+
+Submodules
+----------
+
+ordinal\_quantification.estimators.cross\_validation module
+-----------------------------------------------------------
+
+.. automodule:: ordinal_quantification.estimators.cross_validation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.estimators.frank\_and\_hall module
+----------------------------------------------------------
+
+.. automodule:: ordinal_quantification.estimators.frank_and_hall
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.estimators.ordinal\_ddag module
+-------------------------------------------------------
+
+.. automodule:: ordinal_quantification.estimators.ordinal_ddag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.estimators.utils module
+-----------------------------------------------
+
+.. automodule:: ordinal_quantification.estimators.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification.estimators
+   :members:
+   :undoc-members:
+   :show-inheritance:

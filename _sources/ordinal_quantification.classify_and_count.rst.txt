@@ -1,0 +1,29 @@
+ordinal\_quantification.classify\_and\_count package
+====================================================
+
+Submodules
+----------
+
+ordinal\_quantification.classify\_and\_count.ac module
+------------------------------------------------------
+
+.. automodule:: ordinal_quantification.classify_and_count.ac
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.classify\_and\_count.cc module
+------------------------------------------------------
+
+.. automodule:: ordinal_quantification.classify_and_count.cc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification.classify_and_count
+   :members:
+   :undoc-members:
+   :show-inheritance:
