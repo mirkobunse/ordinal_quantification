@@ -3,13 +3,14 @@
 
 self
 api
+developer-guide
 ```
 
 # Quickstart
 
 This fork of [https://github.com/bertocast/ordinal_quantification](https://github.com/bertocast/ordinal_quantification) allows you to install the upstream code via pip
 
-```
+```bash
 pip install https://github.com/mirkobunse/ordinal_quantification
 ```
 
@@ -40,7 +41,7 @@ p_est = method.predict(X_tst)
 
 This repository implements the experiments of
 
-```
+```bibtex
 @Article{castano2022matching,
   author  = {Alberto Casta{\~{n}}o and Pablo Gonz{\'{a}}lez and Jaime Alonso Gonz{\'{a}}lez and Juan Jos{\'{e}} del Coz},
   journal = {{IEEE} Transactions on Neural Networks and Learning Systems},
@@ -48,15 +49,4 @@ This repository implements the experiments of
   year    = {2022},
   doi     = {10.1109/tnnls.2022.3179355},
 }
-```
-
-
-## Development / unit testing
-
-Run tests locally with the `unittest` package.
-
-```
-python -m venv venv
-venv/bin/pip install .[tests]
-venv/bin/python -m unittest
 ```

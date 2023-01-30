@@ -2,6 +2,17 @@
 
 Instantiate quantification methods through the [`ordinal_quantification.factory`](#ordinal_quantificationfactory) module.
 
+```{eval-rst}
+.. py:function:: lumache.get_random_ingredients(kind=None)
+
+   Return a list of random ingredients as strings.
+
+   :param kind: Optional "kind" of ingredients.
+   :type kind: list[str] or None
+   :return: The ingredients list.
+   :rtype: list[str]
+```
+
 ## ordinal_quantification.factory
 
 ```{eval-rst}
