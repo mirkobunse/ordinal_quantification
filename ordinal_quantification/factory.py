@@ -7,7 +7,7 @@ from sklearn.metrics import make_scorer
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 
-from . import (classify_and_count, distribution_matching, estimators)
+from . import (classify_and_count, distribution_matching, estimators, ordinal)
 
 Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv"])
 Option = Enum("Option", ["cv_decomp", "decomp_cv"])
@@ -257,7 +257,7 @@ def HDy(estimator, n_bins, *, verbose=0, **kwargs):
 
     Args:
         estimator: The estimator, usually a classifier.
-        n_bins: The number of bins per feature.
+        n_bins: The number of bins per class.
         verbose (optional): The logging level. Defaults to 0.
         decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
         option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
@@ -270,5 +270,49 @@ def HDy(estimator, n_bins, *, verbose=0, **kwargs):
     return distribution_matching.HDy(
         *_create_estimators(estimator, **kwargs),
         n_bins = n_bins,
+        verbose = verbose
+    )
+
+def OrdinalAC(estimator, *, verbose=0, **kwargs):
+    """
+    Create an instance of the ordinal version of AC (Castaño et al., 2022).
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type ACOrdinal.
+    """
+    return ordinal.ACOrdinal(
+        *_create_estimators(estimator, **kwargs),
+        verbose = verbose
+    )
+
+def PDF(estimator, n_bins, *, distance="EMD", verbose=0, **kwargs):
+    """
+    Create an instance of the ordinal method PDF (Castaño et al., 2022).
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        n_bins: The number of bins per class.
+        distance (optional): The distance metric to optimize. Defaults to "EMD". Another suitable value is "L2".
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type PDFOrdinaly.
+    """
+    return ordinal.PDFOrdinaly(
+        *_create_estimators(estimator, **kwargs),
+        n_bins = n_bins,
+        distance = distance,
         verbose = verbose
     )

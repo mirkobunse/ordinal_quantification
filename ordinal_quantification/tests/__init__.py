@@ -47,6 +47,9 @@ class TestFactory(TestCase):
       ("EDy_EMD", factory.EDy(_classifier(seed), distances=emd_distances, verbose=1)),
       ("HDX", factory.HDX(2)),
       ("HDy", factory.HDy(_classifier(seed), 2, verbose=1)),
+      ("AC_Ord", factory.OrdinalAC(_classifier(seed), verbose=1)), # ordinal methods
+      ("PDF_EMD", factory.PDF(_classifier(seed), 2, verbose=1)),
+      ("PDF_L2", factory.PDF(_classifier(seed), 2, distance="L2", verbose=1)),
     ]
     for (name, method) in methods:
       method.fit(X, y)

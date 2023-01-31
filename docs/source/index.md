@@ -11,7 +11,7 @@ developer-guide
 This fork of [https://github.com/bertocast/ordinal_quantification](https://github.com/bertocast/ordinal_quantification) allows you to install the upstream code via pip
 
 ```bash
-pip install https://github.com/mirkobunse/ordinal_quantification
+pip install git+https://github.com/mirkobunse/ordinal_quantification.git
 ```
 
 

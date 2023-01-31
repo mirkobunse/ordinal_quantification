@@ -1,6 +1,6 @@
 # API
 
-Instantiate quantification methods through the [`ordinal_quantification.factory`](#ordinal_quantificationfactory) module. Then, use their `fit` and `predict` methods.
+Instantiate quantification methods through the `ordinal_quantification.factory` module. Then, use their `fit` and `predict` methods.
 
 ## Creating estimators
 
@@ -22,7 +22,7 @@ All quantifiers require a decomposition of the ordinal task into multiple binary
     :value: ["monotone", "fh_tree", "dag", "dag_lv"]
 ```
 
-The quantifiers are created through the following `factory` functions. We have categorized them into [](#classify-and-count) and [](#distribution-matching) methods.
+The quantifiers are created through the following `factory` functions. We have categorized them into [](#classify-and-count) methods, [](#distribution-matching) methods, and [](#ordinal-methods)
 
 ### Classify and count
 
@@ -48,6 +48,14 @@ The quantifiers are created through the following `factory` functions. We have c
 .. autofunction:: ordinal_quantification.factory.HDX
 
 .. autofunction:: ordinal_quantification.factory.HDy
+```
+
+### Ordinal methods
+
+```{eval-rst}
+.. autofunction:: ordinal_quantification.factory.OrdinalAC
+
+.. autofunction:: ordinal_quantification.factory.PDF
 ```
 
 ## Using quantifiers
