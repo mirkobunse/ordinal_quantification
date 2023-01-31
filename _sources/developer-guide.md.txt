@@ -15,7 +15,7 @@ venv/bin/python -m unittest
 Inspect your changes before pushing them to the `main` branch. After building the documentation, open `docs/build/index.html` in your browser.
 
 ```bash
-venv/bin/activate
+. venv/bin/activate
 pip install sphinx myst-parser sphinxcontrib-napoleon sphinx-rtd-theme
 cd docs/
 sphinx-apidoc --force --output-dir source/ ../ordinal_quantification
