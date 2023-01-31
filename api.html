@@ -62,6 +62,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.HDy"><code class="docutils literal notranslate"><span class="pre">HDy()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinal-methods">Ordinal methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.OrdinalAC"><code class="docutils literal notranslate"><span class="pre">OrdinalAC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ordinal_quantification.factory.PDF"><code class="docutils literal notranslate"><span class="pre">PDF()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#using-quantifiers">Using quantifiers</a><ul>
@@ -100,7 +105,7 @@
              
   <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h1>
-<p>Instantiate quantification methods through the <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code></span> module. Then, use their <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
+<p>Instantiate quantification methods through the <code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code> module. Then, use their <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
 <div class="section" id="creating-estimators">
 <h2>Creating estimators<a class="headerlink" href="#creating-estimators" title="Permalink to this heading"></a></h2>
 <p>Each quantification method requires an estimator, usually a classifier. For this purpose, the <code class="docutils literal notranslate"><span class="pre">estimator</span></code> function of the <code class="docutils literal notranslate"><span class="pre">factory</span></code> module takes out the hyper-parameter optimization of the experiments in <a class="reference external" href="https://github.com/bertocast/ordinal_quantification">https://github.com/bertocast/ordinal_quantification</a>.</p>
@@ -135,7 +140,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">Decomposer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Enum</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&quot;monotone&quot;,</span> <span class="pre">&quot;fh_tree&quot;,</span> <span class="pre">&quot;dag&quot;,</span> <span class="pre">&quot;dag_lv&quot;]</span></em><a class="headerlink" href="#ordinal_quantification.factory.Decomposer" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions. We have categorized them into <span class="xref myst"></span> and <span class="xref myst"></span> methods.</p>
+<p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions. We have categorized them into <a class="reference internal" href="#classify-and-count"><span class="std std-doc">Classify and count</span></a> methods, <a class="reference internal" href="#distribution-matching"><span class="std std-doc">Distribution matching</span></a> methods, and <a class="reference internal" href="#ordinal-methods"><span class="std std-doc">Ordinal methods</span></a></p>
 <div class="section" id="classify-and-count">
 <h3>Classify and count<a class="headerlink" href="#classify-and-count" title="Permalink to this heading"></a></h3>
 <dl class="py function">
@@ -310,7 +315,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
-<li><p><strong>n_bins</strong> – The number of bins per feature.</p></li>
+<li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
 <li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
 <li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
@@ -320,6 +325,53 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A configured instance of type HDy.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="ordinal-methods">
+<h3>Ordinal methods<a class="headerlink" href="#ordinal-methods" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.factory.OrdinalAC">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">OrdinalAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.OrdinalAC" title="Permalink to this definition"></a></dt>
+<dd><p>Create an instance of the ordinal version of AC (Castaño et al., 2022).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
+<li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
+<li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
+<li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
+<li><p><strong>n_folds</strong> (<em>optional</em>) – The number of folds for fitting the quantifier. Defaults to 20.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A configured instance of type ACOrdinal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ordinal_quantification.factory.PDF">
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EMD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PDF" title="Permalink to this definition"></a></dt>
+<dd><p>Create an instance of the ordinal method PDF (Castaño et al., 2022).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
+<li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
+<li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “EMD”. Another suitable value is “L2”.</p></li>
+<li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
+<li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
+<li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
+<li><p><strong>n_folds</strong> (<em>optional</em>) – The number of folds for fitting the quantifier. Defaults to 20.</p></li>
+<li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A configured instance of type PDFOrdinaly.</p>
 </dd>
 </dl>
 </dd></dl>
