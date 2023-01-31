@@ -10,6 +10,8 @@ venv/bin/pip install -e .[tests]
 venv/bin/python -m unittest
 ```
 
+As soon as you push to the `main` branch, GitHub Actions will take out these unit tests, too.
+
 ## Documentation
 
 Inspect your changes before pushing them to the `main` branch. After building the documentation, open `docs/build/index.html` in your browser.
