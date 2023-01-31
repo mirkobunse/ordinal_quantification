@@ -4,9 +4,10 @@ from enum import Enum
 from imblearn.metrics import geometric_mean_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import make_scorer
+from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 
-from . import (classify_and_count, estimators)
+from . import (classify_and_count, distribution_matching, estimators)
 
 Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv"])
 Option = Enum("Option", ["cv_decomp", "decomp_cv"])
@@ -175,5 +176,99 @@ def DeBias(estimator, *, verbose=0, **kwargs):
     print("WARNING: DeBias is not used in bertocast/ordinal_quantification")
     return classify_and_count.DeBias(
         *_create_estimators(estimator, **kwargs),
+        verbose = verbose
+    )
+
+def CvMy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
+    """
+    Create an instance of the CvMy method (Castaño et al., 2019).
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        distances (optional): The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type CvMy.
+    """
+    return distribution_matching.CvMy(
+        *_create_estimators(estimator, **kwargs),
+        distance = distances,
+        verbose = verbose
+    )
+
+def EDX(*, distances=euclidean_distances, verbose=0):
+    """
+    Create an instance of the energy distance method EDX (Kawakubo et al., 2016).
+
+    Args:
+        distances (optional): The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.
+        verbose (optional): The logging level. Defaults to 0.
+
+    Returns:
+        A configured instance of type EDX.
+    """
+    return distribution_matching.EDX(
+        distance = distances,
+        verbose = verbose
+    )
+
+def EDy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
+    """
+    Create an instance of the energy distance method EDy (Castaño et al., 2016).
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        distances (optional): The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances. Another suitable value is ordinal_quantification.metrics.ordinal.emd_distances.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type EDy.
+    """
+    return distribution_matching.EDy(
+        *_create_estimators(estimator, **kwargs),
+        distance = distances,
+        verbose = verbose
+    )
+
+def HDX(n_bins):
+    """
+    Create an instance of the hellinger distance method HDX (González-Castro et al., 2013).
+
+    Args:
+        n_bins: The number of bins per feature.
+
+    Returns:
+        A configured instance of type HDX.
+    """
+    return distribution_matching.HDX(n_bins)
+
+def HDy(estimator, n_bins, *, verbose=0, **kwargs):
+    """
+    Create an instance of the hellinger distance method HDy (González-Castro et al., 2013).
+
+    Args:
+        estimator: The estimator, usually a classifier.
+        n_bins: The number of bins per feature.
+        verbose (optional): The logging level. Defaults to 0.
+        decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
+        option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.
+        n_folds (optional): The number of folds for fitting the quantifier. Defaults to 20.
+        random_state (optional): The numpy RandomState. Defaults to None.
+
+    Returns:
+        A configured instance of type HDy.
+    """
+    return distribution_matching.HDy(
+        *_create_estimators(estimator, **kwargs),
+        n_bins = n_bins,
         verbose = verbose
     )

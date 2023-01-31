@@ -22,7 +22,9 @@ All quantifiers require a decomposition of the ordinal task into multiple binary
     :value: ["monotone", "fh_tree", "dag", "dag_lv"]
 ```
 
-The quantifiers are created through the following `factory` functions:
+The quantifiers are created through the following `factory` functions. We have categorized them into [](#classify-and-count) and [](#distribution-matching) methods.
+
+### Classify and count
 
 ```{eval-rst}
 .. autofunction:: ordinal_quantification.factory.AC
@@ -34,14 +36,28 @@ The quantifiers are created through the following `factory` functions:
 .. autofunction:: ordinal_quantification.factory.PCC
 ```
 
+### Distribution matching
+
+```{eval-rst}
+.. autofunction:: ordinal_quantification.factory.CvMy
+
+.. autofunction:: ordinal_quantification.factory.EDX
+
+.. autofunction:: ordinal_quantification.factory.EDy
+
+.. autofunction:: ordinal_quantification.factory.HDX
+
+.. autofunction:: ordinal_quantification.factory.HDy
+```
+
 ## Using quantifiers
 
-The instantiated quantifiers share the following methods:
+All instantiated quantifiers share the following methods:
 
 ```{eval-rst}
 .. py:method:: fit(X, y)
 
-   Fit the quantifier to the data.
+   Fit the quantifier to data.
 
    :param X: The feature matrix to which the quantifier will be fitted.
    :param y: The labels to which the quantifier will be fitted.
