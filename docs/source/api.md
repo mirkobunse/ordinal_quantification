@@ -2,16 +2,6 @@
 
 Instantiate quantification methods through the `ordinal_quantification.factory` module. Then, use their `fit` and `predict` methods.
 
-## Creating estimators
-
-Each quantification method requires an estimator, usually a classifier. For this purpose, the `estimator` function of the `factory` module takes out the hyper-parameter optimization of the experiments in [https://github.com/bertocast/ordinal_quantification](https://github.com/bertocast/ordinal_quantification).
-
-However, you can also go with any other classifier.
-
-```{eval-rst}
-.. autofunction:: ordinal_quantification.factory.estimator
-```
-
 ## Creating quantifiers
 
 All quantifiers require a decomposition of the ordinal task into multiple binary classification tasks. For this purpose, you can specify the `decomposer` of the quantifier to be any value of the `Decomposer` enum:
@@ -19,7 +9,9 @@ All quantifiers require a decomposition of the ordinal task into multiple binary
 ```{eval-rst}
 .. py:data:: ordinal_quantification.factory.Decomposer
     :type: Enum
-    :value: ["monotone", "fh_tree", "dag", "dag_lv"]
+    :value: ["monotone", "fh_tree", "dag", "dag_lv", "none"]
+
+    The value ``Decomposer.monotone`` produces a Frank and Hall decomposition with monotonicity property (Castaño et al., 2022). The value ``Decomposer.fh_tree`` produces a hierarchical Frank and Hall decomposition instead. The value ``Decomposer.none`` produces a non-ordinal estimator without any decomposition. The remaining values are not used in the original experiments and therefore discouraged.
 ```
 
 The quantifiers are created through the following `factory` functions. We have categorized them into [](#classify-and-count) methods, [](#distribution-matching) methods, and [](#ordinal-methods)
@@ -77,4 +69,16 @@ All instantiated quantifiers share the following methods:
 
    :param X: The feature matrix for which the quantifier will predict.
    :return: A numpy array of class prevalences.
+```
+
+## Creating estimators
+
+Each quantification method requires an estimator, usually a classifier. For this purpose, the `estimator` function of the `factory` module takes out the hyper-parameter optimization of the experiments in [https://github.com/bertocast/ordinal_quantification](https://github.com/bertocast/ordinal_quantification).
+
+```{eval-rst}
+.. autofunction:: ordinal_quantification.factory.estimator
+```
+
+```{hint}
+However, you can also go with any classifier that is not created by the ``estimator`` function.
 ```

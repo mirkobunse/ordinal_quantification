@@ -9,7 +9,7 @@ from sklearn.model_selection import StratifiedKFold, GridSearchCV
 
 from . import (classify_and_count, distribution_matching, estimators, ordinal)
 
-Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv"])
+Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv", "none"])
 Option = Enum("Option", ["cv_decomp", "decomp_cv"])
 
 def _create_estimators(
@@ -38,7 +38,7 @@ def _create_estimators(
         raise ValueError('Unknown option {option}')
     return est_trn, est_tst
 
-def _create_decomposer(estimator, decomposer = Decomposer.monotone):
+def _create_decomposer(estimator, decomposer=Decomposer.monotone):
     """Wrap the given estimator in a decomposer."""
     if decomposer == Decomposer.monotone:
         return estimators.frank_and_hall.FrankAndHallMonotoneClassifier(estimator)
@@ -48,6 +48,8 @@ def _create_decomposer(estimator, decomposer = Decomposer.monotone):
         return estimators.ordinal_ddag.DDAGClassifier(estimator)
     elif decomposer == Decomposer.dag_lv:
         return estimators.ordinal_ddag.DDAGClassifier(estimator, predict_method='winner_node')
+    elif decomposer == Decomposer.none or decomposer is None:
+        return estimator
     else:
         raise ValueError('Unknown decomposer {decomposer}')
 
