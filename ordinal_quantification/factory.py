@@ -10,7 +10,7 @@ from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from . import (classify_and_count, distribution_matching, estimators, ordinal)
 
 Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv", "none"])
-Option = Enum("Option", ["cv_decomp", "decomp_cv"])
+Option = Enum("Option", ["cv_decomp", "decomp_cv", "bagging_decomp"])
 
 def _create_estimators(
         estimator,
@@ -27,13 +27,18 @@ def _create_estimators(
     )
     est_tst = _create_decomposer(estimator, decomposer)
     if option == Option.cv_decomp:
-        est_trn = estimators.cross_validation.CV_estimator(estimator=est_tst, cv=skf_trn)
+        est_trn = estimators.CV_estimator(estimator=est_tst, cv=skf_trn)
     elif option == Option.decomp_cv:
         print("WARNING: Option.decomp_cv is not used in bertocast/ordinal_quantification")
         est_trn = _create_decomposer(
-            estimators.cross_validation.CV_estimator(estimator=estimator, cv=skf_trn),
+            estimators.CV_estimator(estimator=estimator, cv=skf_trn),
             decomposer
         )
+    elif option == Option.bagging_decomp:
+        if decomposer is not None and decomposer != Decomposer.none:
+            raise ValueError("Option.bagging_decomp is only supported with Decomposer.none")
+        est_trn = estimators.BaggingEstimator(estimator)
+        est_trn = est_tst
     else:
         raise ValueError('Unknown option {option}')
     return est_trn, est_tst
@@ -74,6 +79,7 @@ def estimator(X, y, estimator=None, param_grid=None, random_state=None):
             n_estimators = 100,
             class_weight = "balanced",
             random_state = random_state,
+            oob_score = True, # does not hurt anybody; enables BaggingEstimator
         )
     if param_grid is None:
         param_grid = { # learning theory doesn't want us to tune n_estimators
