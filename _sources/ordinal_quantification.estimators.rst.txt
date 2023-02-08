@@ -4,6 +4,14 @@ ordinal\_quantification.estimators package
 Submodules
 ----------
 
+ordinal\_quantification.estimators.bagging module
+-------------------------------------------------
+
+.. automodule:: ordinal_quantification.estimators.bagging
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 ordinal\_quantification.estimators.cross\_validation module
 -----------------------------------------------------------
 

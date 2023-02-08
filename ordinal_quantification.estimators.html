@@ -26,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> ordinal_quantification
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ordinal_quantification
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -55,7 +59,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">ordinal_quantification.estimators package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/ordinal_quantification.estimators.rst.txt" rel="nofollow"> View page source</a>
@@ -70,6 +74,38 @@
 <h1>ordinal_quantification.estimators package<a class="headerlink" href="#ordinal-quantification-estimators-package" title="Permalink to this heading"></a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-ordinal_quantification.estimators.bagging">
+<span id="ordinal-quantification-estimators-bagging-module"></span><h2>ordinal_quantification.estimators.bagging module<a class="headerlink" href="#module-ordinal_quantification.estimators.bagging" title="Permalink to this heading"></a></h2>
+<p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.bagging.BaggingEstimator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.estimators.bagging.</span></span><span class="sig-name descname"><span class="pre">BaggingEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.bagging.BaggingEstimator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code></p>
+<p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
+<p>This drop-in replacement uses out-of-bag (OOB) predictions of a bagging ensemble for fitting the quantifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>estimator</strong> – Any bagging classifier with an attribute <em>oob_score</em>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.bagging.BaggingEstimator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.bagging.BaggingEstimator.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.bagging.BaggingEstimator.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.bagging.BaggingEstimator.predict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.bagging.BaggingEstimator.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.bagging.BaggingEstimator.predict_proba" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-ordinal_quantification.estimators.cross_validation">
 <span id="ordinal-quantification-estimators-cross-validation-module"></span><h2>ordinal_quantification.estimators.cross_validation module<a class="headerlink" href="#module-ordinal_quantification.estimators.cross_validation" title="Permalink to this heading"></a></h2>
@@ -1395,6 +1431,34 @@ Sep 2014, Nancy, France. pp.323 - 337, 2014,</p>
 </div>
 <div class="section" id="module-ordinal_quantification.estimators">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.estimators" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.BaggingEstimator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.estimators.</span></span><span class="sig-name descname"><span class="pre">BaggingEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.BaggingEstimator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code></p>
+<p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
+<p>This drop-in replacement uses out-of-bag (OOB) predictions of a bagging ensemble for fitting the quantifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>estimator</strong> – Any bagging classifier with an attribute <em>oob_score</em>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.BaggingEstimator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.BaggingEstimator.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.BaggingEstimator.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.BaggingEstimator.predict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ordinal_quantification.estimators.BaggingEstimator.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.BaggingEstimator.predict_proba" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="ordinal_quantification.estimators.CV_estimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.estimators.</span></span><span class="sig-name descname"><span class="pre">CV_estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'warn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_dispatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2*n_jobs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">averaged_predictions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator" title="Permalink to this definition"></a></dt>

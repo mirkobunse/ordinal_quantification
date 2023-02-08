@@ -26,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> ordinal_quantification
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ordinal_quantification
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -55,7 +59,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">ordinal_quantification package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/ordinal_quantification.rst.txt" rel="nofollow"> View page source</a>
@@ -509,6 +513,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ordinal_quantification.estimators.html">ordinal_quantification.estimators package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ordinal_quantification.estimators.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ordinal_quantification.estimators.html#module-ordinal_quantification.estimators.bagging">ordinal_quantification.estimators.bagging module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.bagging.BaggingEstimator"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.bagging.BaggingEstimator.fit"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.bagging.BaggingEstimator.predict"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.bagging.BaggingEstimator.predict_proba"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.predict_proba()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ordinal_quantification.estimators.html#module-ordinal_quantification.estimators.cross_validation">ordinal_quantification.estimators.cross_validation module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.cross_validation.CV_estimator"><code class="docutils literal notranslate"><span class="pre">CV_estimator</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.cross_validation.CV_estimator.estimator"><code class="docutils literal notranslate"><span class="pre">CV_estimator.estimator</span></code></a></li>
@@ -599,6 +612,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ordinal_quantification.estimators.html#module-ordinal_quantification.estimators">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.BaggingEstimator"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.BaggingEstimator.fit"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.BaggingEstimator.predict"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.BaggingEstimator.predict_proba"><code class="docutils literal notranslate"><span class="pre">BaggingEstimator.predict_proba()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.CV_estimator"><code class="docutils literal notranslate"><span class="pre">CV_estimator</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.CV_estimator.estimator"><code class="docutils literal notranslate"><span class="pre">CV_estimator.estimator</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="ordinal_quantification.estimators.html#ordinal_quantification.estimators.CV_estimator.estimators_"><code class="docutils literal notranslate"><span class="pre">CV_estimator.estimators_</span></code></a></li>
@@ -1217,6 +1236,11 @@ probabilistic_predictions) of estimator_test.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">Option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.Option" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ordinal_quantification.factory.Option.bagging_decomp">
+<span class="sig-name descname"><span class="pre">bagging_decomp</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#ordinal_quantification.factory.Option.bagging_decomp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.Option.cv_decomp">
 <span class="sig-name descname"><span class="pre">cv_decomp</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ordinal_quantification.factory.Option.cv_decomp" title="Permalink to this definition"></a></dt>
