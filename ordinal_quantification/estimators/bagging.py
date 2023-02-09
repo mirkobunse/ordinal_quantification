@@ -19,10 +19,14 @@ class BaggingEstimator(BaseEstimator, ClassifierMixin):
     Args:
         estimator: Any bagging classifier with an attribute *oob_score*.
     """
-    def __init__(self, estimator):
+    def __init__(self, estimator, fallback=True):
         if not hasattr(estimator, "oob_score") or not estimator.oob_score:
-            raise ValueError("Only bagging classifiers with oob_score=True are supported")
+            if fallback:
+                print("WARNING (BaggingEstimator): using fallback with oob_score=False")
+            else:
+                raise ValueError("Only bagging classifiers with oob_score=True are supported")
         self.estimator = estimator
+        self.fallback = fallback
         self.label_encoder_ = None
         self.X_trn_ = None
     def fit(self, X, y):
@@ -40,6 +44,12 @@ class BaggingEstimator(BaseEstimator, ClassifierMixin):
         else:
             X_equals_X_trn_ = np.array(X == self.X_trn_).all()
         if X_equals_X_trn_:
-            return self.estimator.oob_decision_function_
+            try:
+                return self.estimator.oob_decision_function_
+            except:
+                if self.fallback:
+                    return self.estimator.predict_proba(X)
+                else:
+                    raise # re-throw the original exception
         else:
             return self.estimator.predict_proba(X)

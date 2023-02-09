@@ -1,4 +1,9 @@
-"""This module creates instances of quantification methods for the outside world."""
+"""
+This module creates instances of quantification methods for the outside world.
+"""
+
+# Authors: Mirko Bunse <mirko.bunse@cs.tu-dortmund.de>
+# License: /
 
 from enum import Enum
 from imblearn.metrics import geometric_mean_score

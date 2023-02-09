@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from unittest import TestCase
 
 import ordinal_quantification
@@ -82,6 +83,7 @@ class TestFactory(TestCase):
       ("AC_L2", factory.AC(_classifier(seed, option), decomposer=factory.Decomposer.none, verbose=1, option=option)),
       ("AC_L2 [CV]", factory.AC(_classifier(seed, factory.Option.cv_decomp), decomposer=factory.Decomposer.none, option=factory.Option.cv_decomp)),
       ("PAC_L2", factory.PAC(_classifier(seed, option), decomposer=factory.Decomposer.none, verbose=1, option=option)),
+      ("PAC_L2 [fallback]", factory.PAC(LogisticRegression(random_state=seed), decomposer=factory.Decomposer.none, verbose=1, option=option)),
       ("PAC_L2 [CV]", factory.PAC(_classifier(seed, factory.Option.cv_decomp), decomposer=factory.Decomposer.none, option=factory.Option.cv_decomp)),
       ("EDy_EMD", factory.EDy(_classifier(seed, option), decomposer=factory.Decomposer.none, distances=emd_distances, verbose=1, option=option)),
       ("EDy_EMD [CV]", factory.EDy(_classifier(seed, factory.Option.cv_decomp), decomposer=factory.Decomposer.none, distances=emd_distances, option=factory.Option.cv_decomp)),
