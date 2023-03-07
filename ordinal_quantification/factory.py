@@ -63,7 +63,7 @@ def _create_decomposer(estimator, decomposer=Decomposer.monotone):
     else:
         raise ValueError('Unknown decomposer {decomposer}')
 
-def estimator(X, y, estimator=None, param_grid=None, random_state=None):
+def estimator(X, y, estimator=None, param_grid=None, random_state=None, n_jobs=-1):
     """
     Take out the grid search of the original experiments.
 
@@ -75,6 +75,7 @@ def estimator(X, y, estimator=None, param_grid=None, random_state=None):
         estimator (optional): The scikit-learn classifier to optimize. Defaults to a RandomForestClassifier.
         param_grid (optional): The parameter grid to optimize over. Defaults to the parameter grid that is used in the paper.
         random_state (optional): The numpy RandomState. Defaults to None.
+        n_jobs (optional): The number of parallel processes to use. Defaults to -1 = all cores.
 
     Returns:
         An estimator to be used in any of the quantification methods, optimized for (X, y).
@@ -96,7 +97,7 @@ def estimator(X, y, estimator=None, param_grid=None, random_state=None):
         param_grid = param_grid,
         scoring = make_scorer(geometric_mean_score),
         cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=random_state),
-        n_jobs = -1,
+        n_jobs = n_jobs,
     )
     gs_tst.fit(X, y)
     return gs_tst.best_estimator_
