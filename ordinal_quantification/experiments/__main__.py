@@ -56,7 +56,7 @@ def main(
         class_weight = 'balanced'
     )
     estimator_grid = {
-        'n_estimators': [10, 20, 40, 70, 100, 200, 250, 500],
+        'n_estimators': [100],
         'max_depth': [1, 5, 10, 15, 20, 25, 30],
         'min_samples_leaf': [1, 2, 5, 10, 20],
     }
@@ -120,7 +120,11 @@ def main(
         "methods": methods,
         "dataset_names": dataset_names
     }
-    Parallel(n_jobs=n_jobs)(delayed(_repetition)(i+1, config) for i in range(n_reps))
+    Parallel(n_jobs=n_jobs)(
+        delayed(_repetition_dataset)(i+1, d, config)
+        for i in range(n_reps)
+        for d in config["dataset_names"]
+    )
     emds = _collect_results(config)
     print(emds)
 
@@ -131,10 +135,6 @@ def _output_dir():
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     return output_dir
-
-def _repetition(i_rep, config):
-    for dataset_name in config["dataset_names"]:
-        _repetition_dataset(i_rep, dataset_name, config)
 
 def _repetition_dataset(i_rep, dataset_name, config):
     current_seed = config["seed"] + i_rep - 1
