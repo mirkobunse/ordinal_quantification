@@ -73,7 +73,7 @@ def main(
         'PAC_L2',
         'PCC',
         'PDF_EMD',
-        'PDF_L2'
+        'PDF_L2',
     ]
     dataset_names = [
         'auto.data.ord_chu',  # 10.475
