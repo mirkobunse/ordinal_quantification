@@ -11,15 +11,6 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.model_selection import GridSearchCV, StratifiedKFold, train_test_split
 from .. import factory
 
-from ..classify_and_count.cc import CC, PCC
-from ..classify_and_count.ac import AC, PAC
-from ..distribution_matching.energy import EDX, EDy, CvMy
-from ..distribution_matching.df import HDX, HDy
-from ..estimators.frank_and_hall import FrankAndHallTreeClassifier, FrankAndHallMonotoneClassifier
-from ..estimators.ordinal_ddag import DDAGClassifier
-from ..ordinal.pdf import PDFOrdinaly
-from ..ordinal.ac import ACOrdinal
-from ..estimators.cross_validation import CV_estimator
 from ..utils import create_bags_with_multiple_prevalence
 from ..metrics.multiclass import mean_absolute_error
 from ..metrics.ordinal import emd, emd_distances, emd_score
@@ -145,7 +136,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
     # but they checked whether the estimator is already fitted (by a previous object) or not
 
     # estimator for estimating the testing distribution, GridSearchCV
-    clf_test_ = factory.estimator(
+    estimator = factory.estimator(
         X_trn,
         y_trn,
         config["estimator"],
@@ -154,105 +145,72 @@ def _repetition_dataset(i_rep, dataset_name, config):
         config["n_jobs"],
     )
 
-    # estimator for estimating the training distribution
-    folds = np.min([config["n_folds"], np.min(np.unique(y_trn, return_counts=True)[1])])
-    skf_cv_train = StratifiedKFold(n_splits=folds, shuffle=True, random_state=config["seed"])
-    cv_train_ = CV_estimator(estimator=clf_test_, cv=skf_cv_train)
-
     print(f"* Training {dataset_name} with {config['decomposer']} rep {i_rep}")
-    df = pd.DataFrame(columns=COLUMNS)
-    est_train_ = cv_train_
-    est_test_ = clf_test_
-    est_train = None
-    est_test = None
-    if config["option"] == 'DECOMP(CV)':
-        if config["decomposer"] == 'Monotone':
-            est_train = FrankAndHallMonotoneClassifier(est_train_, n_jobs=1)
-            est_test = FrankAndHallMonotoneClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'FHTree':
-            est_train = FrankAndHallTreeClassifier(est_train_, n_jobs=1)
-            est_test = FrankAndHallTreeClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'DAG':
-            est_train = DDAGClassifier(est_train_, n_jobs=1)  # OPTION 1
-            est_test = DDAGClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'DAG_LV':
-            est_train = DDAGClassifier(est_train_, predict_method='winner_node', n_jobs=1)
-            est_test = DDAGClassifier(est_test_, predict_method='winner_node', n_jobs=1)
-    elif config["option"] == 'CV(DECOMP)':
-        if config["decomposer"] == 'Monotone':
-            est_test = FrankAndHallMonotoneClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'FHTree':
-            est_test = FrankAndHallTreeClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'DAG':
-            est_test = DDAGClassifier(est_test_, n_jobs=1)
-        elif config["decomposer"] == 'DAG_LV':
-            est_test = DDAGClassifier(est_test_, predict_method='winner_node', n_jobs=1)
-        est_train = CV_estimator(estimator=est_test, cv=skf_cv_train)
-
     if 'AC' in config["methods"]:
-        ac = AC(estimator_train=est_train, estimator_test=est_test)
+        ac = factory.AC(estimator)
         ac.fit(X_trn, y_trn)
     if 'AC_HD' in config["methods"]:
-        ac_hd = AC(estimator_train=est_train, estimator_test=est_test, distance='HD')
+        ac_hd = factory.AC(estimator, distance='HD')
         ac_hd.fit(X_trn, y_trn)
     if 'AC_L1' in config["methods"]:
-        ac_l1 = AC(estimator_train=est_train, estimator_test=est_test, distance='L1')
+        ac_l1 = factory.AC(estimator, distance='L1')
         ac_l1.fit(X_trn, y_trn)
     if 'AC_L2' in config["methods"]:
-        ac_l2 = AC(estimator_train=est_train, estimator_test=est_test, distance='L2')
+        ac_l2 = factory.AC(estimator, distance='L2')
         ac_l2.fit(X_trn, y_trn)
     if 'AC_Ord' in config["methods"]:
-        ac_ord = ACOrdinal(estimator_train=est_train, estimator_test=est_test)
+        ac_ord = factory.OrdinalAC(estimator)
         ac_ord.fit(X_trn, y_trn)
     if 'CC' in config["methods"]:
-        cc = CC(estimator_test=est_test)
+        cc = factory.CC(estimator)
         cc.fit(X_trn, y_trn)
     if 'CvMy_Eu' in config["methods"]:
-        cvmy_eu = CvMy(estimator_train=est_train, estimator_test=est_test, distance=euclidean_distances)
+        cvmy_eu = factory.CvMy(estimator, distance=euclidean_distances)
         cvmy_eu.fit(X_trn, y_trn)
     if 'EDX' in config["methods"]:
-        edx = EDX()
+        edx = factory.EDX()
         edx.fit(X_trn, y_trn)
     if 'EDy_EMD' in config["methods"]:
-        edy_emd = EDy(estimator_train=est_train, estimator_test=est_test, distance=emd_distances)
+        edy_emd = factory.EDy(estimator, distance=emd_distances)
         edy_emd.fit(X_trn, y_trn)
     if 'EDy_Eu' in config["methods"]:
-        edy_eu = EDy(estimator_train=est_train, estimator_test=est_test, distance=euclidean_distances)
+        edy_eu = factory.EDy(estimator, distance=euclidean_distances)
         edy_eu.fit(X_trn, y_trn)
     if 'EDy_Ma' in config["methods"]:
-        edy_ma = EDy(estimator_train=est_train, estimator_test=est_test)
+        edy_ma = factory.EDy(estimator)
         edy_ma.fit(X_trn, y_trn)
     if 'HDX' in config["methods"]:
-        hdx = HDX(n_bins=BINS_HDX)
+        hdx = factory.HDX(n_bins=BINS_HDX)
         hdx.fit(X_trn, y_trn)
     if 'HDy' in config["methods"]:
-        hdy = HDy(estimator_train=est_train, estimator_test=est_test, n_bins=BINS_GEN)
+        hdy = factory.HDy(estimator, n_bins=BINS_GEN)
         hdy.fit(X_trn, y_trn)
     if 'PAC' in config["methods"]:
-        pac = PAC(estimator_train=est_train, estimator_test=est_test)
+        pac = factory.PAC(estimator)
         pac.fit(X_trn, y_trn)
     if 'PAC_HD' in config["methods"]:
-        pac_hd = PAC(estimator_train=est_train, estimator_test=est_test, distance='HD')
+        pac_hd = factory.PAC(estimator, distance='HD')
         pac_hd.fit(X_trn, y_trn)
     if 'PAC_L1' in config["methods"]:
-        pac_l1 = PAC(estimator_train=est_train, estimator_test=est_test, distance='L1')
+        pac_l1 = factory.PAC(estimator, distance='L1')
         pac_l1.fit(X_trn, y_trn)
     if 'PAC_L2' in config["methods"]:
-        pac_l2 = PAC(estimator_train=est_train, estimator_test=est_test, distance='L2')
+        pac_l2 = factory.PAC(estimator, distance='L2')
         pac_l2.fit(X_trn, y_trn)
     if 'PCC' in config["methods"]:
-        pcc = PCC(estimator_test=est_test)
+        pcc = factory.PCC(estimator)
         pcc.fit(X_trn, y_trn)
     if 'PDF_EMD' in config["methods"]:
-        pdf_emd = PDFOrdinaly(estimator_train=est_train, estimator_test=est_test, distance='EMD', n_bins=BINS_PDF_EMD)
+        pdf_emd = factory.PDF(estimator, distance='EMD', n_bins=BINS_PDF_EMD)
         pdf_emd.fit(X_trn, y_trn)
     if 'PDF_HD' in config["methods"]:
-        pdf_hd = PDFOrdinaly(estimator_train=est_train, estimator_test=est_test, distance='HD', n_bins=BINS_GEN)
+        pdf_hd = factory.PDF(estimator, distance='HD', n_bins=BINS_GEN)
         pdf_hd.fit(X_trn, y_trn)
     if 'PDF_L2' in config["methods"]:
-        pdf_l2 = PDFOrdinaly(estimator_train=est_train, estimator_test=est_test, distance='L2', n_bins=BINS_PDF_L2)
+        pdf_l2 = factory.PDF(estimator, distance='L2', n_bins=BINS_PDF_L2)
         pdf_l2.fit(X_trn, y_trn)
 
+    df = pd.DataFrame(columns=COLUMNS)
     for i_bag, (X_tst_, y_tst_, prev_true) in enumerate(create_bags_with_multiple_prevalence(
             X_tst,
             y_tst,
