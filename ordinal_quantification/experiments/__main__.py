@@ -95,7 +95,6 @@ def main(
         n_bags = 3
         n_reps = 1
         n_folds = 2
-        methods = [ "AC_L2", "AC_Ord" ]
         dataset_names = [ "ESL" ]
     config = { # store all parameters in a dict
         "seed": seed,
@@ -144,71 +143,85 @@ def _repetition_dataset(i_rep, dataset_name, config):
         current_seed,
         config["n_jobs"],
     )
+    estimator_args = {
+        "decomposer": {
+            "Monotone": factory.Decomposer.monotone,
+            "FHTree": factory.Decomposer.fh_tree,
+        }[config['decomposer']],
+        "option": {
+            "CV(DECOMP)": factory.Option.cv_decomp,
+            "Bagging(DECOMP)": factory.Option.bagging_decomp,
+        }[config['option']],
+        "n_folds": np.min([
+            config["n_folds"],
+            np.min(np.unique(y_trn, return_counts=True)[1])
+        ]),
+        "random_state": config["seed"],
+    }
 
-    n_folds = np.min([config["n_folds"], np.min(np.unique(y_trn, return_counts=True)[1])])
-    print(f"* Training {dataset_name} with {config['decomposer']} rep {i_rep}")
+    print(f"* Training {dataset_name} with {estimator_args['decomposer']} rep {i_rep}")
     if 'AC' in config["methods"]:
-        ac = factory.AC(estimator, n_folds=n_folds)
+        ac = factory.AC(estimator, **estimator_args)
         ac.fit(X_trn, y_trn)
     if 'AC_HD' in config["methods"]:
-        ac_hd = factory.AC(estimator, n_folds=n_folds, distance='HD')
+        ac_hd = factory.AC(estimator, distance='HD', **estimator_args)
         ac_hd.fit(X_trn, y_trn)
     if 'AC_L1' in config["methods"]:
-        ac_l1 = factory.AC(estimator, n_folds=n_folds, distance='L1')
+        ac_l1 = factory.AC(estimator, distance='L1', **estimator_args)
         ac_l1.fit(X_trn, y_trn)
     if 'AC_L2' in config["methods"]:
-        ac_l2 = factory.AC(estimator, n_folds=n_folds, distance='L2')
+        ac_l2 = factory.AC(estimator, distance='L2', **estimator_args)
         ac_l2.fit(X_trn, y_trn)
     if 'AC_Ord' in config["methods"]:
-        ac_ord = factory.OrdinalAC(estimator, n_folds=n_folds)
+        ac_ord = factory.OrdinalAC(estimator, **estimator_args)
         ac_ord.fit(X_trn, y_trn)
     if 'CC' in config["methods"]:
-        cc = factory.CC(estimator, n_folds=n_folds)
+        cc = factory.CC(estimator, **estimator_args)
         cc.fit(X_trn, y_trn)
     if 'CvMy_Eu' in config["methods"]:
-        cvmy_eu = factory.CvMy(estimator, n_folds=n_folds, distances=euclidean_distances)
+        cvmy_eu = factory.CvMy(estimator, distances=euclidean_distances, **estimator_args)
         cvmy_eu.fit(X_trn, y_trn)
     if 'EDX' in config["methods"]:
         edx = factory.EDX()
         edx.fit(X_trn, y_trn)
     if 'EDy_EMD' in config["methods"]:
-        edy_emd = factory.EDy(estimator, n_folds=n_folds, distances=emd_distances)
+        edy_emd = factory.EDy(estimator, distances=emd_distances, **estimator_args)
         edy_emd.fit(X_trn, y_trn)
     if 'EDy_Eu' in config["methods"]:
-        edy_eu = factory.EDy(estimator, n_folds=n_folds, distances=euclidean_distances)
+        edy_eu = factory.EDy(estimator, distances=euclidean_distances, **estimator_args)
         edy_eu.fit(X_trn, y_trn)
     if 'EDy_Ma' in config["methods"]:
-        edy_ma = factory.EDy(estimator, n_folds=n_folds)
+        edy_ma = factory.EDy(estimator, **estimator_args)
         edy_ma.fit(X_trn, y_trn)
     if 'HDX' in config["methods"]:
         hdx = factory.HDX(n_bins=BINS_HDX)
         hdx.fit(X_trn, y_trn)
     if 'HDy' in config["methods"]:
-        hdy = factory.HDy(estimator, n_folds=n_folds, n_bins=BINS_GEN)
+        hdy = factory.HDy(estimator, n_bins=BINS_GEN, **estimator_args)
         hdy.fit(X_trn, y_trn)
     if 'PAC' in config["methods"]:
-        pac = factory.PAC(estimator, n_folds=n_folds)
+        pac = factory.PAC(estimator, **estimator_args)
         pac.fit(X_trn, y_trn)
     if 'PAC_HD' in config["methods"]:
-        pac_hd = factory.PAC(estimator, n_folds=n_folds, distance='HD')
+        pac_hd = factory.PAC(estimator, distance='HD', **estimator_args)
         pac_hd.fit(X_trn, y_trn)
     if 'PAC_L1' in config["methods"]:
-        pac_l1 = factory.PAC(estimator, n_folds=n_folds, distance='L1')
+        pac_l1 = factory.PAC(estimator, distance='L1', **estimator_args)
         pac_l1.fit(X_trn, y_trn)
     if 'PAC_L2' in config["methods"]:
-        pac_l2 = factory.PAC(estimator, n_folds=n_folds, distance='L2')
+        pac_l2 = factory.PAC(estimator, distance='L2', **estimator_args)
         pac_l2.fit(X_trn, y_trn)
     if 'PCC' in config["methods"]:
-        pcc = factory.PCC(estimator, n_folds=n_folds)
+        pcc = factory.PCC(estimator, **estimator_args)
         pcc.fit(X_trn, y_trn)
     if 'PDF_EMD' in config["methods"]:
-        pdf_emd = factory.PDF(estimator, n_folds=n_folds, distance='EMD', n_bins=BINS_PDF_EMD)
+        pdf_emd = factory.PDF(estimator, distance='EMD', n_bins=BINS_PDF_EMD, **estimator_args)
         pdf_emd.fit(X_trn, y_trn)
     if 'PDF_HD' in config["methods"]:
-        pdf_hd = factory.PDF(estimator, n_folds=n_folds, distance='HD', n_bins=BINS_GEN)
+        pdf_hd = factory.PDF(estimator, distance='HD', n_bins=BINS_GEN, **estimator_args)
         pdf_hd.fit(X_trn, y_trn)
     if 'PDF_L2' in config["methods"]:
-        pdf_l2 = factory.PDF(estimator, n_folds=n_folds, distance='L2', n_bins=BINS_PDF_L2)
+        pdf_l2 = factory.PDF(estimator, distance='L2', n_bins=BINS_PDF_L2, **estimator_args)
         pdf_l2.fit(X_trn, y_trn)
 
     df = pd.DataFrame(columns=COLUMNS)
