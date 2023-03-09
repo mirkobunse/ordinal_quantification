@@ -31,8 +31,24 @@ COLUMNS = [
     'emd',
     'emd_score'
 ]
+DEFAULT_METHODS = [
+    'CC',
+    'AC_L2',
+    'AC_Ord',
+    'PCC',
+    'PAC_L2',
+    'EDX',
+    'CvMy_Eu',
+    'EDy_Eu',
+    'EDy_EMD',
+    'HDX',
+    'HDy',
+    'PDF_L2',
+    'PDF_EMD',
+]
 
 def main(
+        methods = DEFAULT_METHODS,
         seed = 2032,
         n_bags = 300,
         n_reps = 10,
@@ -51,39 +67,24 @@ def main(
         'max_depth': [1, 5, 10, 15, 20, 25, 30],
         'min_samples_leaf': [1, 2, 5, 10, 20],
     }
-    methods = [
-        'AC_L2',
-        'AC_Ord',
-        'CC',
-        'CvMy_Eu',
-        'EDX',
-        'EDy_EMD',
-        'EDy_Eu',
-        'HDX',
-        'HDy',
-        'PAC_L2',
-        'PCC',
-        'PDF_EMD',
-        'PDF_L2',
-    ]
     dataset_names = [
-        'auto.data.ord_chu',  # 10.475
-        'ERA',  # 12.290
-        'ESL',  # 5.395  -->5 clases: 3,4,5,6,7
-        'bostonhousing.ord_chu',  # 33.853
-        'cement_strength_gago',  # 44.142
-        'kinematics_gago',  # 84.0114
-        'abalone.ord_chu',  # 210.760
-        'californiahousing_gago',  # 915.165
-        'ailerons_gago',   # 1.916.322
-        'LEV',  #11.023
-        'stock.ord',  # 53.455
         'SWD',  #23.048
+        'ESL',  # 5.395  -->5 clases: 3,4,5,6,7
+        'LEV',  #11.023
+        'cement_strength_gago',  # 44.142
+        'stock.ord',  # 53.455
+        'auto.data.ord_chu',  # 10.475
+        'bostonhousing.ord_chu',  # 33.853
+        'californiahousing_gago',  # 915.165
         'winequality-red_gago',  # 87.078
         'winequality-white_gago_rev',  #244.255
-        'SkillCraft1_rev_7clases',  # 424.998
-        'SkillCraft1_rev_8clases',  # 398.771
         'skill_gago',  # 538.764
+        'SkillCraft1_rev_7clases',  # 424.998
+        'kinematics_gago',  # 84.0114
+        'SkillCraft1_rev_8clases',  # 398.771
+        'ERA',  # 12.290
+        'ailerons_gago',   # 1.916.322
+        'abalone.ord_chu',  # 210.760
     ]
     if is_test_run:
         print("WARNING: This is a test run; results are not meaningful")
@@ -160,69 +161,54 @@ def _repetition_dataset(i_rep, dataset_name, config):
     }
 
     print(f"* Training {dataset_name} with {estimator_args['decomposer']} rep {i_rep}")
-    if 'AC' in config["methods"]:
-        ac = factory.AC(estimator, **estimator_args)
-        ac.fit(X_trn, y_trn)
-    if 'AC_HD' in config["methods"]:
-        ac_hd = factory.AC(estimator, distance='HD', **estimator_args)
-        ac_hd.fit(X_trn, y_trn)
-    if 'AC_L1' in config["methods"]:
-        ac_l1 = factory.AC(estimator, distance='L1', **estimator_args)
-        ac_l1.fit(X_trn, y_trn)
-    if 'AC_L2' in config["methods"]:
-        ac_l2 = factory.AC(estimator, distance='L2', **estimator_args)
-        ac_l2.fit(X_trn, y_trn)
-    if 'AC_Ord' in config["methods"]:
-        ac_ord = factory.OrdinalAC(estimator, **estimator_args)
-        ac_ord.fit(X_trn, y_trn)
-    if 'CC' in config["methods"]:
-        cc = factory.CC(estimator, **estimator_args)
-        cc.fit(X_trn, y_trn)
-    if 'CvMy_Eu' in config["methods"]:
-        cvmy_eu = factory.CvMy(estimator, distances=euclidean_distances, **estimator_args)
-        cvmy_eu.fit(X_trn, y_trn)
-    if 'EDX' in config["methods"]:
-        edx = factory.EDX()
-        edx.fit(X_trn, y_trn)
-    if 'EDy_EMD' in config["methods"]:
-        edy_emd = factory.EDy(estimator, distances=emd_distances, **estimator_args)
-        edy_emd.fit(X_trn, y_trn)
-    if 'EDy_Eu' in config["methods"]:
-        edy_eu = factory.EDy(estimator, distances=euclidean_distances, **estimator_args)
-        edy_eu.fit(X_trn, y_trn)
-    if 'EDy_Ma' in config["methods"]:
-        edy_ma = factory.EDy(estimator, **estimator_args)
-        edy_ma.fit(X_trn, y_trn)
-    if 'HDX' in config["methods"]:
-        hdx = factory.HDX(n_bins=BINS_HDX)
-        hdx.fit(X_trn, y_trn)
-    if 'HDy' in config["methods"]:
-        hdy = factory.HDy(estimator, n_bins=BINS_GEN, **estimator_args)
-        hdy.fit(X_trn, y_trn)
-    if 'PAC' in config["methods"]:
-        pac = factory.PAC(estimator, **estimator_args)
-        pac.fit(X_trn, y_trn)
-    if 'PAC_HD' in config["methods"]:
-        pac_hd = factory.PAC(estimator, distance='HD', **estimator_args)
-        pac_hd.fit(X_trn, y_trn)
-    if 'PAC_L1' in config["methods"]:
-        pac_l1 = factory.PAC(estimator, distance='L1', **estimator_args)
-        pac_l1.fit(X_trn, y_trn)
-    if 'PAC_L2' in config["methods"]:
-        pac_l2 = factory.PAC(estimator, distance='L2', **estimator_args)
-        pac_l2.fit(X_trn, y_trn)
-    if 'PCC' in config["methods"]:
-        pcc = factory.PCC(estimator, **estimator_args)
-        pcc.fit(X_trn, y_trn)
-    if 'PDF_EMD' in config["methods"]:
-        pdf_emd = factory.PDF(estimator, distance='EMD', n_bins=BINS_PDF_EMD, **estimator_args)
-        pdf_emd.fit(X_trn, y_trn)
-    if 'PDF_HD' in config["methods"]:
-        pdf_hd = factory.PDF(estimator, distance='HD', n_bins=BINS_GEN, **estimator_args)
-        pdf_hd.fit(X_trn, y_trn)
-    if 'PDF_L2' in config["methods"]:
-        pdf_l2 = factory.PDF(estimator, distance='L2', n_bins=BINS_PDF_L2, **estimator_args)
-        pdf_l2.fit(X_trn, y_trn)
+    methods = {}
+    for method_name in config["methods"]:
+        if method_name == 'AC':
+            m = factory.AC(estimator, **estimator_args)
+        if method_name == 'AC_HD':
+            m = factory.AC(estimator, distance='HD', **estimator_args)
+        if method_name == 'AC_L1':
+            m = factory.AC(estimator, distance='L1', **estimator_args)
+        if method_name == 'AC_L2':
+            m = factory.AC(estimator, distance='L2', **estimator_args)
+        if method_name == 'AC_Ord':
+            m = factory.OrdinalAC(estimator, **estimator_args)
+        if method_name == 'CC':
+            m = factory.CC(estimator, **estimator_args)
+        if method_name == 'CvMy_Eu':
+            m = factory.CvMy(estimator, distances=euclidean_distances, **estimator_args)
+        if method_name == 'EDX':
+            m = factory.EDX()
+        if method_name == 'EDy_EMD':
+            m = factory.EDy(estimator, distances=emd_distances, **estimator_args)
+        if method_name == 'EDy_Eu':
+            m = factory.EDy(estimator, distances=euclidean_distances, **estimator_args)
+        if method_name == 'EDy_Ma':
+            m = factory.EDy(estimator, **estimator_args)
+        if method_name == 'HDX':
+            m = factory.HDX(n_bins=BINS_HDX)
+        if method_name == 'HDy':
+            m = factory.HDy(estimator, n_bins=BINS_GEN, **estimator_args)
+        if method_name == 'PAC':
+            m = factory.PAC(estimator, **estimator_args)
+        if method_name == 'PAC_HD':
+            m = factory.PAC(estimator, distance='HD', **estimator_args)
+        if method_name == 'PAC_L1':
+            m = factory.PAC(estimator, distance='L1', **estimator_args)
+        if method_name == 'PAC_L2':
+            m = factory.PAC(estimator, distance='L2', **estimator_args)
+        if method_name == 'PCC':
+            m = factory.PCC(estimator, **estimator_args)
+        if method_name == 'PDF_EMD':
+            m = factory.PDF(estimator, distance='EMD', n_bins=BINS_PDF_EMD, **estimator_args)
+        if method_name == 'PDF_HD':
+            m = factory.PDF(estimator, distance='HD', n_bins=BINS_GEN, **estimator_args)
+        if method_name == 'PDF_L2':
+            m = factory.PDF(estimator, distance='L2', n_bins=BINS_PDF_L2, **estimator_args)
+        if callable(method_name): # support for constructors
+            method_name, m = method_name(estimator, **estimator_args)
+        m.fit(X_trn, y_trn)
+        methods[method_name] = m
 
     df = pd.DataFrame(columns=COLUMNS)
     for i_bag, (X_tst_, y_tst_, prev_true) in enumerate(create_bags_with_multiple_prevalence(
@@ -231,53 +217,11 @@ def _repetition_dataset(i_rep, dataset_name, config):
             config["n_bags"],
             current_seed
             )):
-        prev_preds = []
-        if 'AC' in config["methods"]:
-            prev_preds.append(ac.predict(X_tst_))
-        if 'AC_HD' in config["methods"]:
-            prev_preds.append(ac_hd.predict(X_tst_))
-        if 'AC_L1' in config["methods"]:
-            prev_preds.append(ac_l1.predict(X_tst_))
-        if 'AC_L2' in config["methods"]:
-            prev_preds.append(ac_l2.predict(X_tst_))
-        if 'AC_Ord' in config["methods"]:
-            prev_preds.append(ac_ord.predict(X_tst_))
-        if 'CC' in config["methods"]:
-            prev_preds.append(cc.predict(X_tst_))
-        if 'CvMy_Eu' in config["methods"]:
-            prev_preds.append(cvmy_eu.predict(X_tst_))
-        if 'EDX' in config["methods"]:
-            prev_preds.append(edx.predict(X_tst_))
-        if 'EDy_EMD' in config["methods"]:
-            prev_preds.append(edy_emd.predict(X_tst_))
-        if 'EDy_Eu' in config["methods"]:
-            prev_preds.append(edy_eu.predict(X_tst_))
-        if 'EDy_Ma' in config["methods"]:
-            prev_preds.append(edy_ma.predict(X_tst_))
-        if 'HDX' in config["methods"]:
-            prev_preds.append(hdx.predict(X_tst_))
-        if 'HDy' in config["methods"]:
-            prev_preds.append(hdy.predict(X_tst_))
-        if 'PAC' in config["methods"]:
-            prev_preds.append(pac.predict(X_tst_))
-        if 'PAC_HD' in config["methods"]:
-            prev_preds.append(pac_hd.predict(X_tst_))
-        if 'PAC_L1' in config["methods"]:
-            prev_preds.append(pac_l1.predict(X_tst_))
-        if 'PAC_L2' in config["methods"]:
-            prev_preds.append(pac_l2.predict(X_tst_))
-        if 'PCC' in config["methods"]:
-            prev_preds.append(pcc.predict(X_tst_))
-        if 'PDF_EMD' in config["methods"]:
-            prev_preds.append(pdf_emd.predict(X_tst_))
-        if 'PDF_HD' in config["methods"]:
-            prev_preds.append(pdf_hd.predict(X_tst_))
-        if 'PDF_L2' in config["methods"]:
-            prev_preds.append(pdf_l2.predict(X_tst_))
-        for n_method, (method, prev_pred) in enumerate(zip(config["methods"], prev_preds)):
+        for method_name, method in methods.items():
+            prev_pred = method.predict(X_tst_)
             df = pd.concat((df, pd.DataFrame([[
                 dataset_name,
-                method,
+                method_name,
                 config["decomposer"],
                 str(i_rep) + 'x' + str(i_bag), # rb
                 prev_true,
