@@ -207,7 +207,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
         if method_name == 'PDF_L2':
             m = factory.PDF(estimator, distance='L2', n_bins=BINS_PDF_L2, **estimator_args)
         if callable(method_name): # support for constructors
-            method_name, m = method_name(estimator, **estimator_args)
+            method_name, m = method_name(estimator, estimator_args) # pass args as a dict 👍
         m.fit(X_trn, y_trn)
         methods[method_name] = m
 
