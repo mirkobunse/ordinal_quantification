@@ -116,8 +116,9 @@ def main(
         for i in range(n_reps)
         for d in config["dataset_names"]
     )
-    emds = _collect_results(config)
-    print(emds)
+    output_path = _collect_results(config)
+    print(pd.read_csv(output_path))
+    return output_path
 
 def _output_dir():
     t = datetime.now()  # hour, minute, year, day, month
@@ -265,16 +266,16 @@ def _collect_results(config):
         'emd': 'float',
         'emd_score': 'float'
     }).sort_values(by=['dataset'])
-    fout = f"{config['output_dir']}/means_{config['option']}_{config['n_reps']}x{config['n_bags']}CV{config['n_folds']}_{len(all_files)}.csv"
+    output_path = f"{config['output_dir']}/means_{config['option']}_{config['n_reps']}x{config['n_bags']}CV{config['n_folds']}_{len(all_files)}.csv"
     for i_error, error in enumerate(['emd', 'emd_score', 'mae', 'mse']):
         means_df = res_df.groupby(['decomposer', 'dataset', 'method'])[[error]].agg(['mean']).unstack().round(5)
         means_df.columns = config["methods"]
         means_df['error'] = error  # adding a column at the end
         if i_error == 0:
-            means_df.to_csv(fout, mode='w')
+            means_df.to_csv(output_path, mode='w')
         else:
-            means_df.to_csv(fout, mode='a', header=False)
-    return pd.read_csv(fout)
+            means_df.to_csv(output_path, mode='a', header=False)
+    return output_path
 
 # command line interface
 if __name__ == '__main__':
