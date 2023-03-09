@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ordinal_quantification.metrics package &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -71,12 +70,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ordinal-quantification-metrics-package">
+  <section id="ordinal-quantification-metrics-package">
 <h1>ordinal_quantification.metrics package<a class="headerlink" href="#ordinal-quantification-metrics-package" title="Permalink to this heading"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="module-ordinal_quantification.metrics.binary">
+</section>
+<section id="module-ordinal_quantification.metrics.binary">
 <span id="ordinal-quantification-metrics-binary-module"></span><h2>ordinal_quantification.metrics.binary module<a class="headerlink" href="#module-ordinal_quantification.metrics.binary" title="Permalink to this heading"></a></h2>
 <p>Score functions and loss functions for binary quantification problems</p>
 <dl class="py function">
@@ -88,16 +87,16 @@
 <div><p><span class="math notranslate nohighlight">\(ae = | \hat{p} - p |\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>absolute error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -113,16 +112,16 @@
 </div></blockquote>
 <p>It measures whether the binary quantifier tends to overestimate or underestimate the proportion of positives</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>bias</strong> – It is equal to <span class="math notranslate nohighlight">\(\hat{p} - p\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -136,17 +135,17 @@
 <div><p>:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>kld = p cdot log(p/hat{p}) + (1-p) cdot log((1-p)/(1-hat{p}))</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences.</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(p \cdot \log(p/\hat{p}) + (1-p) \cdot \log((1-p)/(1-\hat{p}))\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -160,16 +159,16 @@
 <div><p><span class="math notranslate nohighlight">\(nas = 1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>NAS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -183,16 +182,16 @@
 <div><p><span class="math notranslate nohighlight">\(nss = 1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>NSS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -207,17 +206,17 @@
 <div><p><span class="math notranslate nohighlight">\(rae = | \hat{p} - p | / p\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>relative_absolute_error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / p\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -234,16 +233,16 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 </div></blockquote>
 <p>It penalizes larger errors</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>squared_error</strong> – It is equal to <span class="math notranslate nohighlight">\((\hat{p} - p)^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -257,23 +256,23 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 <div><p><span class="math notranslate nohighlight">\(sape = | \hat{p} - p | / (\hat{p} + p)\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>SAPE</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / (\hat{p} + p)\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.metrics.multiclass">
+</section>
+<section id="module-ordinal_quantification.metrics.multiclass">
 <span id="ordinal-quantification-metrics-multiclass-module"></span><h2>ordinal_quantification.metrics.multiclass module<a class="headerlink" href="#module-ordinal_quantification.metrics.multiclass" title="Permalink to this heading"></a></h2>
 <p>Score functions and loss functions for multiclass quantification problems</p>
 <dl class="py function">
@@ -281,7 +280,7 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">bray_curtis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.bray_curtis" title="Permalink to this definition"></a></dt>
 <dd><p>Bray-Curtis dissimilarity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – True prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – Predicted prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
@@ -295,13 +294,13 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.multiclass.</span></span><span class="sig-name descname"><span class="pre">check_prevalences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.multiclass.check_prevalences" title="Permalink to this definition"></a></dt>
 <dd><p>Check that p_true and p_pred are valid and consistent</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array-like of shape = (n_classes, 1)</em>) – The converted and validated p_true array</p></li>
 <li><p><strong>p_pred</strong> (<em>array-like of shape = (n_classes, 1)</em>) – The converted and validated p_pred array</p></li>
@@ -320,16 +319,16 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>HD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -347,17 +346,17 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 (see [Esuli and Sebastiani 2010; Forman 2008]).
 KLD is a special case of the family of f-divergences</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>,</em>) – To prevent division by 0 and Inf/NaN results</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} p_j \cdot \log{p_j / \hat{p}_j}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -372,16 +371,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>l1</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -396,16 +395,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>l2</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -420,16 +419,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>MAE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -444,23 +443,23 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>MSE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.metrics.ordinal">
+</section>
+<section id="module-ordinal_quantification.metrics.ordinal">
 <span id="ordinal-quantification-metrics-ordinal-module"></span><h2>ordinal_quantification.metrics.ordinal module<a class="headerlink" href="#module-ordinal_quantification.metrics.ordinal" title="Permalink to this heading"></a></h2>
 <p>Score functions and loss functions for ordinal quantification problems</p>
 <dl class="py function">
@@ -468,16 +467,16 @@ KLD is a special case of the family of f-divergences</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd" title="Permalink to this definition"></a></dt>
 <dd><p>Return the EMD distances between two sets of prevalences</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>1</em><em>)</em>) – </p></li>
 <li><p><strong>p_pred</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>1</em><em>)</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>emd</strong></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float, the EMD distance between p_true and p_pred</p>
 </dd>
 </dl>
@@ -488,17 +487,17 @@ KLD is a special case of the family of f-divergences</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd_distances" title="Permalink to this definition"></a></dt>
 <dd><p>Return the EMD distances between the rows of A and B</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples_1</em><em>, </em><em>n_features</em><em>)</em>) – </p></li>
 <li><p><strong>B</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples_2</em><em>, </em><em>n_features</em><em>)</em>) – </p></li>
 <li><p><strong>columns</strong> (<em>A and B should have the same number of</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>distances</strong></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array, shape (n_samples_1, n_samples_2)</p>
 </dd>
 </dl>
@@ -509,8 +508,8 @@ KLD is a special case of the family of f-divergences</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.ordinal.</span></span><span class="sig-name descname"><span class="pre">emd_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.ordinal.emd_score" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.metrics">
+</section>
+<section id="module-ordinal_quantification.metrics">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.metrics" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.metrics.absolute_error">
@@ -521,16 +520,16 @@ KLD is a special case of the family of f-divergences</p>
 <div><p><span class="math notranslate nohighlight">\(ae = | \hat{p} - p |\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>absolute error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -546,16 +545,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>It measures whether the binary quantifier tends to overestimate or underestimate the proportion of positives</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>bias</strong> – It is equal to <span class="math notranslate nohighlight">\(\hat{p} - p\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -569,17 +568,17 @@ KLD is a special case of the family of f-divergences</p>
 <div><p>:math:<a href="#id3"><span class="problematic" id="id4">`</span></a>kld = p cdot log(p/hat{p}) + (1-p) cdot log((1-p)/(1-hat{p}))</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences.</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(p \cdot \log(p/\hat{p}) + (1-p) \cdot \log((1-p)/(1-\hat{p}))\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -590,7 +589,7 @@ KLD is a special case of the family of f-divergences</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.metrics.</span></span><span class="sig-name descname"><span class="pre">bray_curtis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.metrics.bray_curtis" title="Permalink to this definition"></a></dt>
 <dd><p>Bray-Curtis dissimilarity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – True prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape=</em><em>(</em><em>n_classes</em><em>)</em>) – Predicted prevalences. In case of binary quantification, this parameter could be a single float value.</p></li>
@@ -608,16 +607,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>HD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (\sqrt{p_j} - \sqrt{\hat{p}_j}}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -635,17 +634,17 @@ KLD is a special case of the family of f-divergences</p>
 (see [Esuli and Sebastiani 2010; Forman 2008]).
 KLD is a special case of the family of f-divergences</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>,</em>) – To prevent division by 0 and Inf/NaN results</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>KLD</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} p_j \cdot \log{p_j / \hat{p}_j}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -660,16 +659,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>l1</strong> – It is equal to <span class="math notranslate nohighlight">\(\sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -684,16 +683,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>l2</strong> – It is equal to <span class="math notranslate nohighlight">\(\sqrt{\sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -708,16 +707,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>MAE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} | p_j - \hat{p}_j |\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -732,16 +731,16 @@ KLD is a special case of the family of f-divergences</p>
 </div></blockquote>
 <p>being l the number of classes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – True prevalences</p></li>
 <li><p><strong>p_pred</strong> (<em>array_like</em><em>, </em><em>shape =</em><em> (</em><em>n_classes</em><em>)</em>) – Predicted prevalences</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>MSE</strong> – It is equal to <span class="math notranslate nohighlight">\(1/l \sum_{j=1}^{j=l} (p_j - \hat{p}_j)^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -755,16 +754,16 @@ KLD is a special case of the family of f-divergences</p>
 <div><p><span class="math notranslate nohighlight">\(nas = 1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>NAS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - | \hat{p} - p | / max(p, 1-p)\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -778,16 +777,16 @@ KLD is a special case of the family of f-divergences</p>
 <div><p><span class="math notranslate nohighlight">\(nss = 1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>NSS</strong> – It is equal to <span class="math notranslate nohighlight">\(1 - ( (\hat{p} - p) / max(p, 1-p) )^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -802,17 +801,17 @@ KLD is a special case of the family of f-divergences</p>
 <div><p><span class="math notranslate nohighlight">\(rae = | \hat{p} - p | / p\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 <li><p><strong>eps</strong> (<em>float</em><em>, </em><em>(</em><em>default=1e-12</em><em>)</em>) – To prevent a division by zero exception</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>relative_absolute_error</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / p\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -829,16 +828,16 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 </div></blockquote>
 <p>It penalizes larger errors</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>squared_error</strong> – It is equal to <span class="math notranslate nohighlight">\((\hat{p} - p)^2\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -852,23 +851,23 @@ the true prevalence (<span class="math notranslate nohighlight">\(p\)</span>)</p
 <div><p><span class="math notranslate nohighlight">\(sape = | \hat{p} - p | / (\hat{p} + p)\)</span></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_true</strong> (<em>float</em>) – True prevalence for the positive class</p></li>
 <li><p><strong>p_pred</strong> (<em>float</em>) – Predicted prevalence for the positive class</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>SAPE</strong> – It is equal to <span class="math notranslate nohighlight">\(| \hat{p} - p | / (\hat{p} + p)\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

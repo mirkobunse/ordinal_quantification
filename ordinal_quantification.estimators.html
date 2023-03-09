@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ordinal_quantification.estimators package &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -70,12 +69,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ordinal-quantification-estimators-package">
+  <section id="ordinal-quantification-estimators-package">
 <h1>ordinal_quantification.estimators package<a class="headerlink" href="#ordinal-quantification-estimators-package" title="Permalink to this heading"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="module-ordinal_quantification.estimators.bagging">
+</section>
+<section id="module-ordinal_quantification.estimators.bagging">
 <span id="ordinal-quantification-estimators-bagging-module"></span><h2>ordinal_quantification.estimators.bagging module<a class="headerlink" href="#module-ordinal_quantification.estimators.bagging" title="Permalink to this heading"></a></h2>
 <p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
 <dl class="py class">
@@ -85,7 +84,7 @@
 <p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
 <p>This drop-in replacement uses out-of-bag (OOB) predictions of a bagging ensemble for fitting the quantifier.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>estimator</strong> – Any bagging classifier with an attribute <em>oob_score</em>.</p>
 </dd>
 </dl>
@@ -106,8 +105,8 @@
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.estimators.cross_validation">
+</section>
+<section id="module-ordinal_quantification.estimators.cross_validation">
 <span id="ordinal-quantification-estimators-cross-validation-module"></span><h2>ordinal_quantification.estimators.cross_validation module<a class="headerlink" href="#module-ordinal_quantification.estimators.cross_validation" title="Permalink to this heading"></a></h2>
 <p>Estimator object based on Cross Validation</p>
 <dl class="py class">
@@ -121,7 +120,7 @@ the models of the CV, and the typical methods <cite>predict</cite> y <cite>predi
 such models. This implies that this object can be used by any distribution matching method that requires an
 estimator to represent the distributions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sklearn</strong> (<em>Mainly the same that cross_validate method in</em>) – </p></li>
 <li><p><strong>estimator</strong> (<em>estimator object implementing 'fit'</em>) – The object to use to fit the data.</p></li>
@@ -176,7 +175,7 @@ which is recommended for an ensemble of well-calibrated classifiers.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The estimator to fit each model of the CV</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An estimator object</p>
 </dd>
 </dl>
@@ -188,7 +187,7 @@ which is recommended for an ensemble of well-calibrated classifiers.</p></li>
 <dd><p>The list of estimators trained by <a href="#id1"><span class="problematic" id="id2">`</span></a>fit`method.
 The number of estimators is equal to the number of folds times number of repetitions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of trained estimators</p>
 </dd>
 </dl>
@@ -199,7 +198,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">averaged_predictions</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.averaged_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Determines whether the predictions for each example given by <a href="#id13"><span class="problematic" id="id14">estimators_</span></a> are averaged or not</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -216,7 +215,7 @@ The number of estimators is equal to the number of folds times number of repetit
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str, {‘hard’, ‘soft’} (default=’hard’)</p>
 </dd>
 </dl>
@@ -227,7 +226,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">le_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.le_" title="Permalink to this definition"></a></dt>
 <dd><p>Used to compute the class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a LabelEncoder fitted object</p>
 </dd>
 </dl>
@@ -238,7 +237,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -249,7 +248,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">X_train_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.X_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Data. It is needed to obtain the predictions over the own training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape (n_examples, n_features)</p>
 </dd>
 </dl>
@@ -260,7 +259,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">y_train_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.y_train_" title="Permalink to this definition"></a></dt>
 <dd><p>True classes. It is needed to obtain the predictions over the own training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape (n_examples, )</p>
 </dd>
 </dl>
@@ -271,7 +270,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>integer</p>
 </dd>
 </dl>
@@ -285,7 +284,7 @@ It calls <cite>cross_validate</cite> to fit the models and save them in <a href=
 I also stores some attributes needed by <cite>predict</cite> and <cite>predict_proba</cite>, namely, <a href="#id17"><span class="problematic" id="id18">le_</span></a>, <a href="#id19"><span class="problematic" id="id20">classes_</span></a> <a href="#id21"><span class="problematic" id="id22">X_train_</span></a>
 and <a href="#id23"><span class="problematic" id="id24">y_train_</span></a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
@@ -299,10 +298,10 @@ and <a href="#id23"><span class="problematic" id="id24">y_train_</span></a></p>
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.predict" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the crisp predictions given by a CV estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Test ata</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p><strong>preds</strong> –    the value of averaged_predictions attribute</p>
 <dl class="simple">
 <dt>Training set:</dt><dd><ul class="simple">
@@ -319,7 +318,7 @@ and <a href="#id23"><span class="problematic" id="id24">y_train_</span></a></p>
 <p>Crisp predictions for the examples in X</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape depends on two factors: the type of the examples (training or testing) and</p>
 </dd>
 </dl>
@@ -330,10 +329,10 @@ and <a href="#id23"><span class="problematic" id="id24">y_train_</span></a></p>
 <span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.cross_validation.CV_estimator.predict_proba" title="Permalink to this definition"></a></dt>
 <dd><p>Returns probabilistic predictions given by a CV estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Test ata</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p><strong>preds</strong> –     the value of averaged_predictions attribute</p>
 <p>Probabilistic predictions for the examples in X.
 Shape:</p>
@@ -353,7 +352,7 @@ Shape:</p>
 </div></blockquote>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape depends on two factors: the type of the examples (training or testing) and</p>
 </dd>
 </dl>
@@ -361,8 +360,8 @@ Shape:</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.estimators.frank_and_hall">
+</section>
+<section id="module-ordinal_quantification.estimators.frank_and_hall">
 <span id="ordinal-quantification-estimators-frank-and-hall-module"></span><h2>ordinal_quantification.estimators.frank_and_hall module<a class="headerlink" href="#module-ordinal_quantification.estimators.frank_and_hall" title="Permalink to this heading"></a></h2>
 <p>Estimators based on Frank and Hall decomposition</p>
 <dl class="py class">
@@ -374,7 +373,7 @@ Shape:</p>
 ranging from 1-star to 5-star, Frank and Hall (FH) decompositon trains 4 binary classifiers:
 1 vs 2-3-4-5, 1-2 vs 3-4-5, 1-2-3 vs 4-5, 1-2-3-4 vs 5 and combines their predictions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -396,7 +395,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -407,7 +406,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -418,7 +417,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -429,7 +428,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -440,7 +439,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -456,7 +455,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -467,7 +466,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -481,15 +480,15 @@ In Proceedings of the European Conference on Machine Learning. Springer, 145156.
 <span class="sig-name descname"><span class="pre">compute_binary_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallClassifier.compute_binary_proba" title="Permalink to this definition"></a></dt>
 <dd><p>Compute the class probabilities of the internal binary estimators</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – </p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>For each sample, this matrix contains the probabily that such sample belongs to left group of classes
 of each estimator of the FH decomposition
 Recall that n_estimators = n_classes-1</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_samples, n_estimators)</p>
 </dd>
 </dl>
@@ -507,13 +506,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dl>
 <p>The left group of each classifier ({1}, {1,2}, …) is the positive class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -526,13 +525,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -602,7 +601,7 @@ is computed as:</p>
 <div><p>Pr({y_k}) = Pr({y_1,…,y_k}) - Pr({y_1,…,y_k-1})</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -624,7 +623,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -635,7 +634,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -646,7 +645,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -657,7 +656,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator (not used in this class)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -668,7 +667,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -684,7 +683,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -695,7 +694,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallMonotoneClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -717,13 +716,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dl>
 <p>The left group of each classifier ({1}, {1,2}, …) is the positive class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -736,13 +735,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -769,7 +768,7 @@ respectively. The average value is assigned to each group and the probability fo
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative probabilities (adjusting from left to right)</p>
-<div class="section" id="lower-cumulative-probabilities-adjusting-from-right-to-left">
+<section id="lower-cumulative-probabilities-adjusting-from-right-to-left">
 <h3>0.2   0.2    0.6    Lower cumulative probabilities (adjusting from right to left)<a class="headerlink" href="#lower-cumulative-probabilities-adjusting-from-right-to-left" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged probability</p>
 <p>Pr({1}) = 0.25
@@ -778,20 +777,20 @@ Pr({3}) = Pr({1,2,3}} - Pr({1,2}) = 0.6 - 0.25 = 0.35</p>
 <p>The last class is computed as 1 - the sum of the probabilities for the rest of classes</p>
 <p>Pr({4}) = 1 - Pr({1,2,3}} = 1 - 0.6 = 0.4</p>
 <dl class="field-list simple">
-<dt class="field-odd">param X</dt>
+<dt class="field-odd">param X<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Data</p>
 </dd>
-<dt class="field-even">type X</dt>
+<dt class="field-even">type X<span class="colon">:</span></dt>
 <dd class="field-even"><p>(sparse) array-like, shape (n_examples, n_features)</p>
 </dd>
-<dt class="field-odd">rtype</dt>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-even">raises NotFittedError</dt>
+<dt class="field-even">raises NotFittedError<span class="colon">:</span></dt>
 <dd class="field-even"><p>When the estimators are not fitted yet</p>
 </dd>
 </dl>
-</div>
+</section>
 </dd></dl>
 
 </dd></dl>
@@ -823,7 +822,7 @@ binary classifier and using the KLD as performance measure).</p>
 </dl>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -847,7 +846,7 @@ as quantifier</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -858,7 +857,7 @@ as quantifier</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -870,7 +869,7 @@ as quantifier</p></li>
 <dd><p>The binary quantification performance measure used to estimate the goodness of each binary classifier used
 as quantifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str, or any binary quantification performance measure</p>
 </dd>
 </dl>
@@ -881,7 +880,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -892,7 +891,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -903,7 +902,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -919,7 +918,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -930,7 +929,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -941,7 +940,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">tree_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.frank_and_hall.FrankAndHallTreeClassifier.tree_" title="Permalink to this definition"></a></dt>
 <dd><p>A tree with the binary classifiers ordered by their quantification performance (using KLD or other measure)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A tree</p>
 </dd>
 </dl>
@@ -961,13 +960,13 @@ Association for Computational Linguistics, A, 5863.</p>
 <dd><p>Fits the set of estimators for the training set following the Frank and Hall decomposition and builds
 the binary tree to organize such estimators</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -980,13 +979,13 @@ the binary tree to organize such estimators</p>
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1022,13 +1021,13 @@ Pr({4}) = (1-Pr({1,2,3}) * Pr{1,2,3,4}) = 0.8 * 0.7 = 0.56
 Pr({5}) = (1-Pr({1,2,3}) * (1-Pr{1,2,3,4})) = 0.8 * 0.3 = 0.24</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1042,7 +1041,7 @@ Pr({5}) = (1-Pr({1,2,3}) * (1-Pr{1,2,3,4})) = 0.8 * 0.3 = 0.24</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Auxiliar class to represent the binary trees needed by FrankAndHallTreeClassifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fhqtree</strong> (<em>FrankAndHallTreeClassifier object</em><em>  (</em><em>default=None</em><em>)</em>) – </p></li>
 <li><p><strong>pos_estimator</strong> (<em>int</em><em>, </em><em>(</em><em>default=0</em><em>)</em>) – Index of the estimator in the order defined by the Frank and Hall decomposition: 1 vs 2-3-4-5, 1-2 vs 3-4-5
@@ -1063,8 +1062,8 @@ and so on.</p></li>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.estimators.ordinal_ddag">
+</section>
+<section id="module-ordinal_quantification.estimators.ordinal_ddag">
 <span id="ordinal-quantification-estimators-ordinal-ddag-module"></span><h2>ordinal_quantification.estimators.ordinal_ddag module<a class="headerlink" href="#module-ordinal_quantification.estimators.ordinal_ddag" title="Permalink to this heading"></a></h2>
 <p>Estimator based on DDAGs (Decision Directed Acyclic Graphs)</p>
 <dl class="py class">
@@ -1197,7 +1196,7 @@ are (0, 0, 0, 0.3, 0.7)</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -1223,7 +1222,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -1234,7 +1233,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -1245,7 +1244,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">predict_method</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.predict_method" title="Permalink to this definition"></a></dt>
 <dd><p>The method used by <cite>predict_proba</cite> to compute the class probabilities of a given example</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -1256,7 +1255,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int,</p>
 </dd>
 </dl>
@@ -1267,7 +1266,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">estimators_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.estimators_" title="Permalink to this definition"></a></dt>
 <dd><p>Estimators used for predictions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of <code class="docutils literal notranslate"><span class="pre">n_classes</span> <span class="pre">*</span> <span class="pre">(n_classes</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2</span></code> estimators</p>
 </dd>
 </dl>
@@ -1278,7 +1277,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.ordinal_ddag.DDAGClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Array containing labels.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy array of shape [n_classes]</p>
 </dd>
 </dl>
@@ -1295,13 +1294,13 @@ Springer, Berlin, Heidelberg.</p>
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1322,13 +1321,13 @@ binarizing such probabilities to 0,1). Then, the method returns the probalities 
 for the two consecutive classes involved, and zero for the rest of classes.</p>
 <p>The method uses a recursive auxiliar method to compute the class probabilities</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1336,8 +1335,8 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.estimators.utils">
+</section>
+<section id="module-ordinal_quantification.estimators.utils">
 <span id="ordinal-quantification-estimators-utils-module"></span><h2>ordinal_quantification.estimators.utils module<a class="headerlink" href="#module-ordinal_quantification.estimators.utils" title="Permalink to this heading"></a></h2>
 <p>Util functions used for building new estimators</p>
 <dl class="py class">
@@ -1366,10 +1365,10 @@ easy using the transform method.</p>
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.utils.FHLabelBinarizer.transform" title="Permalink to this definition"></a></dt>
 <dd><p>Transform ordinal labels to the Frank and Hall binary labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>y</strong> (<em>array</em><em>, </em><em>(</em><em>n_samples</em><em>,</em><em>)</em>) – Class labels for a set of examples</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p><strong>y_bin_fh</strong> – Each column contains the binary labels for the consecutive binary problems of a Frank and Hall
 decomposition from left to right. For instance, in a 4-class problem, each column corresponds to
 the following problems:</p>
@@ -1379,7 +1378,7 @@ the following problems:</p>
 4ht column: (not really used)</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array, (n_samples, n_classes)</p>
 </dd>
 </dl>
@@ -1404,20 +1403,20 @@ respectively. The average value is assigned to each group.</p>
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative probabilities (adjusting from left to right)</p>
-<div class="section" id="id5">
+<section id="id5">
 <h3>0.2   0.2    0.6    Lower cumulative probabilities (adjusting from right to left)<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">param probabilities</dt>
+<dt class="field-odd">param probabilities<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The probabilities of the binary models of a FrankAndHonotone estimator for a complete dataset</p>
 </dd>
-<dt class="field-even">type probabilities</dt>
+<dt class="field-even">type probabilities<span class="colon">:</span></dt>
 <dd class="field-even"><p>array, shape(n_examples, n_classes-1)</p>
 </dd>
-<dt class="field-odd">returns</dt>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>probabilities_ok</strong> – The corrected probabilities ensuring that do not decrease (from left to right)</p>
 </dd>
-<dt class="field-even">rtype</dt>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
 <dd class="field-even"><p>array, shape(n_examples, n_classes-1)</p>
 </dd>
 </dl>
@@ -1425,11 +1424,11 @@ respectively. The average value is assigned to each group.</p>
 <p>Sébastien Destercke, Gen Yang. Cautious Ordinal Classification by Binary Decomposition.
 Machine Learning and Knowledge Discovery in Databases - European Conference ECML/PKDD,
 Sep 2014, Nancy, France. pp.323 - 337, 2014,</p>
-</div>
+</section>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.estimators">
+</section>
+<section id="module-ordinal_quantification.estimators">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.estimators" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ordinal_quantification.estimators.BaggingEstimator">
@@ -1438,7 +1437,7 @@ Sep 2014, Nancy, France. pp.323 - 337, 2014,</p>
 <p>A bagging-based drop-in replacement for the <em>CV_estimator</em> class.</p>
 <p>This drop-in replacement uses out-of-bag (OOB) predictions of a bagging ensemble for fitting the quantifier.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>estimator</strong> – Any bagging classifier with an attribute <em>oob_score</em>.</p>
 </dd>
 </dl>
@@ -1470,7 +1469,7 @@ the models of the CV, and the typical methods <cite>predict</cite> y <cite>predi
 such models. This implies that this object can be used by any distribution matching method that requires an
 estimator to represent the distributions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sklearn</strong> (<em>Mainly the same that cross_validate method in</em>) – </p></li>
 <li><p><strong>estimator</strong> (<em>estimator object implementing 'fit'</em>) – The object to use to fit the data.</p></li>
@@ -1525,7 +1524,7 @@ which is recommended for an ensemble of well-calibrated classifiers.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The estimator to fit each model of the CV</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An estimator object</p>
 </dd>
 </dl>
@@ -1537,7 +1536,7 @@ which is recommended for an ensemble of well-calibrated classifiers.</p></li>
 <dd><p>The list of estimators trained by <a href="#id6"><span class="problematic" id="id7">`</span></a>fit`method.
 The number of estimators is equal to the number of folds times number of repetitions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of trained estimators</p>
 </dd>
 </dl>
@@ -1548,7 +1547,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">averaged_predictions</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.averaged_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Determines whether the predictions for each example given by <a href="#id27"><span class="problematic" id="id28">estimators_</span></a> are averaged or not</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -1565,7 +1564,7 @@ The number of estimators is equal to the number of folds times number of repetit
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str, {‘hard’, ‘soft’} (default=’hard’)</p>
 </dd>
 </dl>
@@ -1576,7 +1575,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">le_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.le_" title="Permalink to this definition"></a></dt>
 <dd><p>Used to compute the class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a LabelEncoder fitted object</p>
 </dd>
 </dl>
@@ -1587,7 +1586,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -1598,7 +1597,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">X_train_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.X_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Data. It is needed to obtain the predictions over the own training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape (n_examples, n_features)</p>
 </dd>
 </dl>
@@ -1609,7 +1608,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">y_train_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.y_train_" title="Permalink to this definition"></a></dt>
 <dd><p>True classes. It is needed to obtain the predictions over the own training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape (n_examples, )</p>
 </dd>
 </dl>
@@ -1620,7 +1619,7 @@ The number of estimators is equal to the number of folds times number of repetit
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>integer</p>
 </dd>
 </dl>
@@ -1634,7 +1633,7 @@ It calls <cite>cross_validate</cite> to fit the models and save them in <a href=
 I also stores some attributes needed by <cite>predict</cite> and <cite>predict_proba</cite>, namely, <a href="#id31"><span class="problematic" id="id32">le_</span></a>, <a href="#id33"><span class="problematic" id="id34">classes_</span></a> <a href="#id35"><span class="problematic" id="id36">X_train_</span></a>
 and <a href="#id37"><span class="problematic" id="id38">y_train_</span></a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
@@ -1648,10 +1647,10 @@ and <a href="#id37"><span class="problematic" id="id38">y_train_</span></a></p>
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.predict" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the crisp predictions given by a CV estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Test ata</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p><strong>preds</strong> –    the value of averaged_predictions attribute</p>
 <dl class="simple">
 <dt>Training set:</dt><dd><ul class="simple">
@@ -1668,7 +1667,7 @@ and <a href="#id37"><span class="problematic" id="id38">y_train_</span></a></p>
 <p>Crisp predictions for the examples in X</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape depends on two factors: the type of the examples (training or testing) and</p>
 </dd>
 </dl>
@@ -1679,10 +1678,10 @@ and <a href="#id37"><span class="problematic" id="id38">y_train_</span></a></p>
 <span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.CV_estimator.predict_proba" title="Permalink to this definition"></a></dt>
 <dd><p>Returns probabilistic predictions given by a CV estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Test ata</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p><strong>preds</strong> –     the value of averaged_predictions attribute</p>
 <p>Probabilistic predictions for the examples in X.
 Shape:</p>
@@ -1702,7 +1701,7 @@ Shape:</p>
 </div></blockquote>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array-like, shape depends on two factors: the type of the examples (training or testing) and</p>
 </dd>
 </dl>
@@ -1840,7 +1839,7 @@ are (0, 0, 0, 0.3, 0.7)</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -1866,7 +1865,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -1877,7 +1876,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -1888,7 +1887,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">predict_method</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.predict_method" title="Permalink to this definition"></a></dt>
 <dd><p>The method used by <cite>predict_proba</cite> to compute the class probabilities of a given example</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -1899,7 +1898,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int,</p>
 </dd>
 </dl>
@@ -1910,7 +1909,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">estimators_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.estimators_" title="Permalink to this definition"></a></dt>
 <dd><p>Estimators used for predictions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of <code class="docutils literal notranslate"><span class="pre">n_classes</span> <span class="pre">*</span> <span class="pre">(n_classes</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2</span></code> estimators</p>
 </dd>
 </dl>
@@ -1921,7 +1920,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.DDAGClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Array containing labels.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy array of shape [n_classes]</p>
 </dd>
 </dl>
@@ -1938,13 +1937,13 @@ Springer, Berlin, Heidelberg.</p>
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1965,13 +1964,13 @@ binarizing such probabilities to 0,1). Then, the method returns the probalities 
 for the two consecutive classes involved, and zero for the rest of classes.</p>
 <p>The method uses a recursive auxiliar method to compute the class probabilities</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -1988,7 +1987,7 @@ for the two consecutive classes involved, and zero for the rest of classes.</p>
 ranging from 1-star to 5-star, Frank and Hall (FH) decompositon trains 4 binary classifiers:
 1 vs 2-3-4-5, 1-2 vs 3-4-5, 1-2-3 vs 4-5, 1-2-3-4 vs 5 and combines their predictions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -2010,7 +2009,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -2021,7 +2020,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -2032,7 +2031,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -2043,7 +2042,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -2054,7 +2053,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -2070,7 +2069,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -2081,7 +2080,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -2095,15 +2094,15 @@ In Proceedings of the European Conference on Machine Learning. Springer, 145156.
 <span class="sig-name descname"><span class="pre">compute_binary_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallClassifier.compute_binary_proba" title="Permalink to this definition"></a></dt>
 <dd><p>Compute the class probabilities of the internal binary estimators</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – </p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>For each sample, this matrix contains the probabily that such sample belongs to left group of classes
 of each estimator of the FH decomposition
 Recall that n_estimators = n_classes-1</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_samples, n_estimators)</p>
 </dd>
 </dl>
@@ -2121,13 +2120,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dl>
 <p>The left group of each classifier ({1}, {1,2}, …) is the positive class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -2140,13 +2139,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -2216,7 +2215,7 @@ is computed as:</p>
 <div><p>Pr({y_k}) = Pr({y_1,…,y_k}) - Pr({y_1,…,y_k-1})</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -2238,7 +2237,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -2249,7 +2248,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -2260,7 +2259,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -2271,7 +2270,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator (not used in this class)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -2282,7 +2281,7 @@ for more details.</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -2298,7 +2297,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -2309,7 +2308,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallMonotoneClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -2331,13 +2330,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dl>
 <p>The left group of each classifier ({1}, {1,2}, …) is the positive class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -2350,13 +2349,13 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -2383,7 +2382,7 @@ respectively. The average value is assigned to each group and the probability fo
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative probabilities (adjusting from left to right)</p>
-<div class="section" id="id10">
+<section id="id10">
 <h3>0.2   0.2    0.6    Lower cumulative probabilities (adjusting from right to left)<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged probability</p>
 <p>Pr({1}) = 0.25
@@ -2392,20 +2391,20 @@ Pr({3}) = Pr({1,2,3}} - Pr({1,2}) = 0.6 - 0.25 = 0.35</p>
 <p>The last class is computed as 1 - the sum of the probabilities for the rest of classes</p>
 <p>Pr({4}) = 1 - Pr({1,2,3}} = 1 - 0.6 = 0.4</p>
 <dl class="field-list simple">
-<dt class="field-odd">param X</dt>
+<dt class="field-odd">param X<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Data</p>
 </dd>
-<dt class="field-even">type X</dt>
+<dt class="field-even">type X<span class="colon">:</span></dt>
 <dd class="field-even"><p>(sparse) array-like, shape (n_examples, n_features)</p>
 </dd>
-<dt class="field-odd">rtype</dt>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-even">raises NotFittedError</dt>
+<dt class="field-even">raises NotFittedError<span class="colon">:</span></dt>
 <dd class="field-even"><p>When the estimators are not fitted yet</p>
 </dd>
 </dl>
-</div>
+</section>
 </dd></dl>
 
 </dd></dl>
@@ -2437,7 +2436,7 @@ binary classifier and using the KLD as performance measure).</p>
 </dl>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is the base estimator
 used to learn the set of binary classifiers</p></li>
@@ -2461,7 +2460,7 @@ as quantifier</p></li>
 <span class="sig-name descname"><span class="pre">estimator</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>The base estimator used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator object</p>
 </dd>
 </dl>
@@ -2472,7 +2471,7 @@ as quantifier</p></li>
 <span class="sig-name descname"><span class="pre">n_jobs</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.n_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>The number of jobs to use for the computation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None,</p>
 </dd>
 </dl>
@@ -2484,7 +2483,7 @@ as quantifier</p></li>
 <dd><p>The binary quantification performance measure used to estimate the goodness of each binary classifier used
 as quantifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str, or any binary quantification performance measure</p>
 </dd>
 </dl>
@@ -2495,7 +2494,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level. The default value, zero, means silent mode</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -2506,7 +2505,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">params_fit</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.params_fit" title="Permalink to this definition"></a></dt>
 <dd><p>It has the parameters for each binary estimator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of dictionaries</p>
 </dd>
 </dl>
@@ -2517,7 +2516,7 @@ as quantifier</p>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -2533,7 +2532,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(n_classes-1,)</p>
 </dd>
 </dl>
@@ -2544,7 +2543,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">label_binarizer_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.label_binarizer_" title="Permalink to this definition"></a></dt>
 <dd><p>Object used to transform multiclass labels to binary labels and vice-versa</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>FHLabelBinarizer object</p>
 </dd>
 </dl>
@@ -2555,7 +2554,7 @@ estimators_[1] -&gt; 1-2 vs 3-4-5
 <span class="sig-name descname"><span class="pre">tree_</span></span><a class="headerlink" href="#ordinal_quantification.estimators.FrankAndHallTreeClassifier.tree_" title="Permalink to this definition"></a></dt>
 <dd><p>A tree with the binary classifiers ordered by their quantification performance (using KLD or other measure)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A tree</p>
 </dd>
 </dl>
@@ -2575,13 +2574,13 @@ Association for Computational Linguistics, A, 5863.</p>
 <dd><p>Fits the set of estimators for the training set following the Frank and Hall decomposition and builds
 the binary tree to organize such estimators</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator is None</p>
 </dd>
 </dl>
@@ -2594,13 +2593,13 @@ the binary tree to organize such estimators</p>
 <p>The method computes the probability of each class (using <cite>predict_proba</cite>) and returns the class with
 highest probability</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, ) with the predicted class for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -2636,13 +2635,13 @@ Pr({4}) = (1-Pr({1,2,3}) * Pr{1,2,3,4}) = 0.8 * 0.7 = 0.56
 Pr({5}) = (1-Pr({1,2,3}) * (1-Pr{1,2,3,4})) = 0.8 * 0.3 = 0.24</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array, shape(n_examples, n_classes) with the class probabilities for each example</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>NotFittedError</strong> – When the estimators are not fitted yet</p>
 </dd>
 </dl>
@@ -2650,8 +2649,8 @@ Pr({5}) = (1-Pr({1,2,3}) * (1-Pr{1,2,3,4})) = 0.8 * 0.3 = 0.24</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ordinal_quantification.decomposition package &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -70,12 +69,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ordinal-quantification-decomposition-package">
+  <section id="ordinal-quantification-decomposition-package">
 <h1>ordinal_quantification.decomposition package<a class="headerlink" href="#ordinal-quantification-decomposition-package" title="Permalink to this heading"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="module-ordinal_quantification.decomposition.multiclass">
+</section>
+<section id="module-ordinal_quantification.decomposition.multiclass">
 <span id="ordinal-quantification-decomposition-multiclass-module"></span><h2>ordinal_quantification.decomposition.multiclass module<a class="headerlink" href="#module-ordinal_quantification.decomposition.multiclass" title="Permalink to this heading"></a></h2>
 <p>Generic quantifiers based on multiclass decompositions</p>
 <dl class="py class">
@@ -88,7 +87,7 @@ just normalizes these prevalences to sum 1</p>
 <p>The class works both with quantifiers that require classifiers or not. In the former case, the estimator
 used for the training distribution and the testing distribution must be a OneVsRestQuantifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quantifier</strong> (<em>quantifier object</em>) – The base quantifier used to build the One versus Rest decomposition. Any quantifier can be used</p></li>
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is used to classify
@@ -108,7 +107,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifier</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.quantifier" title="Permalink to this definition"></a></dt>
 <dd><p>The base quantifier used to build the One versus Rest decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>quantifier object</p>
 </dd>
 </dl>
@@ -119,7 +118,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -130,7 +129,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -141,7 +140,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -152,7 +151,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -163,7 +162,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>True if the base quantifier needs to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, (default=True)</p>
 </dd>
 </dl>
@@ -174,7 +173,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Not used</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -185,7 +184,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifiers_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.quantifiers_" title="Permalink to this definition"></a></dt>
 <dd><p>List of quantifiers, one for each class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -196,7 +195,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -211,7 +210,7 @@ CV_estimator) than y. In other cases, <a href="#id5"><span class="problematic" i
 <a href="#id7"><span class="problematic" id="id8">y_ext_</span></a> must be used in <cite>fit</cite>/<cite>predict</cite> methods whenever the true labels of the training set are needed,
 instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id9"><span class="problematic" id="id10">predictions_train_</span></a>), )</p>
 </dd>
 </dl>
@@ -222,7 +221,7 @@ instead of y</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.multiclass.OneVsRestQuantifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -236,14 +235,14 @@ instead of y</p>
 the <cite>fit</cite> method of its superclass</p>
 <p>Then, it creates (using <cite>deepcopy</cite>) the set on <a href="#id11"><span class="problematic" id="id12">quantifiers_</span></a>, one per class, and fit them</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>optional</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probs</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train or estimator_test are not instances of OneVsRestClassifier</p>
 </dd>
 </dl>
@@ -256,7 +255,7 @@ the <cite>fit</cite> method of its superclass</p>
 <p>Just one aggregation strategy is implemented. It normalizes the prevalences given by each quantifier
 to sum 1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – Predictions for the testing bag</p></li>
@@ -267,8 +266,8 @@ to sum 1</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.decomposition.ordinal">
+</section>
+<section id="module-ordinal_quantification.decomposition.ordinal">
 <span id="ordinal-quantification-decomposition-ordinal-module"></span><h2>ordinal_quantification.decomposition.ordinal module<a class="headerlink" href="#module-ordinal_quantification.decomposition.ordinal" title="Permalink to this heading"></a></h2>
 <p>Generic quantifier based on Frank and Hall decomposition</p>
 <dl class="py class">
@@ -283,7 +282,7 @@ correspond to the left group of each quantifier ({1}, {1,2}, and so on)</p>
 <p>The class works both with quantifiers that require classifiers or not. In the former case, the estimator
 used for the training distribution and the testing distribution must be a FrankAndHallClassifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quantifier</strong> (<em>quantifier object</em>) – The base quantifier used to build the FH decomposition. Any quantifier can be used</p></li>
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is used to classify
@@ -303,7 +302,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifier</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.quantifier" title="Permalink to this definition"></a></dt>
 <dd><p>The base quantifier used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>quantifier object</p>
 </dd>
 </dl>
@@ -314,7 +313,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -325,7 +324,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -336,7 +335,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes-1) (probabilistic)</p>
 </dd>
 </dl>
@@ -347,7 +346,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes-1) (probabilistic)</p>
 </dd>
 </dl>
@@ -358,7 +357,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>True if the base quantifier needs to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, (default=True)</p>
 </dd>
 </dl>
@@ -369,7 +368,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Not used</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -380,7 +379,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifiers_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.quantifiers_" title="Permalink to this definition"></a></dt>
 <dd><p>List of quantifiers, one for each model of a FH decomposition. The number is equal to n_classes - 1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes-1, )</p>
 </dd>
 </dl>
@@ -391,7 +390,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -406,7 +405,7 @@ CV_estimator) than y. In other cases, <a href="#id17"><span class="problematic" 
 <a href="#id19"><span class="problematic" id="id20">y_ext_</span></a> must be used in <cite>fit</cite>/<cite>predict</cite> methods whenever the true labels of the training set are needed,
 instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id21"><span class="problematic" id="id22">predictions_train_</span></a>), )</p>
 </dd>
 </dl>
@@ -417,7 +416,7 @@ instead of y</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.ordinal.FrankAndHallQuantifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -431,14 +430,14 @@ instead of y</p>
 the <cite>fit</cite> method of its superclass</p>
 <p>Then, it creates (using <cite>deepcopy</cite>) the set on <a href="#id23"><span class="problematic" id="id24">quantifiers_</span></a> (n_classes-1 quantifiers) and fit them</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>optional</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes-1</em><em>) </em><em>(</em><em>probs</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train or estimator_test are not instances of OneVsRestClassifier</p>
 </dd>
 </dl>
@@ -464,7 +463,7 @@ respectively. The average value is assigned to each group and the prevalence for
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative prevalences (adjusting from left to right)</p>
-<div class="section" id="lower-cumulative-prevalences-adjusting-from-right-to-left">
+<section id="lower-cumulative-prevalences-adjusting-from-right-to-left">
 <h3>0.2   0.2    0.6    Lower cumulative prevalences (adjusting from right to left)<a class="headerlink" href="#lower-cumulative-prevalences-adjusting-from-right-to-left" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged prevalences</p>
 <p>Prevalence({1}) = 0.25
@@ -473,35 +472,35 @@ Prevalence({3}) = Prevalence({1,2,3}} - Prevalence({1,2}) = 0.6 - 0.25 = 0.35</p
 <p>The last class is computed as 1 - the sum of prevalences for the rest of classes</p>
 <p>Prevalence({4}) = 1 - Prevalence({1,2,3}} = 1 - 0.6 = 0.4</p>
 <dl class="field-list simple">
-<dt class="field-odd">param X</dt>
+<dt class="field-odd">param X<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Data</p>
 </dd>
-<dt class="field-even">type X</dt>
+<dt class="field-even">type X<span class="colon">:</span></dt>
 <dd class="field-even"><p>(sparse) array-like, shape (n_examples, n_features)</p>
 </dd>
-<dt class="field-odd">param predictions_test</dt>
+<dt class="field-odd">param predictions_test<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Predictions for the testing bag</p>
 </dd>
-<dt class="field-even">type predictions_test</dt>
+<dt class="field-even">type predictions_test<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape (n_examples, n_classes) (default=None)</p>
 </dd>
-<dt class="field-odd">returns</dt>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">rtype</dt>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <p>Destercke, S., &amp; Yang, G. (2014, September). Cautious ordinal classification by binary decomposition.
 In Joint European Conference on Machine Learning and Knowledge Discovery in Databases (pp. 323-337).</p>
-</div>
+</section>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.decomposition.utils">
+</section>
+<section id="module-ordinal_quantification.decomposition.utils">
 <span id="ordinal-quantification-decomposition-utils-module"></span><h2>ordinal_quantification.decomposition.utils module<a class="headerlink" href="#module-ordinal_quantification.decomposition.utils" title="Permalink to this heading"></a></h2>
 <p>Util functions used for building quantifiers based on decomposition</p>
 <dl class="py function">
@@ -521,20 +520,20 @@ respectively. The average value is assigned to each group</p>
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative prevalences (adjusting from left to right)</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>0.2   0.2    0.6    Lower cumulative prevalences (adjusting from right to left)<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged prevalences</p>
 <dl class="field-list simple">
-<dt class="field-odd">param prevalences</dt>
+<dt class="field-odd">param prevalences<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The prevalences of the binary quantifiers of a FrankAndHallQuantifier for a single dataset</p>
 </dd>
-<dt class="field-even">type prevalences</dt>
+<dt class="field-even">type prevalences<span class="colon">:</span></dt>
 <dd class="field-even"><p>array, shape(n_classes-1, )</p>
 </dd>
-<dt class="field-odd">returns</dt>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences_ok</strong> – The corrected prevalences ensuring that do not decrease (from left to right)</p>
 </dd>
-<dt class="field-even">rtype</dt>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
 <dd class="field-even"><p>array, shape(n_classes-1)</p>
 </dd>
 </dl>
@@ -542,11 +541,11 @@ respectively. The average value is assigned to each group</p>
 <p>Sébastien Destercke, Gen Yang. Cautious Ordinal Classification by Binary Decomposition.
 Machine Learning and Knowledge Discovery in Databases - European Conference ECML/PKDD,
 Sep 2014, Nancy, France. pp.323 - 337, 2014,</p>
-</div>
+</section>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.decomposition">
+</section>
+<section id="module-ordinal_quantification.decomposition">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.decomposition" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ordinal_quantification.decomposition.FrankAndHallQuantifier">
@@ -560,7 +559,7 @@ correspond to the left group of each quantifier ({1}, {1,2}, and so on)</p>
 <p>The class works both with quantifiers that require classifiers or not. In the former case, the estimator
 used for the training distribution and the testing distribution must be a FrankAndHallClassifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quantifier</strong> (<em>quantifier object</em>) – The base quantifier used to build the FH decomposition. Any quantifier can be used</p></li>
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is used to classify
@@ -580,7 +579,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifier</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.quantifier" title="Permalink to this definition"></a></dt>
 <dd><p>The base quantifier used to build the FH decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>quantifier object</p>
 </dd>
 </dl>
@@ -591,7 +590,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -602,7 +601,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -613,7 +612,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes-1) (probabilistic)</p>
 </dd>
 </dl>
@@ -624,7 +623,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes-1) (probabilistic)</p>
 </dd>
 </dl>
@@ -635,7 +634,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>True if the base quantifier needs to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, (default=True)</p>
 </dd>
 </dl>
@@ -646,7 +645,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Not used</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -657,7 +656,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifiers_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.quantifiers_" title="Permalink to this definition"></a></dt>
 <dd><p>List of quantifiers, one for each model of a FH decomposition. The number is equal to n_classes - 1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes-1, )</p>
 </dd>
 </dl>
@@ -668,7 +667,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -683,7 +682,7 @@ CV_estimator) than y. In other cases, <a href="#id29"><span class="problematic" 
 <a href="#id31"><span class="problematic" id="id32">y_ext_</span></a> must be used in <cite>fit</cite>/<cite>predict</cite> methods whenever the true labels of the training set are needed,
 instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id33"><span class="problematic" id="id34">predictions_train_</span></a>), )</p>
 </dd>
 </dl>
@@ -694,7 +693,7 @@ instead of y</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.FrankAndHallQuantifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -708,14 +707,14 @@ instead of y</p>
 the <cite>fit</cite> method of its superclass</p>
 <p>Then, it creates (using <cite>deepcopy</cite>) the set on <a href="#id35"><span class="problematic" id="id36">quantifiers_</span></a> (n_classes-1 quantifiers) and fit them</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>optional</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes-1</em><em>) </em><em>(</em><em>probs</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train or estimator_test are not instances of OneVsRestClassifier</p>
 </dd>
 </dl>
@@ -741,7 +740,7 @@ respectively. The average value is assigned to each group and the prevalence for
 <p class="rubric">Example</p>
 <p>{1}   {1-2}  {1-2-3}</p>
 <p>0.3   0.3    0.6    Upper cumulative prevalences (adjusting from left to right)</p>
-<div class="section" id="id2">
+<section id="id2">
 <h3>0.2   0.2    0.6    Lower cumulative prevalences (adjusting from right to left)<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>0.25  0.25   0.6    Averaged prevalences</p>
 <p>Prevalence({1}) = 0.25
@@ -750,29 +749,29 @@ Prevalence({3}) = Prevalence({1,2,3}} - Prevalence({1,2}) = 0.6 - 0.25 = 0.35</p
 <p>The last class is computed as 1 - the sum of prevalences for the rest of classes</p>
 <p>Prevalence({4}) = 1 - Prevalence({1,2,3}} = 1 - 0.6 = 0.4</p>
 <dl class="field-list simple">
-<dt class="field-odd">param X</dt>
+<dt class="field-odd">param X<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Data</p>
 </dd>
-<dt class="field-even">type X</dt>
+<dt class="field-even">type X<span class="colon">:</span></dt>
 <dd class="field-even"><p>(sparse) array-like, shape (n_examples, n_features)</p>
 </dd>
-<dt class="field-odd">param predictions_test</dt>
+<dt class="field-odd">param predictions_test<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Predictions for the testing bag</p>
 </dd>
-<dt class="field-even">type predictions_test</dt>
+<dt class="field-even">type predictions_test<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape (n_examples, n_classes) (default=None)</p>
 </dd>
-<dt class="field-odd">returns</dt>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">rtype</dt>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <p>Destercke, S., &amp; Yang, G. (2014, September). Cautious ordinal classification by binary decomposition.
 In Joint European Conference on Machine Learning and Knowledge Discovery in Databases (pp. 323-337).</p>
-</div>
+</section>
 </dd></dl>
 
 </dd></dl>
@@ -787,7 +786,7 @@ just normalizes these prevalences to sum 1</p>
 <p>The class works both with quantifiers that require classifiers or not. In the former case, the estimator
 used for the training distribution and the testing distribution must be a OneVsRestQuantifier</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quantifier</strong> (<em>quantifier object</em>) – The base quantifier used to build the One versus Rest decomposition. Any quantifier can be used</p></li>
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is used to classify
@@ -807,7 +806,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifier</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.quantifier" title="Permalink to this definition"></a></dt>
 <dd><p>The base quantifier used to build the One versus Rest decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>quantifier object</p>
 </dd>
 </dl>
@@ -818,7 +817,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -829,7 +828,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -840,7 +839,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -851,7 +850,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -862,7 +861,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>True if the base quantifier needs to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, (default=True)</p>
 </dd>
 </dl>
@@ -873,7 +872,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Not used</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -884,7 +883,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">quantifiers_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.quantifiers_" title="Permalink to this definition"></a></dt>
 <dd><p>List of quantifiers, one for each class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -895,7 +894,7 @@ instance of the class UsingClassifiers</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -910,7 +909,7 @@ CV_estimator) than y. In other cases, <a href="#id41"><span class="problematic" 
 <a href="#id43"><span class="problematic" id="id44">y_ext_</span></a> must be used in <cite>fit</cite>/<cite>predict</cite> methods whenever the true labels of the training set are needed,
 instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id45"><span class="problematic" id="id46">predictions_train_</span></a>), )</p>
 </dd>
 </dl>
@@ -921,7 +920,7 @@ instead of y</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.decomposition.OneVsRestQuantifier.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -935,14 +934,14 @@ instead of y</p>
 the <cite>fit</cite> method of its superclass</p>
 <p>Then, it creates (using <cite>deepcopy</cite>) the set on <a href="#id47"><span class="problematic" id="id48">quantifiers_</span></a>, one per class, and fit them</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>optional</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probs</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train or estimator_test are not instances of OneVsRestClassifier</p>
 </dd>
 </dl>
@@ -955,7 +954,7 @@ the <cite>fit</cite> method of its superclass</p>
 <p>Just one aggregation strategy is implemented. It normalizes the prevalences given by each quantifier
 to sum 1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – Predictions for the testing bag</p></li>
@@ -966,8 +965,8 @@ to sum 1</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

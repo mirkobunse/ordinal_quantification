@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ordinal_quantification package &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -70,9 +69,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ordinal-quantification-package">
+  <section id="ordinal-quantification-package">
 <h1>ordinal_quantification package<a class="headerlink" href="#ordinal-quantification-package" title="Permalink to this heading"></a></h1>
-<div class="section" id="subpackages">
+<section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -836,11 +835,11 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
+</section>
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="module-ordinal_quantification.base">
+</section>
+<section id="module-ordinal_quantification.base">
 <span id="ordinal-quantification-base-module"></span><h2>ordinal_quantification.base module<a class="headerlink" href="#module-ordinal_quantification.base" title="Permalink to this heading"></a></h2>
 <p>Base classes for quantifiers based on distribution matching</p>
 <dl class="py class">
@@ -868,7 +867,7 @@ trained once and can be shared for several quantifiers of this kind.</p>
 <p>This class is responsible for fitting the estimators (when needed) and for computing the predictions for the
 training set and the testing set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em>, </em><em>optional</em><em>, </em><em>(</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and one of <cite>predict</cite> or <cite>predict_proba</cite>. It is used to classify
 the examples of the training set and to obtain their distribution</p></li>
@@ -886,7 +885,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -897,7 +896,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -908,7 +907,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -919,7 +918,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilistic)</p>
 </dd>
 </dl>
@@ -930,7 +929,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>True if the quantifier needs to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, (default=True)</p>
 </dd>
 </dl>
@@ -941,7 +940,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Whether the estimators return probabilistic predictions or not</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -952,7 +951,7 @@ some need crisp predictions (e.g. CC) and other methods require probabilistic pr
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -967,7 +966,7 @@ CV_estimator) than y. In other cases, <a href="#id7"><span class="problematic" i
 <a href="#id9"><span class="problematic" id="id10">y_ext_</span></a> must be used in <cite>fit</cite>/<cite>predict</cite> methods whenever the true labels of the training set are needed,
 instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id11"><span class="problematic" id="id12">predictions_train_</span></a>), )</p>
 </dd>
 </dl>
@@ -978,7 +977,7 @@ instead of y</p>
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.base.UsingClassifiers.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -1003,14 +1002,14 @@ probabilistic_predictions is False). If predictions_train is None, <a href="#id2
 the <cite>predict</cite>/<cite>predict_proba</cite> method of estimator_train, depending again on the value of
 probabilistic_predictions attribute.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>optional</em><em>, </em><em>shape</em><em>(</em><em>n_examples</em><em>, </em><em>1</em><em>) </em><em>crisp</em><em> or </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>probs</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
 </dd>
 </dl>
@@ -1028,13 +1027,13 @@ probabilistic_predictions attribute is False). If predictions_test is None, <a h
 calling the <cite>predict</cite>/<a href="#id1"><span class="problematic" id="id2">`</span></a>predict_proba method (depending on the value of the attribute
 probabilistic_predictions) of estimator_test.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>(</em><em>sparse</em><em>) </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – Predictions for the testing bag</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
 </dd>
 </dl>
@@ -1050,8 +1049,8 @@ probabilistic_predictions) of estimator_test.</p>
 <p>Examples of this type of quantifiers are HDX and EDX, for instance</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.factory">
+</section>
+<section id="module-ordinal_quantification.factory">
 <span id="ordinal-quantification-factory-module"></span><h2>ordinal_quantification.factory module<a class="headerlink" href="#module-ordinal_quantification.factory" title="Permalink to this heading"></a></h2>
 <p>This module creates instances of quantification methods for the outside world.</p>
 <dl class="py function">
@@ -1059,7 +1058,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.AC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Adjusted Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
@@ -1070,7 +1069,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type AC.</p>
 </dd>
 </dl>
@@ -1081,7 +1080,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">CC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.CC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -1091,7 +1090,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type CC.</p>
 </dd>
 </dl>
@@ -1102,7 +1101,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">CvMy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.CvMy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the CvMy method (Castaño et al., 2019).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.</p></li>
@@ -1113,7 +1112,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type CvMy.</p>
 </dd>
 </dl>
@@ -1161,13 +1160,13 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">EDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.EDX" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the energy distance method EDX (Kawakubo et al., 2016).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type EDX.</p>
 </dd>
 </dl>
@@ -1178,7 +1177,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">EDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.EDy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the energy distance method EDy (Castaño et al., 2016).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances. Another suitable value is ordinal_quantification.metrics.ordinal.emd_distances.</p></li>
@@ -1189,7 +1188,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type EDy.</p>
 </dd>
 </dl>
@@ -1200,10 +1199,10 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">HDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.HDX" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the hellinger distance method HDX (González-Castro et al., 2013).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n_bins</strong> – The number of bins per feature.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type HDX.</p>
 </dd>
 </dl>
@@ -1214,7 +1213,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">HDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.HDy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the hellinger distance method HDy (González-Castro et al., 2013).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
@@ -1225,7 +1224,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type HDy.</p>
 </dd>
 </dl>
@@ -1258,7 +1257,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">OrdinalAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.OrdinalAC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the ordinal version of AC (Castaño et al., 2022).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -1268,7 +1267,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type ACOrdinal.</p>
 </dd>
 </dl>
@@ -1279,7 +1278,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PAC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Probabilistic Adjusted Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
@@ -1290,7 +1289,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PAC.</p>
 </dd>
 </dl>
@@ -1301,7 +1300,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PCC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Probabilistic Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -1311,7 +1310,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PCC.</p>
 </dd>
 </dl>
@@ -1322,7 +1321,7 @@ probabilistic_predictions) of estimator_test.</p>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EMD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PDF" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the ordinal method PDF (Castaño et al., 2022).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
@@ -1334,7 +1333,7 @@ probabilistic_predictions) of estimator_test.</p>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PDFOrdinaly.</p>
 </dd>
 </dl>
@@ -1342,27 +1341,28 @@ probabilistic_predictions) of estimator_test.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.estimator">
-<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.estimator" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>Take out the grid search of the original experiments.</p>
 <p>This grid search is looking for the hyper-parameters that optimize the geometric mean of class-wise accuracies in a stratified 3-fold cross validation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> – The feature matrix for which the estimator will be optimized.</p></li>
 <li><p><strong>y</strong> – The labels for which the estimator will be optimized.</p></li>
 <li><p><strong>estimator</strong> (<em>optional</em>) – The scikit-learn classifier to optimize. Defaults to a RandomForestClassifier.</p></li>
 <li><p><strong>param_grid</strong> (<em>optional</em>) – The parameter grid to optimize over. Defaults to the parameter grid that is used in the paper.</p></li>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+<li><p><strong>n_jobs</strong> (<em>optional</em>) – The number of parallel processes to use. Defaults to -1 = all cores.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An estimator to be used in any of the quantification methods, optimized for (X, y).</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.utils">
+</section>
+<section id="module-ordinal_quantification.utils">
 <span id="ordinal-quantification-utils-module"></span><h2>ordinal_quantification.utils module<a class="headerlink" href="#module-ordinal_quantification.utils" title="Permalink to this heading"></a></h2>
 <p>Util functions for different kinds of quantifiers</p>
 <dl class="py function">
@@ -1371,13 +1371,13 @@ probabilistic_predictions) of estimator_test.</p>
 <dd><p>Computes params related to the train distribution for solving PDF optimization problems using
 L2 loss function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – Represents the distribution of each class in the training set</p></li>
 <li><p><strong>classes</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – Class labels</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>G</strong> (<em>array, shape (n_classes, n_classes)</em>)</p></li>
 <li><p><strong>C</strong> (<em>array, shape (n_classes, n_constraints)</em>) – n_constraints will be n_classes + 1  (n_classes constraints to guarantee that prevalences_i&gt;=0, and
@@ -1407,7 +1407,7 @@ an additional constraints for ensuring that sum(prevalences)==1</p></li>
 <dd><p>Create bags of examples given a dataset with different prevalences</p>
 <p>The method proposed by Kramer is used to generate a uniform distribution of the prevalences</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
@@ -1417,7 +1417,7 @@ If type(rng) is int, rng is the seed used by the random number generator;
 If rng is a RandomState instance, rng is the own random number generator;</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When rng is neither a int nor a RandomState object</p>
 </dd>
 </dl>
@@ -1433,10 +1433,10 @@ If rng is a RandomState instance, rng is the own random number generator;</p></l
 <p>This is a version of the dpofa function included in quadprog library. Here, it is mainly used to check
 whether a matrix is positive definite or not</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>m</strong> (<em>symmetric matrix</em><em>, </em><em>typically the shape is</em><em> (</em><em>n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – The matrix to be factored. Only the diagonal and upper triangle are used</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>k</strong> (<em>int,</em>) – == 0  m is positive definite and the factorization has been completed
 &gt;  0  the leading minor of order k is not positive definite</p></li>
@@ -1456,10 +1456,10 @@ could be different from 0.</p></li>
 <p>It is based on dpofa function, a version of the dpofa function included in quadprog library. When dpofa
 returns 0 the matrix is positive definite.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>m</strong> (<em>symmetric matrix</em><em>, </em><em>typically the shape is</em><em> (</em><em>n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – The matrix to check whether it is positive definite or not</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>A boolean, True when m is positive definite and False otherwise</p>
 </dd>
 </dl>
@@ -1481,7 +1481,7 @@ matrix” (1988): <a class="reference external" href="https://doi.org/10.1016/00
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.utils.</span></span><span class="sig-name descname"><span class="pre">probs2crisps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.utils.probs2crisps" title="Permalink to this definition"></a></dt>
 <dd><p>Convert probability predictions to crisp predictions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>preds</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>1</em><em>) or </em><em>(</em><em>n_examples</em><em>,</em><em>) </em><em>for binary problems</em><em>, </em><em>(</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>multiclass</em>) – The matrix with the probability predictions</p></li>
 <li><p><strong>labels</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_classes</em><em>, </em><em>)</em>) – Class labels</p></li>
@@ -1496,7 +1496,7 @@ matrix” (1988): <a class="reference external" href="https://doi.org/10.1016/00
 <dd><p>Solves the optimization problem for PDF methods using Hellinger Distance</p>
 <p>This method just uses cvxpy library</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>n_classes</em><em>)</em>) – Represents the distribution of each class in the training set</p></li>
 <li><p><strong>test_distrib</strong> (<em>array</em><em>, </em><em>shape</em><em> (</em><em>n_bins * n_classes</em><em>, </em><em>1</em><em>)</em>) – Represents the distribution of the testing set</p></li>
@@ -1504,10 +1504,10 @@ matrix” (1988): <a class="reference external" href="https://doi.org/10.1016/00
 <li><p><strong>solver</strong> (<em>str</em><em>, </em><em>optional</em><em> (</em><em>default='ECOS'</em><em>)</em>) – The solver to use. For example, ‘ECOS’, ‘SCS’, or ‘OSQP’.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>prevalences</strong> – Vector containing the predicted prevalence for each class</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array, shape=(n_classes, )</p>
 </dd>
 </dl>
@@ -1523,7 +1523,7 @@ s.t.  prevalences_i &gt;=0</p>
 <div><p>sum prevalences_i = 1</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape depends on the optimization problem</em>) – Represents the distribution of each class in the training set
 PDF: shape (n_bins * n_classes, n_classes)
@@ -1537,10 +1537,10 @@ AC, PAC, Friedman: shape (n_classes, 1)</p></li>
 work</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>prevalences</strong> – Vector containing the predicted prevalence for each class</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array, shape=(n_classes, )</p>
 </dd>
 </dl>
@@ -1566,7 +1566,7 @@ Subject to   C.T x &gt;= b</p>
 <p><cite>solve_l2</cite> just computes the term a, shape (n_classes,1), and then calls quadprog.solve_qp.
 G, C and b were computed by <cite>compute_l2_param_train</cite> before, in the ‘fit’ method` of the PDF/Friedman object</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>train_distrib</strong> (<em>array</em><em>, </em><em>shape depends on the optimization problem</em>) – Represents the distribution of each class in the training set
 PDF: shape (n_bins * n_classes, n_classes)
@@ -1581,10 +1581,10 @@ AC, PAC, Friedman: shape (n_classes, 1)</p></li>
 <li><p><strong>method</strong> (<em>C and b are computed by compute_l2_param_train in the 'fit'</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>prevalences</strong> – Vector containing the predicted prevalence for each class</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>array, shape=(n_classes, )</p>
 </dd>
 </dl>
@@ -1595,11 +1595,11 @@ AC, PAC, Friedman: shape (n_classes, 1)</p></li>
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.utils.</span></span><span class="sig-name descname"><span class="pre">solve_l2cvx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_distrib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ECOS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.utils.solve_l2cvx" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification">
+</section>
+<section id="module-ordinal_quantification">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification" title="Permalink to this heading"></a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

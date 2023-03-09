@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -107,10 +106,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="api">
+  <section id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h1>
 <p>Instantiate quantification methods through the <code class="docutils literal notranslate"><span class="pre">ordinal_quantification.factory</span></code> module. Then, use their <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
-<div class="section" id="creating-quantifiers">
+<section id="creating-quantifiers">
 <h2>Creating quantifiers<a class="headerlink" href="#creating-quantifiers" title="Permalink to this heading"></a></h2>
 <p>All quantifiers require a decomposition of the ordinal task into multiple binary classification tasks. For this purpose, you can specify the <code class="docutils literal notranslate"><span class="pre">decomposer</span></code> of the quantifier to be any value of the <code class="docutils literal notranslate"><span class="pre">Decomposer</span></code> enum:</p>
 <dl class="py data">
@@ -119,15 +118,15 @@
 <dd><p>The value <code class="docutils literal notranslate"><span class="pre">Decomposer.monotone</span></code> produces a Frank and Hall decomposition with monotonicity property (Castaño et al., 2022). The value <code class="docutils literal notranslate"><span class="pre">Decomposer.fh_tree</span></code> produces a hierarchical Frank and Hall decomposition instead. The value <code class="docutils literal notranslate"><span class="pre">Decomposer.none</span></code> produces a non-ordinal estimator without any decomposition. The remaining values are not used in the original experiments and therefore discouraged.</p>
 </dd></dl>
 
-<p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions. We have categorized them into <a class="reference internal" href="#classify-and-count"><span class="std std-doc">Classify and count</span></a> methods, <a class="reference internal" href="#distribution-matching"><span class="std std-doc">Distribution matching</span></a> methods, and <a class="reference internal" href="#ordinal-methods"><span class="std std-doc">Ordinal methods</span></a></p>
-<div class="section" id="classify-and-count">
+<p>The quantifiers are created through the following <code class="docutils literal notranslate"><span class="pre">factory</span></code> functions. We have categorized them into <a class="reference internal" href="#classify-and-count"><span class="std std-ref">Classify and count</span></a> methods, <a class="reference internal" href="#distribution-matching"><span class="std std-ref">Distribution matching</span></a> methods, and <a class="reference internal" href="#ordinal-methods"><span class="std std-ref">Ordinal methods</span></a></p>
+<section id="classify-and-count">
 <h3>Classify and count<a class="headerlink" href="#classify-and-count" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.AC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.AC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Adjusted Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
@@ -138,7 +137,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type AC.</p>
 </dd>
 </dl>
@@ -149,7 +148,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">CC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.CC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -159,7 +158,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type CC.</p>
 </dd>
 </dl>
@@ -170,7 +169,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PAC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Probabilistic Adjusted Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “L2”.</p></li>
@@ -181,7 +180,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PAC.</p>
 </dd>
 </dl>
@@ -192,7 +191,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PCC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the Probabilistic Classify-and-Count method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -202,21 +201,21 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PCC.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="distribution-matching">
+</section>
+<section id="distribution-matching">
 <h3>Distribution matching<a class="headerlink" href="#distribution-matching" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.CvMy">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">CvMy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.CvMy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the CvMy method (Castaño et al., 2019).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.</p></li>
@@ -227,7 +226,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type CvMy.</p>
 </dd>
 </dl>
@@ -238,13 +237,13 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">EDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.EDX" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the energy distance method EDX (Kawakubo et al., 2016).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type EDX.</p>
 </dd>
 </dl>
@@ -255,7 +254,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">EDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances=&lt;function</span> <span class="pre">euclidean_distances&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.EDy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the energy distance method EDy (Castaño et al., 2016).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>distances</strong> (<em>optional</em>) – The distance metric for each pair of samples. Defaults to sklearn.metrics.pairwise.euclidean_distances. Another suitable value is ordinal_quantification.metrics.ordinal.emd_distances.</p></li>
@@ -266,7 +265,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type EDy.</p>
 </dd>
 </dl>
@@ -277,10 +276,10 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">HDX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.HDX" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the hellinger distance method HDX (González-Castro et al., 2013).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n_bins</strong> – The number of bins per feature.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type HDX.</p>
 </dd>
 </dl>
@@ -291,7 +290,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">HDy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.HDy" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the hellinger distance method HDy (González-Castro et al., 2013).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
@@ -302,21 +301,21 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type HDy.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="ordinal-methods">
+</section>
+<section id="ordinal-methods">
 <h3>Ordinal methods<a class="headerlink" href="#ordinal-methods" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.OrdinalAC">
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">OrdinalAC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.OrdinalAC" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the ordinal version of AC (Castaño et al., 2022).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
@@ -326,7 +325,7 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type ACOrdinal.</p>
 </dd>
 </dl>
@@ -337,7 +336,7 @@
 <span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">PDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EMD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.PDF" title="Permalink to this definition"></a></dt>
 <dd><p>Create an instance of the ordinal method PDF (Castaño et al., 2022).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
@@ -349,15 +348,15 @@
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A configured instance of type PDFOrdinaly.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="using-quantifiers">
+</section>
+</section>
+<section id="using-quantifiers">
 <h2>Using quantifiers<a class="headerlink" href="#using-quantifiers" title="Permalink to this heading"></a></h2>
 <p>All instantiated quantifiers share the following methods:</p>
 <dl class="py method">
@@ -365,13 +364,13 @@
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fit" title="Permalink to this definition"></a></dt>
 <dd><p>Fit the quantifier to data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> – The feature matrix to which the quantifier will be fitted.</p></li>
 <li><p><strong>y</strong> – The labels to which the quantifier will be fitted.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The fitted quantifier itself.</p>
 </dd>
 </dl>
@@ -382,35 +381,36 @@
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict" title="Permalink to this definition"></a></dt>
 <dd><p>Predict the class prevalences in a data set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> – The feature matrix for which the quantifier will predict.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A numpy array of class prevalences.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="creating-estimators">
+</section>
+<section id="creating-estimators">
 <h2>Creating estimators<a class="headerlink" href="#creating-estimators" title="Permalink to this heading"></a></h2>
 <p>Each quantification method requires an estimator, usually a classifier. For this purpose, the <code class="docutils literal notranslate"><span class="pre">estimator</span></code> function of the <code class="docutils literal notranslate"><span class="pre">factory</span></code> module takes out the hyper-parameter optimization of the experiments in <a class="reference external" href="https://github.com/bertocast/ordinal_quantification">https://github.com/bertocast/ordinal_quantification</a>.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ordinal_quantification.factory.estimator">
-<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.estimator" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ordinal_quantification.factory.</span></span><span class="sig-name descname"><span class="pre">estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ordinal_quantification.factory.estimator" title="Permalink to this definition"></a></dt>
 <dd><p>Take out the grid search of the original experiments.</p>
 <p>This grid search is looking for the hyper-parameters that optimize the geometric mean of class-wise accuracies in a stratified 3-fold cross validation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> – The feature matrix for which the estimator will be optimized.</p></li>
 <li><p><strong>y</strong> – The labels for which the estimator will be optimized.</p></li>
 <li><p><strong>estimator</strong> (<em>optional</em>) – The scikit-learn classifier to optimize. Defaults to a RandomForestClassifier.</p></li>
 <li><p><strong>param_grid</strong> (<em>optional</em>) – The parameter grid to optimize over. Defaults to the parameter grid that is used in the paper.</p></li>
 <li><p><strong>random_state</strong> (<em>optional</em>) – The numpy RandomState. Defaults to None.</p></li>
+<li><p><strong>n_jobs</strong> (<em>optional</em>) – The number of parallel processes to use. Defaults to -1 = all cores.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An estimator to be used in any of the quantification methods, optimized for (X, y).</p>
 </dd>
 </dl>
@@ -420,8 +420,8 @@
 <p class="admonition-title">Hint</p>
 <p>However, you can also go with any classifier that is not created by the <code class="docutils literal notranslate"><span class="pre">estimator</span></code> function.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

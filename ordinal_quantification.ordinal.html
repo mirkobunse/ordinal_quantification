@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ordinal_quantification.ordinal package &mdash; ordinal_quantification v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -10,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -70,12 +69,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ordinal-quantification-ordinal-package">
+  <section id="ordinal-quantification-ordinal-package">
 <h1>ordinal_quantification.ordinal package<a class="headerlink" href="#ordinal-quantification-ordinal-package" title="Permalink to this heading"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="module-ordinal_quantification.ordinal.ac">
+</section>
+<section id="module-ordinal_quantification.ordinal.ac">
 <span id="ordinal-quantification-ordinal-ac-module"></span><h2>ordinal_quantification.ordinal.ac module<a class="headerlink" href="#module-ordinal_quantification.ordinal.ac" title="Permalink to this heading"></a></h2>
 <p>Ordinal version of AC quantifier</p>
 <dl class="py class">
@@ -97,7 +96,7 @@ the same predictions when you compare this kind of quantifiers (and others that 
 classifier, for instance, PDFyOrdinal). In the first case, estimators are only trained once and can be shared
 for several quantifiers of this kind</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the training
 set and to compute the confusion matrix</p></li>
@@ -113,7 +112,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -124,7 +123,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -135,7 +134,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
 </dd>
 </dl>
@@ -146,7 +145,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
 </dd>
 </dl>
@@ -157,7 +156,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>It is True because AC quantifiers need to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -168,7 +167,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>This means that <a href="#id13"><span class="problematic" id="id14">predictions_test_</span></a> contains crisp predictions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, False</p>
 </dd>
 </dl>
@@ -179,7 +178,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -193,7 +192,7 @@ set and to obtain their predictions</p></li>
 than y. In other cases, <a href="#id17"><span class="problematic" id="id18">y_ext_</span></a> == y.
 <a href="#id19"><span class="problematic" id="id20">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id21"><span class="problematic" id="id22">predictions_train_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -204,7 +203,7 @@ than y. In other cases, <a href="#id17"><span class="problematic" id="id18">y_ex
 <span class="sig-name descname"><span class="pre">cm_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.cm_" title="Permalink to this definition"></a></dt>
 <dd><p>Confusion matrix</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
 </dd>
 </dl>
@@ -215,7 +214,7 @@ than y. In other cases, <a href="#id17"><span class="problematic" id="id18">y_ex
 <span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.train_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The cumulative distribution for each class in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (<a href="#id23"><span class="problematic" id="id24">n_classes_</span></a>, n_classes)</p>
 </dd>
 </dl>
@@ -226,7 +225,7 @@ than y. In other cases, <a href="#id17"><span class="problematic" id="id18">y_ex
 <span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.test_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The cumulative distribution for the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (<a href="#id25"><span class="problematic" id="id26">n_classes_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -237,7 +236,7 @@ than y. In other cases, <a href="#id17"><span class="problematic" id="id18">y_ex
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ac.ACOrdinal.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -259,7 +258,7 @@ performed by the <cite>fit</cite> method of its superclass.
 Finally the method computes the confusion matrix of the training set using <a href="#id29"><span class="problematic" id="id30">predictions_train_</span></a>, and
 the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
@@ -267,7 +266,7 @@ the training distribution</p>
 converted to crisp values by <a href="#id3"><span class="problematic" id="id4">`</span></a>super().fit()</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
 </dd>
 </dl>
@@ -289,7 +288,7 @@ s.t.  sum(prevalences) = 1</p>
 </div></blockquote>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <a href="#id5"><span class="problematic" id="id6">`</span></a>predict_proba method)</p>
@@ -299,13 +298,13 @@ method of estimator_test (it must be an actual estimator)</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
@@ -313,8 +312,8 @@ method of estimator_test (it must be an actual estimator)</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.ordinal.pdf">
+</section>
+<section id="module-ordinal_quantification.ordinal.pdf">
 <span id="ordinal-quantification-ordinal-pdf-module"></span><h2>ordinal_quantification.ordinal.pdf module<a class="headerlink" href="#module-ordinal_quantification.ordinal.pdf" title="Permalink to this heading"></a></h2>
 <p>Ordinal versions for quantifiers based on representing the distributions using PDFs</p>
 <dl class="py class">
@@ -337,7 +336,7 @@ for synthetic/artificial experiments</p></li>
 the same predictions when you compare this kind of quantifiers. In the first case, estimators are only
 trained once and can be shared for several quantifiers of this kind</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
 training set and to compute the distribution of each class individually</p></li>
@@ -363,7 +362,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -374,7 +373,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -385,7 +384,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
 </dd>
 </dl>
@@ -396,7 +395,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
 </dd>
 </dl>
@@ -407,7 +406,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>It is True because PDFy quantifiers need to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -418,7 +417,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>This means that <a href="#id41"><span class="problematic" id="id42">predictions_train_</span></a>/<a href="#id43"><span class="problematic" id="id44">predictions_test_</span></a> contain probabilistic predictions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -429,7 +428,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.distance" title="Permalink to this definition"></a></dt>
 <dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str or a distance function</p>
 </dd>
 </dl>
@@ -440,7 +439,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.tol" title="Permalink to this definition"></a></dt>
 <dd><p>The precision of the solution when search is used to compute the solution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -451,7 +450,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -465,7 +464,7 @@ distribution and the testing distribution</p></li>
 than y. In other cases, <a href="#id47"><span class="problematic" id="id48">y_ext_</span></a> == y.
 <a href="#id49"><span class="problematic" id="id50">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id51"><span class="problematic" id="id52">predictions_train_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -476,7 +475,7 @@ than y. In other cases, <a href="#id47"><span class="problematic" id="id48">y_ex
 <span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.n_bins" title="Permalink to this definition"></a></dt>
 <dd><p>The number of bins to compute the PDFs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int (default=8)</p>
 </dd>
 </dl>
@@ -487,7 +486,7 @@ than y. In other cases, <a href="#id47"><span class="problematic" id="id48">y_ex
 <span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.train_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The PDF for each class in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_bins * 1, n_classes) binary or (n_bins * <a href="#id53"><span class="problematic" id="id54">n_classes_</span></a>, n_classes) multiclass</p>
 </dd>
 </dl>
@@ -498,7 +497,7 @@ than y. In other cases, <a href="#id47"><span class="problematic" id="id48">y_ex
 <span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.test_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The PDF for the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_bins * 1, 1) binary quantification or (n_bins * <a href="#id55"><span class="problematic" id="id56">n_classes_</span></a>, 1) multiclass</p>
 </dd>
 </dl>
@@ -510,7 +509,7 @@ than y. In other cases, <a href="#id47"><span class="problematic" id="id48">y_ex
 <dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
 using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
 </dd>
 </dl>
@@ -521,7 +520,7 @@ using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> fu
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.pdf.PDFOrdinaly.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -540,14 +539,14 @@ testing set (if needed), and 2) computes <a href="#id57"><span class="problemati
 performed by the <cite>fit</cite> method of its superclass.
 After that, the method computes the pdfs for all the classes in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
 </dd>
 </dl>
@@ -563,7 +562,7 @@ After that, the method computes the pdfs for all the classes in the training set
 <p>Finally, the prevalences are computed using the corresponding function according to the value of
 distance attribute</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
@@ -573,13 +572,13 @@ method of estimator_test (it must be an actual estimator)</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
@@ -587,8 +586,8 @@ method of estimator_test (it must be an actual estimator)</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.ordinal.trees">
+</section>
+<section id="module-ordinal_quantification.ordinal.trees">
 <span id="ordinal-quantification-ordinal-trees-module"></span><h2>ordinal_quantification.ordinal.trees module<a class="headerlink" href="#module-ordinal_quantification.ordinal.trees" title="Permalink to this heading"></a></h2>
 <p>Ordinal quantification trees</p>
 <dl class="py class">
@@ -611,8 +610,8 @@ In Proceedings of the 10th InternationalWorkshop on Semantic Evaluation (SemEval
 Association for Computational Linguistics, A, 5863.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ordinal_quantification.ordinal">
+</section>
+<section id="module-ordinal_quantification.ordinal">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ordinal_quantification.ordinal" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ordinal_quantification.ordinal.ACOrdinal">
@@ -633,7 +632,7 @@ the same predictions when you compare this kind of quantifiers (and others that 
 classifier, for instance, PDFyOrdinal). In the first case, estimators are only trained once and can be shared
 for several quantifiers of this kind</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict</cite>. It is used to classify the examples of the training
 set and to compute the confusion matrix</p></li>
@@ -649,7 +648,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -660,7 +659,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -671,7 +670,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
 </dd>
 </dl>
@@ -682,7 +681,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, ) (crisp estimator)</p>
 </dd>
 </dl>
@@ -693,7 +692,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>It is True because AC quantifiers need to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -704,7 +703,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>This means that <a href="#id63"><span class="problematic" id="id64">predictions_test_</span></a> contains crisp predictions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, False</p>
 </dd>
 </dl>
@@ -715,7 +714,7 @@ set and to obtain their predictions</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -729,7 +728,7 @@ set and to obtain their predictions</p></li>
 than y. In other cases, <a href="#id67"><span class="problematic" id="id68">y_ext_</span></a> == y.
 <a href="#id69"><span class="problematic" id="id70">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id71"><span class="problematic" id="id72">predictions_train_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -740,7 +739,7 @@ than y. In other cases, <a href="#id67"><span class="problematic" id="id68">y_ex
 <span class="sig-name descname"><span class="pre">cm_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.cm_" title="Permalink to this definition"></a></dt>
 <dd><p>Confusion matrix</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, n_classes)</p>
 </dd>
 </dl>
@@ -751,7 +750,7 @@ than y. In other cases, <a href="#id67"><span class="problematic" id="id68">y_ex
 <span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.train_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The cumulative distribution for each class in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (<a href="#id73"><span class="problematic" id="id74">n_classes_</span></a>, n_classes)</p>
 </dd>
 </dl>
@@ -762,7 +761,7 @@ than y. In other cases, <a href="#id67"><span class="problematic" id="id68">y_ex
 <span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.test_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The cumulative distribution for the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (<a href="#id75"><span class="problematic" id="id76">n_classes_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -773,7 +772,7 @@ than y. In other cases, <a href="#id67"><span class="problematic" id="id68">y_ex
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.ACOrdinal.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -795,7 +794,7 @@ performed by the <cite>fit</cite> method of its superclass.
 Finally the method computes the confusion matrix of the training set using <a href="#id79"><span class="problematic" id="id80">predictions_train_</span></a>, and
 the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
@@ -803,7 +802,7 @@ the training distribution</p>
 converted to crisp values by <a href="#id9"><span class="problematic" id="id10">`</span></a>super().fit()</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
 </dd>
 </dl>
@@ -825,7 +824,7 @@ s.t.  sum(prevalences) = 1</p>
 </div></blockquote>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <a href="#id11"><span class="problematic" id="id12">`</span></a>predict_proba method)</p>
@@ -835,13 +834,13 @@ method of estimator_test (it must be an actual estimator)</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
@@ -889,7 +888,7 @@ for synthetic/artificial experiments</p></li>
 the same predictions when you compare this kind of quantifiers. In the first case, estimators are only
 trained once and can be shared for several quantifiers of this kind</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator_train</strong> (<em>estimator object</em><em> (</em><em>default=None</em><em>)</em>) – An estimator object implementing <cite>fit</cite> and <cite>predict_proba</cite>. It is used to classify the examples of the
 training set and to compute the distribution of each class individually</p></li>
@@ -915,7 +914,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">estimator_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.estimator_train" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -926,7 +925,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">estimator_test</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.estimator_test" title="Permalink to this definition"></a></dt>
 <dd><p>Estimator used to classify the examples of the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>estimator</p>
 </dd>
 </dl>
@@ -937,7 +936,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">predictions_train_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.predictions_train_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
 </dd>
 </dl>
@@ -948,7 +947,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">predictions_test_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.predictions_test_" title="Permalink to this definition"></a></dt>
 <dd><p>Predictions of the examples in the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_examples, n_classes) (probabilities)</p>
 </dd>
 </dl>
@@ -959,7 +958,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">needs_predictions_train</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.needs_predictions_train" title="Permalink to this definition"></a></dt>
 <dd><p>It is True because PDFy quantifiers need to estimate the training distribution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -970,7 +969,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">probabilistic_predictions</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.probabilistic_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>This means that <a href="#id91"><span class="problematic" id="id92">predictions_train_</span></a>/<a href="#id93"><span class="problematic" id="id94">predictions_test_</span></a> contain probabilistic predictions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool, True</p>
 </dd>
 </dl>
@@ -981,7 +980,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.distance" title="Permalink to this definition"></a></dt>
 <dd><p>A string with the name of the distance function (‘HD’/’L1’/’L2’) or a distance function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str or a distance function</p>
 </dd>
 </dl>
@@ -992,7 +991,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.tol" title="Permalink to this definition"></a></dt>
 <dd><p>The precision of the solution when search is used to compute the solution</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -1003,7 +1002,7 @@ distribution and the testing distribution</p></li>
 <span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.classes_" title="Permalink to this definition"></a></dt>
 <dd><p>Class labels</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_classes, )</p>
 </dd>
 </dl>
@@ -1017,7 +1016,7 @@ distribution and the testing distribution</p></li>
 than y. In other cases, <a href="#id97"><span class="problematic" id="id98">y_ext_</span></a> == y.
 <a href="#id99"><span class="problematic" id="id100">y_ext_</span></a> i used in <cite>fit</cite> method whenever the true labels of the training set are needed, instead of y</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape(len(<a href="#id101"><span class="problematic" id="id102">predictions_train_</span></a>, 1)</p>
 </dd>
 </dl>
@@ -1028,7 +1027,7 @@ than y. In other cases, <a href="#id97"><span class="problematic" id="id98">y_ex
 <span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.n_bins" title="Permalink to this definition"></a></dt>
 <dd><p>The number of bins to compute the PDFs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int (default=8)</p>
 </dd>
 </dl>
@@ -1039,7 +1038,7 @@ than y. In other cases, <a href="#id97"><span class="problematic" id="id98">y_ex
 <span class="sig-name descname"><span class="pre">train_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.train_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The PDF for each class in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_bins * 1, n_classes) binary or (n_bins * <a href="#id103"><span class="problematic" id="id104">n_classes_</span></a>, n_classes) multiclass</p>
 </dd>
 </dl>
@@ -1050,7 +1049,7 @@ than y. In other cases, <a href="#id97"><span class="problematic" id="id98">y_ex
 <span class="sig-name descname"><span class="pre">test_distrib_</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.test_distrib_" title="Permalink to this definition"></a></dt>
 <dd><p>The PDF for the testing bag</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray, shape (n_bins * 1, 1) binary quantification or (n_bins * <a href="#id105"><span class="problematic" id="id106">n_classes_</span></a>, 1) multiclass</p>
 </dd>
 </dl>
@@ -1062,7 +1061,7 @@ than y. In other cases, <a href="#id97"><span class="problematic" id="id98">y_ex
 <dd><p>These variables are precomputed in the <cite>fit</cite> method and are used for solving the optimization problem
 using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>variables of different kind for defining the optimization problem</p>
 </dd>
 </dl>
@@ -1073,7 +1072,7 @@ using <cite>quadprog.solve_qp</cite>. See <cite>compute_l2_param_train</cite> fu
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ordinal_quantification.ordinal.PDFOrdinaly.verbose" title="Permalink to this definition"></a></dt>
 <dd><p>The verbosity level</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -1092,14 +1091,14 @@ testing set (if needed), and 2) computes <a href="#id107"><span class="problemat
 performed by the <cite>fit</cite> method of its superclass.
 After that, the method computes the pdfs for all the classes in the training set</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Data</p></li>
 <li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>)</em>) – True classes</p></li>
 <li><p><strong>predictions_train</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>)</em>) – Predictions of the examples in the training set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_train and predictions_train are both None</p>
 </dd>
 </dl>
@@ -1115,7 +1114,7 @@ After that, the method computes the pdfs for all the classes in the training set
 <p>Finally, the prevalences are computed using the corresponding function according to the value of
 distance attribute</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_features</em><em>)</em>) – Testing bag</p></li>
 <li><p><strong>predictions_test</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_examples</em><em>, </em><em>n_classes</em><em>) </em><em>(</em><em>default=None</em><em>)</em>) – <p>They must be probabilities (the estimator used must have a <cite>predict_proba</cite> method)</p>
@@ -1125,13 +1124,13 @@ method of estimator_test (it must be an actual estimator)</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – When estimator_test and predictions_test are both None</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>prevalences</strong> – Contains the predicted prevalence for each class</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>ndarray, shape(n_classes, )</p>
 </dd>
 </dl>
@@ -1139,8 +1138,8 @@ method of estimator_test (it must be an actual estimator)</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
