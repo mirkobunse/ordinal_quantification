@@ -93,8 +93,8 @@ def main(
             'max_depth': [1, 5],
             'min_samples_leaf': [1],
         }
-        n_bags = 3
-        n_reps = 1
+        n_bags = 10
+        n_reps = 2
         n_folds = 2
         dataset_names = [ "ESL" ]
     config = { # store all parameters in a dict
@@ -131,7 +131,7 @@ def _output_dir():
 def _repetition_dataset(i_rep, dataset_name, config):
     current_seed = config["seed"] + i_rep - 1
     X_trn, X_tst, y_trn, y_tst = _load_data(dataset_name, current_seed)
-    print(f"*** Training over {dataset_name}, rep {i_rep}")
+    print(f"*** Evaluating {dataset_name}, rep {i_rep}")
 
     # classifiers are fitted by each object (all methods will use exactly the same predictions)
     # but they checked whether the estimator is already fitted (by a previous object) or not
@@ -161,7 +161,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
         "random_state": config["seed"],
     }
 
-    print(f"* Training {dataset_name} with {estimator_args['decomposer']} rep {i_rep}")
+    print(f"* Training methods for {dataset_name}, rep {i_rep}")
     methods = {}
     for method_name in config["methods"]:
         if method_name == 'AC':
@@ -232,14 +232,15 @@ def _repetition_dataset(i_rep, dataset_name, config):
                 emd(prev_true, prev_pred),
                 emd_score(prev_true, prev_pred)
             ]], columns=COLUMNS)))
+        if (i_bag + 1) % 10 == 0:
+            print(f"* Evaluated {i_bag+1}/{config['n_bags']} bags for {dataset_name}, rep {i_rep}")
     output_path = "_".join([
         f"{config['output_dir']}/results",
-        str(config["option"]),
-        f"{config['n_reps']}x{config['n_bags']}CV{config['n_folds']}",
-        config["decomposer"],
-        dataset_name
+        dataset_name,
+        f"{i_rep:02d}",
     ]) + ".csv"
-    df.to_csv(output_path, mode='a', index=None)
+    df.to_csv(output_path, mode='w', index=None)
+    return output_path
 
 def _load_data(dataset_name, current_seed):
     df = pd.read_csv(f"datasets/ordinal/{dataset_name}.csv", sep=';', header=0)
@@ -250,7 +251,7 @@ def _load_data(dataset_name, current_seed):
 def _collect_results(config):
     all_files = glob.glob(f"{config['output_dir']}/results*.csv") # concatenate all files
     all_files.sort()
-    print('**** Processing', len(all_files), 'datasets')
+    print('**** Processing', len(all_files), 'results files (n_datasets * n_repetitions)')
     good_cols = ['dataset', 'method', 'decomposer', 'mae', 'mse', 'emd', 'emd_score']
     ll = []
     for filename in all_files:
