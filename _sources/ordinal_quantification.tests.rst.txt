@@ -1,6 +1,25 @@
 ordinal\_quantification.tests package
 =====================================
 
+Submodules
+----------
+
+ordinal\_quantification.tests.experiments module
+------------------------------------------------
+
+.. automodule:: ordinal_quantification.tests.experiments
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.tests.factory module
+--------------------------------------------
+
+.. automodule:: ordinal_quantification.tests.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
