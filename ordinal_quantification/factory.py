@@ -5,6 +5,8 @@ This module creates instances of quantification methods for the outside world.
 # Authors: Mirko Bunse <mirko.bunse@cs.tu-dortmund.de>
 # License: /
 
+import numpy as np
+from contextlib import contextmanager
 from enum import Enum
 from imblearn.metrics import geometric_mean_score
 from sklearn.ensemble import RandomForestClassifier
@@ -16,6 +18,30 @@ from . import (classify_and_count, distribution_matching, estimators, ordinal)
 
 Decomposer = Enum("Decomposer", ["monotone", "fh_tree", "dag", "dag_lv", "none"])
 Option = Enum("Option", ["cv_decomp", "decomp_cv", "bagging_decomp"])
+
+@contextmanager
+def _local_random_state(random_state):
+    """Fix a local RandomState in a `with` statement."""
+    global_state = np.random.get_state() # remember the global state
+    np.random.set_state(random_state.get_state()) # set the local state as being global
+    try:
+        yield
+    finally:
+        np.random.set_state(global_state) # restore the global state
+
+class CastanoMethod:
+    """A Castano method with reproducible random number generation capabilities."""
+    def __init__(self, method, random_state=None):
+        self.method = method
+        self.random_state = np.random.RandomState(random_state)
+    def fit(self, X, y):
+        with _local_random_state(self.random_state):
+            self.method.fit(X, y)
+        return self
+    def predict(self, X):
+        with _local_random_state(self.random_state):
+            prev_pred = self.method.predict(X)
+        return prev_pred
 
 def _create_estimators(
         estimator,
@@ -102,7 +128,7 @@ def estimator(X, y, estimator=None, param_grid=None, random_state=None, n_jobs=-
     gs_tst.fit(X, y)
     return gs_tst.best_estimator_
 
-def CC(estimator, *, verbose=0, **kwargs):
+def CC(estimator, *, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the Classify-and-Count method.
 
@@ -117,12 +143,15 @@ def CC(estimator, *, verbose=0, **kwargs):
     Returns:
         A configured instance of type CC.
     """
-    return classify_and_count.CC(
-        _create_estimators(estimator, **kwargs)[1],
-        verbose = verbose
+    return CastanoMethod(
+        classify_and_count.CC(
+            _create_estimators(estimator, random_state=random_state, **kwargs)[1],
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def PCC(estimator, *, verbose=0, **kwargs):
+def PCC(estimator, *, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the Probabilistic Classify-and-Count method.
 
@@ -137,12 +166,15 @@ def PCC(estimator, *, verbose=0, **kwargs):
     Returns:
         A configured instance of type PCC.
     """
-    return classify_and_count.PCC(
-        _create_estimators(estimator, **kwargs)[1],
-        verbose = verbose
+    return CastanoMethod(
+        classify_and_count.PCC(
+            _create_estimators(estimator, random_state=random_state, **kwargs)[1],
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def AC(estimator, *, distance="L2", verbose=0, **kwargs):
+def AC(estimator, *, distance="L2", random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the Adjusted Classify-and-Count method.
 
@@ -158,13 +190,16 @@ def AC(estimator, *, distance="L2", verbose=0, **kwargs):
     Returns:
         A configured instance of type AC.
     """
-    return classify_and_count.AC(
-        *_create_estimators(estimator, **kwargs),
-        distance = distance,
-        verbose = verbose
+    return CastanoMethod(
+        classify_and_count.AC(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            distance = distance,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def PAC(estimator, *, distance="L2", verbose=0, **kwargs):
+def PAC(estimator, *, distance="L2", random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the Probabilistic Adjusted Classify-and-Count method.
 
@@ -180,20 +215,26 @@ def PAC(estimator, *, distance="L2", verbose=0, **kwargs):
     Returns:
         A configured instance of type PAC.
     """
-    return classify_and_count.PAC(
-        *_create_estimators(estimator, **kwargs),
-        distance = distance,
-        verbose = verbose
+    return CastanoMethod(
+        classify_and_count.PAC(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            distance = distance,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def DeBias(estimator, *, verbose=0, **kwargs):
+def DeBias(estimator, *, random_state=None, verbose=0, **kwargs):
     print("WARNING: DeBias is not used in bertocast/ordinal_quantification")
-    return classify_and_count.DeBias(
-        *_create_estimators(estimator, **kwargs),
-        verbose = verbose
+    return CastanoMethod(
+        classify_and_count.DeBias(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def CvMy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
+def CvMy(estimator, *, distances=euclidean_distances, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the CvMy method (Castaño et al., 2019).
 
@@ -209,13 +250,16 @@ def CvMy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
     Returns:
         A configured instance of type CvMy.
     """
-    return distribution_matching.CvMy(
-        *_create_estimators(estimator, **kwargs),
-        distance = distances,
-        verbose = verbose
+    return CastanoMethod(
+        distribution_matching.CvMy(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            distance = distances,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def EDX(*, distances=euclidean_distances, verbose=0):
+def EDX(*, distances=euclidean_distances, random_state=None, verbose=0):
     """
     Create an instance of the energy distance method EDX (Kawakubo et al., 2016).
 
@@ -226,12 +270,15 @@ def EDX(*, distances=euclidean_distances, verbose=0):
     Returns:
         A configured instance of type EDX.
     """
-    return distribution_matching.EDX(
-        distance = distances,
-        verbose = verbose
+    return CastanoMethod(
+        distribution_matching.EDX(
+            distance = distances,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def EDy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
+def EDy(estimator, *, distances=euclidean_distances, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the energy distance method EDy (Castaño et al., 2016).
 
@@ -247,25 +294,29 @@ def EDy(estimator, *, distances=euclidean_distances, verbose=0, **kwargs):
     Returns:
         A configured instance of type EDy.
     """
-    return distribution_matching.EDy(
-        *_create_estimators(estimator, **kwargs),
-        distance = distances,
-        verbose = verbose
+    return CastanoMethod(
+        distribution_matching.EDy(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            distance = distances,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def HDX(n_bins):
+def HDX(n_bins, random_state=None):
     """
     Create an instance of the hellinger distance method HDX (González-Castro et al., 2013).
 
     Args:
         n_bins: The number of bins per feature.
+        random_state (optional): The numpy RandomState. Defaults to None.
 
     Returns:
         A configured instance of type HDX.
     """
-    return distribution_matching.HDX(n_bins)
+    return CastanoMethod(distribution_matching.HDX(n_bins), random_state)
 
-def HDy(estimator, n_bins, *, verbose=0, **kwargs):
+def HDy(estimator, n_bins, *, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the hellinger distance method HDy (González-Castro et al., 2013).
 
@@ -281,13 +332,16 @@ def HDy(estimator, n_bins, *, verbose=0, **kwargs):
     Returns:
         A configured instance of type HDy.
     """
-    return distribution_matching.HDy(
-        *_create_estimators(estimator, **kwargs),
-        n_bins = n_bins,
-        verbose = verbose
+    return CastanoMethod(
+        distribution_matching.HDy(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            n_bins = n_bins,
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def OrdinalAC(estimator, *, verbose=0, **kwargs):
+def OrdinalAC(estimator, *, random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the ordinal version of AC (Castaño et al., 2022).
 
@@ -302,12 +356,15 @@ def OrdinalAC(estimator, *, verbose=0, **kwargs):
     Returns:
         A configured instance of type ACOrdinal.
     """
-    return ordinal.ACOrdinal(
-        *_create_estimators(estimator, **kwargs),
-        verbose = verbose
+    return CastanoMethod(
+        ordinal.ACOrdinal(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            verbose = verbose
+        ),
+        random_state,
     )
 
-def PDF(estimator, n_bins, *, distance="EMD", verbose=0, **kwargs):
+def PDF(estimator, n_bins, *, distance="EMD", random_state=None, verbose=0, **kwargs):
     """
     Create an instance of the ordinal method PDF (Castaño et al., 2022).
 
@@ -324,9 +381,12 @@ def PDF(estimator, n_bins, *, distance="EMD", verbose=0, **kwargs):
     Returns:
         A configured instance of type PDFOrdinaly.
     """
-    return ordinal.PDFOrdinaly(
-        *_create_estimators(estimator, **kwargs),
-        n_bins = n_bins,
-        distance = distance,
-        verbose = verbose
+    return CastanoMethod(
+        ordinal.PDFOrdinaly(
+            *_create_estimators(estimator, random_state=random_state, **kwargs),
+            n_bins = n_bins,
+            distance = distance,
+            verbose = verbose
+        ),
+        random_state,
     )

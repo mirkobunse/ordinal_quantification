@@ -27,6 +27,15 @@ def _classifier(seed, option):
   return RandomForestClassifier(n_trees, random_state=seed, oob_score=oob_score)
 
 class TestFactory(TestCase):
+  def test_local_random_state(self):
+    np.random.seed(123)
+    v1 = np.random.rand()
+    v2 = np.random.rand()
+    np.random.seed(123)
+    self.assertEqual(np.random.rand(), v1)
+    with factory._local_random_state(np.random.RandomState()):
+      self.assertNotEqual(np.random.rand(), v2) # the random state above is a different one
+    self.assertEqual(np.random.rand(), v2) # check that the global RandomState is unaffected
   def test_cv(self):
     option = factory.Option.cv_decomp
     print(f"\noption = {option}")

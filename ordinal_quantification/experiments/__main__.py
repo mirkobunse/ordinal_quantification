@@ -161,7 +161,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
             config["n_folds"],
             np.min(np.unique(y_trn, return_counts=True)[1])
         ]),
-        "random_state": config["seed"],
+        "random_state": current_seed,
     }
 
     print(f"* Training methods for {dataset_name}, rep {i_rep}")
@@ -182,7 +182,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
         if method_name == 'CvMy_Eu':
             m = factory.CvMy(estimator, distances=euclidean_distances, **estimator_args)
         if method_name == 'EDX':
-            m = factory.EDX()
+            m = factory.EDX(random_state=config["seed"])
         if method_name == 'EDy_EMD':
             m = factory.EDy(estimator, distances=emd_distances, **estimator_args)
         if method_name == 'EDy_Eu':
@@ -190,7 +190,7 @@ def _repetition_dataset(i_rep, dataset_name, config):
         if method_name == 'EDy_Ma':
             m = factory.EDy(estimator, **estimator_args)
         if method_name == 'HDX':
-            m = factory.HDX(n_bins=BINS_HDX)
+            m = factory.HDX(n_bins=BINS_HDX, random_state=config["seed"])
         if method_name == 'HDy':
             m = factory.HDy(estimator, n_bins=BINS_GEN, **estimator_args)
         if method_name == 'PAC':
@@ -273,7 +273,7 @@ def _collect_results(config):
     output_path = f"{config['output_dir']}/means_{config['option']}_{config['n_reps']}x{config['n_bags']}CV{config['n_folds']}_{len(all_files)}.csv"
     for i_error, error in enumerate(['emd', 'emd_score', 'mae', 'mse']):
         means_df = res_df.groupby(['decomposer', 'dataset', 'method'])[[error]].agg(['mean']).unstack().round(5)
-        means_df.columns = config["methods"]
+        means_df.columns = [ x[2] for x in means_df.columns.to_flat_index() ] # keep method from (error, "mean", method)
         means_df['error'] = error  # adding a column at the end
         if i_error == 0:
             means_df.to_csv(output_path, mode='w')

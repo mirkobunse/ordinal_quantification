@@ -22,9 +22,9 @@ class TestExperiments(TestCase):
         df_tst = pd.read_csv(main(n_jobs=1, **main_args)) # n_jobs != -1
         self.assertTrue(df_tst.equals(df_ref))
 
-        # FIXME results differ when other methods are selected:
-        #
-        # methods = [ "EDy_Eu", "EDy_EMD", "PDF_EMD" ]
-        # columns = ["decomposer", "dataset"] + methods + ["error"]
-        # df_tst = pd.read_csv(main(methods=methods, **main_args))
-        # self.assertTrue(df_tst[columns].equals(df_ref[columns]))
+        # check that results are identical if fewer methods are selected
+        methods = [ "EDy_Eu", "EDy_EMD", "PDF_EMD" ]
+        columns = ["decomposer", "dataset"] + methods + ["error"]
+        df_tst = pd.read_csv(main(methods=methods, **main_args))
+        print(df_ref[columns])
+        self.assertTrue(df_tst[columns].equals(df_ref[columns]))
