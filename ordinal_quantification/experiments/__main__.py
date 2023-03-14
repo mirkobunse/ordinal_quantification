@@ -55,6 +55,7 @@ def main(
         n_folds = 20,
         option = 'CV(DECOMP)',
         decomposer = 'Monotone', # or 'FHTree'
+        output_dir = "results/",
         n_jobs = -1,
         is_test_run = False,
         ):
@@ -105,7 +106,7 @@ def main(
         "option": option,
         "decomposer": decomposer,
         "n_jobs": n_jobs,
-        "output_dir": _output_dir(), # fix the directory name
+        "output_dir": _output_dir(output_dir), # fix the directory name
         "estimator": estimator,
         "estimator_grid": estimator_grid,
         "methods": methods,
@@ -120,10 +121,12 @@ def main(
     print(pd.read_csv(output_path))
     return output_path
 
-def _output_dir():
+def _output_dir(output_dir):
     t = datetime.now()  # hour, minute, year, day, month
-    tpo = f"{t.year}-{t.month:02d}-{t.day:02d}_{t.hour:02d}:{t.minute:02d}"
-    output_dir = 'results/' + tpo
+    output_dir = os.path.join(
+        output_dir,
+        f"{t.year}-{t.month:02d}-{t.day:02d}_{t.hour:02d}:{t.minute:02d}:{t.second:02d}"
+    )
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     return output_dir
