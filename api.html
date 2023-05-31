@@ -11,6 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
@@ -342,7 +344,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>estimator</strong> – The estimator, usually a classifier.</p></li>
 <li><p><strong>n_bins</strong> – The number of bins per class.</p></li>
-<li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “EMD”. Another suitable value is “L2”.</p></li>
+<li><p><strong>distance</strong> (<em>optional</em>) – The distance metric to optimize. Defaults to “EMD”. Other suitable values are “EMD_L2” (a smooth surrogate for EMD) or “L2”.</p></li>
 <li><p><strong>verbose</strong> (<em>optional</em>) – The logging level. Defaults to 0.</p></li>
 <li><p><strong>decomposer</strong> (<em>optional</em>) – How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.</p></li>
 <li><p><strong>option</strong> (<em>optional</em>) – The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.</p></li>
