@@ -14,6 +14,18 @@ This fork of [https://github.com/bertocast/ordinal_quantification](https://githu
 pip install git+https://github.com/mirkobunse/ordinal_quantification.git
 ```
 
+**Updating:** To update an existing installation of `ordinal_quantification`, run
+
+```
+pip install --force-reinstall --no-deps git+https://github.com/mirkobunse/ordinal_quantification.git
+```
+
+**Troubleshooting:** Starting from `pip 23.1.2`, you have to install `setuptools` and `wheel` explicitly. If you receive a "NameError: name 'setuptools' is not defined", you need to execute the following command before installing `ordinal_quantification`.
+
+```
+pip install --upgrade pip setuptools wheel
+```
+
 
 ## Usage
 
