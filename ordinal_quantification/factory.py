@@ -371,7 +371,7 @@ def PDF(estimator, n_bins, *, distance="EMD", random_state=None, verbose=0, **kw
     Args:
         estimator: The estimator, usually a classifier.
         n_bins: The number of bins per class.
-        distance (optional): The distance metric to optimize. Defaults to "EMD". Another suitable value is "L2".
+        distance (optional): The distance metric to optimize. Defaults to "EMD". Other suitable values are "EMD_L2" (a smooth surrogate for EMD) or "L2".
         verbose (optional): The logging level. Defaults to 0.
         decomposer (optional): How to decompose ordinal tasks into binary classification tasks. Defaults to Decomposer.monotone.
         option (optional): The order of cross validation and ordinal decomposition. Defaults to Option.cv_decomp.

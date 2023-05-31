@@ -190,7 +190,7 @@ class PDFOrdinaly(UsingClassifiers):
 
         if self.distance == 'L2':
             self.G_, self.C_, self.b_ = compute_l2_param_train(self.train_distrib_, self.classes_)
-        elif self.distance == 'EMD':
+        elif self.distance in ['EMD', 'EMD_L2']:
             for i in range(1, effective_n_bins):
                 self.train_distrib_[i, :] = np.sum(self.train_distrib_[i-1:i+1, :], axis=0)
 
@@ -265,9 +265,16 @@ class PDFOrdinaly(UsingClassifiers):
             prevalences = solve_l1(train_distrib=self.train_distrib_[0:effective_n_bins-1,:],
                                    test_distrib=self.test_distrib_[0:effective_n_bins-1],
                                    n_classes=n_classes)
-            # clipping the results according to (Forman 2008)
-            prevalences = np.clip(prevalences, 0, 1)
-
+            prevalences = np.clip(prevalences, 0, 1) # clipping according to (Forman 2008)
+            if np.sum(prevalences) > 0:
+                prevalences = prevalences / float(np.sum(prevalences))
+        elif self.distance == 'EMD_L2':
+            for i in range(1, effective_n_bins):
+                self.test_distrib_[i] = self.test_distrib_[i] + self.test_distrib_[i-1]
+            prevalences = solve_l2cvx(train_distrib=self.train_distrib_[0:effective_n_bins-1,:],
+                                      test_distrib=self.test_distrib_[0:effective_n_bins-1],
+                                      n_classes=n_classes)
+            prevalences = np.clip(prevalences, 0, 1) # clipping according to (Forman 2008)
             if np.sum(prevalences) > 0:
                 prevalences = prevalences / float(np.sum(prevalences))
         else:

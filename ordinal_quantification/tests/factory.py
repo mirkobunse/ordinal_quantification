@@ -67,6 +67,7 @@ class TestFactory(TestCase):
       ("HDy", factory.HDy(_classifier(seed, option), 2, verbose=1, option=option)),
       ("AC_Ord", factory.OrdinalAC(_classifier(seed, option), verbose=1, option=option)), # ordinal methods
       ("PDF_EMD", factory.PDF(_classifier(seed, option), 2, verbose=1, option=option)),
+      ("PDF_EMD_L2", factory.PDF(_classifier(seed, option), 2, distance="EMD_L2", verbose=1, option=option)),
       ("PDF_L2", factory.PDF(_classifier(seed, option), 2, distance="L2", verbose=1, option=option)),
     ]
     for (name, method) in methods:
