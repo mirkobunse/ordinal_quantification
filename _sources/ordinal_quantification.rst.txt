@@ -11,6 +11,7 @@ Subpackages
    ordinal_quantification.decomposition
    ordinal_quantification.distribution_matching
    ordinal_quantification.estimators
+   ordinal_quantification.experiments
    ordinal_quantification.metrics
    ordinal_quantification.ordinal
    ordinal_quantification.tests

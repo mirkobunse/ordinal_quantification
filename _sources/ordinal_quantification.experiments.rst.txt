@@ -1,0 +1,37 @@
+ordinal\_quantification.experiments package
+===========================================
+
+Submodules
+----------
+
+ordinal\_quantification.experiments.experiments\_ordinal\_parallel7 module
+--------------------------------------------------------------------------
+
+.. automodule:: ordinal_quantification.experiments.experiments_ordinal_parallel7
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.experiments.test\-artificial module
+-----------------------------------------------------------
+
+.. automodule:: ordinal_quantification.experiments.test-artificial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ordinal\_quantification.experiments.test\-artificial\-nbins module
+------------------------------------------------------------------
+
+.. automodule:: ordinal_quantification.experiments.test-artificial-nbins
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ordinal_quantification.experiments
+   :members:
+   :undoc-members:
+   :show-inheritance:
