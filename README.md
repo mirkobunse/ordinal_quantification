@@ -7,6 +7,7 @@
 This fork of https://github.com/bertocast/ordinal_quantification allows you to install the upstream code via pip
 
 ```
+pip install --upgrade pip setuptools wheel
 pip install git+https://github.com/mirkobunse/ordinal_quantification.git
 ```
 

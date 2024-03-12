@@ -168,7 +168,7 @@ class UsingClassifiers(BaseQuantifier):
             # we need to fit the estimator for the training distribution
             # we check if the estimator is trained or not
             try:
-                self.estimator_train.predict(X[0:1, :].reshape(1, -1))
+                self.estimator_train.predict(X[:1])
                 if self.verbose > 0:
                     print('it was already fitted')
 
