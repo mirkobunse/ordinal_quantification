@@ -8,6 +8,7 @@ Base classes for quantifiers based on distribution matching
 # License: BSD 3 clause
 
 import numpy as np
+import scipy # for sparsity checks
 import six
 from abc import ABCMeta
 
@@ -168,10 +169,9 @@ class UsingClassifiers(BaseQuantifier):
             # we need to fit the estimator for the training distribution
             # we check if the estimator is trained or not
             try:
-                try:
-                    _X = X[:1]
-                except TypeError:
-                    _X = X.getrow(0) # try a sparse-friendly variant of [:1]
+                _X = X[:1]
+                if scipy.sparse.issparse(X):
+                    _X = _X.todense()
                 self.estimator_train.predict(_X)
                 if self.verbose > 0:
                     print('it was already fitted')
@@ -192,10 +192,9 @@ class UsingClassifiers(BaseQuantifier):
             # we need to fit the estimator for the testing distribution
             # we check if the estimator is trained or not
             try:
-                try:
-                    _X = X[:1]
-                except TypeError:
-                    _X = X.getrow(0) # try a sparse-friendly variant of [:1]
+                _X = X[:1]
+                if scipy.sparse.issparse(X):
+                    _X = _X.todense()
                 self.estimator_test.predict(_X)
                 if self.verbose > 0:
                     print('it was already fitted')
