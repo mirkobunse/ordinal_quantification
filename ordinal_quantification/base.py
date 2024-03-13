@@ -168,7 +168,11 @@ class UsingClassifiers(BaseQuantifier):
             # we need to fit the estimator for the training distribution
             # we check if the estimator is trained or not
             try:
-                self.estimator_train.predict(X)
+                try:
+                    _X = X[:1]
+                except TypeError:
+                    _X = X.getrow(0) # try a sparse-friendly variant of [:1]
+                self.estimator_train.predict(_X)
                 if self.verbose > 0:
                     print('it was already fitted')
 
@@ -188,7 +192,11 @@ class UsingClassifiers(BaseQuantifier):
             # we need to fit the estimator for the testing distribution
             # we check if the estimator is trained or not
             try:
-                self.estimator_test.predict(X)
+                try:
+                    _X = X[:1]
+                except TypeError:
+                    _X = X.getrow(0) # try a sparse-friendly variant of [:1]
+                self.estimator_test.predict(_X)
                 if self.verbose > 0:
                     print('it was already fitted')
 
